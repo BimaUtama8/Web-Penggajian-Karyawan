@@ -34,7 +34,6 @@
             </div>
 
             <div class="d-flex align-items-center">
-
                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                         id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -55,6 +54,9 @@
                         </form>
                     </div>
                 </div>
+                <a class="nav-link" href="{{ route('logout') }}" style="color: black">   
+                    <i class="mdi mdi-logout"></i><span>Logout</span>
+                </a>
             </div>
         </div>
     </div>

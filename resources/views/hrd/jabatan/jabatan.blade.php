@@ -17,7 +17,7 @@
   <div class="col-lg-12">
       <div class="card">
           <div class="card-header">
-              <h4 class="card-title mb-0">Data Karyawan</h4>
+              <h4 class="card-title mb-0">Data Jabatan</h4>
           </div><!-- end card header -->
 
           <div class="card-body">
@@ -50,8 +50,8 @@
                                   </th>
                                   <th class="sort" data-sort="id">ID Jabatan</th>
                                   <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
-                                  <th class="sort" data-sort="tunjanganmakan">Tunjangan Makan</th>
-                                  <th class="sort" data-sort="tunjangantransport">Tunjangan Transportasi</th>
+                                  {{-- <th class="sort" data-sort="tunjanganmakan">Tunjangan Makan</th>
+                                  <th class="sort" data-sort="tunjangantransport">Tunjangan Transportasi</th> --}}
                                   <th class="sort" data-sort="action">Action</th>
                               </tr>
                           </thead>
@@ -68,8 +68,8 @@
                                           class="fw-medium link-primary">#VZ2101</a></td>
                                   <td class="id">{{ $jabatan ['id_jabatan'] }}</td>
                                   <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
-                                  <td class="tunjanganmakan">{{ $jabatan ['tunjangan_makan'] }}</td>
-                                  <td class="tunjangantransport">{{ $jabatan ['tunjangan_transportasi'] }}</td>
+                                  {{-- <td class="tunjanganmakan">{{ $jabatan ['tunjangan_makan'] }}</td>
+                                  <td class="tunjangantransport">{{ $jabatan ['tunjangan_transportasi'] }}</td> --}}
                                   <td>
                                       <div class="d-flex gap-2">
                                           <div class="edit">

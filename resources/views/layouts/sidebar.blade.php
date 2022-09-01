@@ -31,71 +31,47 @@
                 @if(Auth::user()->level == 'hrd')
                     <li class="menu-title"><span>HRD</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">
-                            <i data-feather="home" class="icon-dual"></i> <span>Dashboard</span>
+                        <a href="/karyawan" class="nav-link">
+                            <i class="mdi mdi-account-multiple"></i><span>Data Karyawan</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarMaster" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaster">
-                            <i data-feather="users" class="icon-dual"></i> <span>Data Master</span>
+                        <a href="/jabatan" class="nav-link">
+                            <i class="mdi mdi-book-edit"></i><span>Data Jabatan</span>
                         </a>
-                        <div class="collapse menu-dropdown" id="sidebarMaster">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="/karyawan" class="nav-link">Data Karyawan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/jabatan" class="nav-link">Jabatan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/presensi" class="nav-link">Rekap Presensi</a>
-                                </li>
-                        </div>
-                    </li> 
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-danger" style="color: white" href="{{ route('logout') }}">   
-                            <span>Logout</span>
+                        <a href="/presensi" class="nav-link">
+                            <i class="mdi mdi-calendar-account"></i><span>Rekap Presensi</span>
                         </a>
                     </li>
                 @elseif (Auth::user()->level == 'keuangan')
                     <li class="menu-title"><span>Keuangan</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">
-                            <i data-feather="home" class="icon-dual"></i> <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
+                        <a href="/gaji" class="nav-link">
                             <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/gaji" class="nav-link">Data Iuran</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-danger" style="color: white" href="{{ route('logout') }}">   
-                            <span>Logout</span>
+                        <a href="/iuran" class="nav-link">
+                            <i class="mdi mdi-cash-minus"></i><span>Data Iuran</span>
                         </a>
                     </li>
                 @elseif (Auth::user()->level == 'manager')
                     <li class="menu-title"><span>Manager</span></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index">
-                            <i data-feather="home" class="icon-dual"></i> <span>Dashboard</span>
+                        <a href="" class="nav-link">
+                            <i class="mdi mdi-text-box-check"></i><span>Validasi Slip Gaji</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/gaji" class="nav-link">Validasi Slip Gaji</a>
+                        <a href="" class="nav-link">
+                            <i class="mdi mdi-archive"></i><span>Laporan Gaji Karyawan</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/gaji" class="nav-link">Laporan Gaji Karyawan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/gaji" class="nav-link">Laporan Pajak Penghasilan Karyawan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-danger" style="color: white" href="{{ route('logout') }}">   
-                            <span>Logout</span>
+                        <a href="" class="nav-link">
+                            <i class="mdi mdi-archive"></i><span>Laporan Pajak Penghasilan Karyawan</span>
                         </a>
                     </li>
                 @endif

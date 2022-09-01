@@ -3,7 +3,7 @@
 @section('content')
 <div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
     <div class="bg-overlay">
-        <img src="{{ asset('login/img/bg-smart-home-1.jpg') }}" style="width: 100%clear">
+        <img src="{{ asset('login/img/bg-smart-home-1.jpg') }}" style="width: 100%">
     </div>
     <!-- auth-page content -->
     <div class="auth-page-content overflow-hidden pt-lg-5">

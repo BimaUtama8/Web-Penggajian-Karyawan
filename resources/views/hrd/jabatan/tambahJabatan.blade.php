@@ -37,7 +37,7 @@
                         </div>
                         <br>
       
-                        <label for="makantunjangan-field" class="form-label">Tunjangan Makan</label>
+                        {{-- <label for="makantunjangan-field" class="form-label">Tunjangan Makan</label>
                         <div class="form-floating">
                             <input type="number" class="form-control" id="tunjanganmakan" name="tunjanganmakan" placeholder="Masukkan Tunjangan Makan">
                             <label for="tunjanganmakanfloatingInput">Masukkan Tunjangan Makan</label>
@@ -49,7 +49,7 @@
                             <input type="number" class="form-control" id="tunjangantransport" name="tunjangantransport" placeholder="Masukkan Tunjangan Transport">
                             <label for="tunjangantransportfloatingInput">Masukkan Tunjangan Transport</label>
                         </div>
-                        <br>
+                        <br> --}}
 
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

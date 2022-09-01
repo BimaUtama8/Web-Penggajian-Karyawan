@@ -43,19 +43,6 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
     //Data Presensi
     Route::get('/presensi', function () { return view('hrd/presensi/presensi');});
 
-    //Data Iuran
-    Route::get('/iuran', function () { return view('hrd/iuran/iuran');});
-
-    //Data PTKP
-    Route::get('/ptkp', function () { return view('hrd/ptkp/ptkp');});
-
-    //Data Aturan PPh 21
-    Route::get('/pph', function () { return view('hrd/pph/pph');});
-
-    //Data Gaji
-    Route::get('/gaji', function () { return view('hrd/gaji/gaji');});
-
-
     //Post Method
     Route::post('/storejabatan', [JabatanController::class, 'storeJabatan'])->name('store_jabatan');
 
@@ -65,12 +52,27 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
     Route::view('keuangan/dashboard', 'keuangan.index')->name('dashboard_keuangan');
 });
     //Get Method
+    //Data Gaji
+    Route::get('/gaji', function () { return view('keuangan/gaji/gaji');});
+    //Data Iuran
+    Route::get('/iuran', function () { return view('keuangan/iuran/iuran');});
+
 
 //level manager
 Route::middleware('auth', 'validatelevels:manager')->group(function () {
     Route::view('manager/dashboard', 'manager.index')->name('dashboard_manager');
 });
     //Get Method
+    //Data PTKP
+    Route::get('/ptkp', function () { return view('manager/ptkp/ptkp');});
+
+    //Data Aturan PPh 21
+    Route::get('/pph', function () { return view('manager/pph/pph');});
+
+
+
+
+
 
 // //Route Tampilan Sidebar 
 // Route::get('/index', function () {return view('hrd/index');});
