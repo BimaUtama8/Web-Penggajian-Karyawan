@@ -20,7 +20,8 @@
                 <h4 class="card-title mb-0">Data Karyawan</h4>
             </div>
             <div class="card-body">
-                <form>
+                <form action="{{ route('store_karyawan') }}" method="POST">
+                    @csrf
                     <div class="modal-body">
       
                         <div class="mb-3" id="modal-id" style="display: none;">
@@ -38,11 +39,18 @@
                         <select class="form-select mb-3" aria-label="Default select example" name="jabatan">
                             <option selected disabled>Jabatan</option>
                             @foreach ($option_jabatan as $item)
-                             <option value="{{ $item->ID_JABATAN }}">{{ $item->NAMA_JABATAN }}</option>
+                             <option value="{{ $item->id_jabatan }}">{{ $item->nama_jabatan }}</option>
                             @endforeach
                             
                         </select>
-      
+                        
+                        <label for="customername-field" class="form-label">Email</label>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="namakaryawan" name="email" placeholder="Masukkan Email">
+                            <label for="firstnamefloatingInput">Masukkan Email</label>
+                        </div>
+                        <br>
+
                         <label for="customername-field" class="form-label">Nama Karyawan</label>
                         <div class="form-floating">
                             <input type="text" class="form-control" id="namakaryawan" name="namakaryawan" placeholder="Masukkan Nama Karyawan">
@@ -75,14 +83,13 @@
                         <label for="agama-field" class="form-label">Agama</label>
                         <select class="form-select mb-3" aria-label="Default select example" name="agama">
                             <option selected disabled>Agama</option>
-                            <option value="1">Islam</option>
-                            <option value="2">Kristen</option>
-                            <option value="3">Hindhu</option>
-                            <option value="4">Konghucu</option>
-                            <option value="5">Buddha</option>
-                            <option value="6">Katolik</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Hindhu">Hindhu</option>
+                            <option value="Konghucu">Konghucu</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Katolik">Katolik</option>
                         </select>
-
                         
                         <label for="customername-field" class="form-label">Gaji</label>
                         <div class="form-floating">
@@ -108,6 +115,23 @@
                             <label for="teleponfloatingInput">Masukkan Telepon</label>
                         </div>
                         <br>
+
+                        <label for="agama-field" class="form-label">Tanggungan</label>
+                        <select class="form-select mb-3" aria-label="Default select example" name="tanggungan">
+                            <option selected disabled>Tanggungan</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+
+                        <label for="agama-field" class="form-label">Status Pernikahan</label>
+                        <select class="form-select mb-3" aria-label="Default select example" name="status">
+                            <option selected disabled>Status Pernikahan</option>
+                            <option value="Menikah">Menikah</option>
+                            <option value="Belum Menikah">Belum Menikah</option>
+                        </select>
+
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

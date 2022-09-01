@@ -31,20 +31,22 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
     //Get method
     Route::get('/index', function () {return view('hrd/index');});
     //Data Karyawan
-    Route::get('/karyawan', function () { return view('hrd/karyawan');});
-    Route::get('/karyawan', [KaryawanController::class, 'tampilKaryawan']);
-    Route::get('/tambahkaryawan', [KaryawanController::class, 'tambahKaryawan'])->name('tambah_karyawan');
+    // Route::get('hrd/karyawan', function () { return view('hrd/karyawan');});
+    Route::get('hrd/karyawan', [KaryawanController::class, 'tampilKaryawan'])->name('show_karyawan');
+    Route::get('hrd/tambahkaryawan', [KaryawanController::class, 'tambahKaryawan'])->name('tambah_karyawan');
 
     //Data Jabatan
-    Route::get('/jabatan', function () { return view('hrd/jabatan');});
-    Route::get('/jabatan', [JabatanController::class, 'tampilJabatan'])->name('show_jabatan');
-    Route::get('/tambahjabatan', [JabatanController::class, 'tambahJabatan'])->name('tambah_jabatan');
+    Route::get('hrd/jabatan', function () { return view('hrd/jabatan');});
+    Route::get('hrd/jabatan', [JabatanController::class, 'tampilJabatan'])->name('show_jabatan');
+    Route::get('hrd/tambahjabatan', [JabatanController::class, 'tambahJabatan'])->name('tambah_jabatan');
 
     //Data Presensi
-    Route::get('/presensi', function () { return view('hrd/presensi/presensi');});
+    Route::get('hrd/presensi', function () { return view('hrd/presensi/presensi');});
 
     //Post Method
-    Route::post('/storejabatan', [JabatanController::class, 'storeJabatan'])->name('store_jabatan');
+    Route::post('hrd/storejabatan', [JabatanController::class, 'storeJabatan'])->name('store_jabatan');
+
+    Route::post('hrd/storekaryawan', [KaryawanController::class, 'storeKaryawan'])->name('store_karyawan');
 
 
 //level keuangan

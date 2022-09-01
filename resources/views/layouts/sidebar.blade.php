@@ -31,7 +31,7 @@
                 @if(Auth::user()->level == 'hrd')
                     <li class="menu-title"><span>HRD</span></li>
                     <li class="nav-item">
-                        <a href="/karyawan" class="nav-link">
+                        <a href="{{ route('show_karyawan') }}" class="nav-link">
                             <i class="mdi mdi-account-multiple"></i><span>Data Karyawan</span>
                         </a>
                     </li>
