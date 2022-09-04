@@ -41,4 +41,24 @@ class JabatanController extends Controller
 
         return redirect()->route('show_jabatan_keuangan')->with('success', 'Data Berhasil Ditambahkan');
     }
+
+    function tampilEditJabatan($id){
+        $jabatan = Jabatan::find($id);
+        return view('keuangan/jabatan/editJabatan', [
+            'data'  => $jabatan
+        ]);
+    }
+    
+    function editJabatan($id, Request $request){
+        $request->validate([
+            'tunjanganmakan'        => 'required',
+            'tunjangantransportasi' => 'required'
+        ]);
+        $data_jabatan = Jabatan::find($id);
+        $data_jabatan -> tunjangan_makan = $request->tunjanganmakan;
+        $data_jabatan -> tunjangan_transportasi = $request->tunjangantransportasi;
+        $data_jabatan -> save();
+
+        return redirect()->route('show_jabatan_keuangan')->with('success', 'Data Berhasil Diubah');
+    }
 }

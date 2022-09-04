@@ -63,16 +63,13 @@
                                               value="option1">
                                       </div>
                                   </th>
-                                  <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                          class="fw-medium link-primary">#VZ2101</a></td>
                                   <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
                                   <td class="tunjanganmakan">{{ $jabatan ['tunjangan_makan'] }}</td>
                                   <td class="tunjangantransport">{{ $jabatan ['tunjangan_transportasi'] }}</td>
                                   <td>
                                       <div class="d-flex gap-2">
                                           <div class="edit">
-                                              <button class="btn btn-sm btn-primary edit-item-btn"
-                                                  data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                              <a href="{{ route('edit_jabatan_keuangan', $jabatan->id_jabatan) }}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
                                           </div>
                                       </div>
                                   </td>
@@ -108,94 +105,4 @@
       </div>
   </div>
 </div>
-
-<!-- MODAL -->
-{{-- <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header bg-light p-3">
-              <h5 class="modal-title" id="exampleModalLabel"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"id="close-modal"></button>
-          </div>
-          <form>
-              <div class="modal-body">
-
-                  <div class="mb-3" id="modal-id" style="display: none;">
-                      <label for="id-field" class="form-label">ID</label>
-                      <input type="text" id="id-field" class="form-control" placeholder="ID" readonly />
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="customername-field" class="form-label">NIP</label>
-                      <input type="text" id="customername-field" class="form-control" placeholder="Enter Nip"
-                          required />
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="email-field" class="form-label">Nama Karyawan</label>
-                      <input type="email" id="email-field" class="form-control" placeholder="Enter Nama Karyawan"
-                          required />
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="phone-field" class="form-label">Telepon</label>
-                      <input type="text" id="phone-field" class="form-control" placeholder="Enter No.Telepon"
-                          required />
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="date-field" class="form-label">Tanggal Lahir</label>
-                      <input type="date" id="date-field" class="form-control" placeholder="Select Tanggal Lahir" required />
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="date-field" class="form-label">Alamat</label>
-                    <input type="text" id="date-field" class="form-control" placeholder="Enter Alamat" required />
-                </div>
-
-                  <div>
-                      <label for="status-field" class="form-label">Status</label>
-                      <select class="form-control" data-trigger name="status-field" id="status-field">
-                          <option value="">Status</option>
-                          <option value="Active">Active</option>
-                          <option value="Block">Block</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <div class="hstack gap-2 justify-content-end">
-                      <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary" id="add-btn">Add Customer</button>
-                      <button type="button" class="btn btn-primary" id="edit-btn">Update</button>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
-</div> --}}
-
-{{-- <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                  id="btn-close"></button>
-          </div>
-          <div class="modal-body">
-              <div class="mt-2 text-center">
-                  <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                      colors="primary:#25a0e2,secondary:#00bd9d" style="width:100px;height:100px"></lord-icon>
-                  <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                      <h4>Are you sure ?</h4>
-                      <p class="text-muted mx-4 mb-0">Are you sure you want to remove this record ?</p>
-                  </div>
-              </div>
-              <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                  <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn w-sm btn-primary" id="delete-record">Yes, Delete It!</button>
-              </div>
-          </div>
-      </div>
-  </div>
-</div> --}}
 @endsection

@@ -62,15 +62,19 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
 });
     
     //Get Method
+        //Data Jabatan
+        Route::get('keuangan/jabatan', [Keuangan\JabatanController::class, 'tampilJabatan'])->name('show_jabatan_keuangan');
+        Route::get('keuangan/tambahjabatan', [Keuangan\JabatanController::class, 'tambahJabatan'])->name('tambah_jabatan_keuangan');
+        Route::get('keuangan/editJabatan/{id}', [Keuangan\JabatanController::class, 'tampilEditJabatan'])->name('edit_jabatan_keuangan');
+        Route::get('keuangan/hapusJabatan/{id}', [Keuangan\JabatanController::class, 'hapusJabatan'])->name('hapus_jabatan_keuangan');
+        //Data Gaji
+        Route::get('/gaji', function () { return view('keuangan/gaji/gaji');});
+        //Data Iuran
+        Route::get('/iuran', function () { return view('keuangan/iuran/iuran');});
 
-    //Data Jabatan
-    Route::get('keuangan/jabatan', [Keuangan\JabatanController::class, 'tampilJabatan'])->name('show_jabatan_keuangan');
-    Route::get('keuangan/tambahjabatan', [Keuangan\JabatanController::class, 'tambahJabatan'])->name('tambah_jabatan_keuangan');
-    //Data Gaji
-    Route::get('/gaji', function () { return view('keuangan/gaji/gaji');});
-    //Data Iuran
-    Route::get('/iuran', function () { return view('keuangan/iuran/iuran');});
-
+    //Put Method
+        //Data Jabatan
+        Route::put('keuangan/editjabatan/{id}', [Keuangan\JabatanController::class, 'editJabatan'])->name('store_edit_jabatan_keuangan');
 
 
 
