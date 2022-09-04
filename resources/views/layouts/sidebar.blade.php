@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/jabatan" class="nav-link">
+                        <a href="{{ route('show_jabatan') }}" class="nav-link">
                             <i class="mdi mdi-book-edit"></i><span>Data Jabatan</span>
                         </a>
                     </li>
@@ -48,13 +48,18 @@
                 @elseif (Auth::user()->level == 'keuangan')
                     <li class="menu-title"><span>Keuangan</span></li>
                     <li class="nav-item">
-                        <a href="/gaji" class="nav-link">
-                            <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
+                        <a href="{{ route('show_jabatan_keuangan') }}" class="nav-link">
+                            <i class="mdi mdi-book-edit"></i><span>Data Jabatan</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/iuran" class="nav-link">
                             <i class="mdi mdi-cash-minus"></i><span>Data Iuran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/gaji" class="nav-link">
+                            <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
                         </a>
                     </li>
                 @elseif (Auth::user()->level == 'manager')

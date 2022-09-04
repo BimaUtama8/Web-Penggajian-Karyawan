@@ -1,30 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Keuangan;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Jabatan;
 
 class JabatanController extends Controller
 {
     function tampilJabatan(){
         $data = Jabatan::all();
-        return view('hrd/jabatan/jabatan', [
+        return view('keuangan/jabatan/jabatan', [
             'jabatan' => $data,
         ]);
     }
 
     function tambahJabatan(){
-        $id_jabatan = Jabatan::count()+1;
-        $kode_jabatan = "900".$id_jabatan;
-        return view('hrd/jabatan/tambahJabatan', [
-            'kode_jabatan' => $kode_jabatan,
+        $option_jabatan = Jabatan::all();
+        return view('keuangan/jabatan/tambahJabatan', [
+            'option_jabatan' => $option_jabatan,
         ]);
     }
 
     
     function createJabatan(){
-        return view('hrd.jabatan.jabatan');
+        return view('keuangan.jabatan.jabatan');
     }
 
     function storeJabatan(Request $request){
@@ -32,17 +32,13 @@ class JabatanController extends Controller
         // $jabatan_id = "900".$jabatan; 
         $request->validate([
             'namajabatan'=>'required',
-            'tunjanganmakan'=>'required',
-            'tunjangantransport'=>'required',
         ]);
 
         Jabatan::create([
             // 'id_jabatan' => $jabatan_id,
             'nama_jabatan' => $request->namajabatan,
-            'tunjangan_makan' => $request->tunjanganmakan,
-            'tunjangan_transportasi' => $request->tunjangantransport,
         ]);
 
-        return redirect()->route('show_jabatan')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_jabatan_keuangan')->with('success', 'Data Berhasil Ditambahkan');
     }
 }

@@ -6,7 +6,7 @@
             <h4 class="mb-sm-0 font-size-18">Karyawan</h4>
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tambah Data Karyawan</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Update Data Karyawan</a></li>
                     <li class="breadcrumb-item active">Karyawan</li>
                 </ol>
             </div>
@@ -20,41 +20,27 @@
                 <h4 class="card-title mb-0">Data Karyawan</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('store_karyawan') }}" method="POST">
+                <form action="{{ route('store_edit_karyawan', $data->id_karyawan) }}" method="POST">
                     @csrf
+                    {{ method_field('PUT') }}
                     <div class="modal-body">
-                        <label for="customername-field" class="form-label">Jabatan</label>
-                        <select class="form-select mb-3" aria-label="Default select example" name="jabatan">
-                            <option selected disabled>Jabatan</option>
-                            @foreach ($option_jabatan as $item)
-                             <option value="{{ $item->id_jabatan }}">{{ $item->nama_jabatan }}</option>
-                            @endforeach
-                        </select>
-                        
-                        <label for="customername-field" class="form-label">Email</label>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="namakaryawan" name="email" placeholder="Masukkan Email">
-                            <label for="firstnamefloatingInput">Masukkan Email</label>
-                        </div>
-                        <br>
-
                         <label for="customername-field" class="form-label">Nama Karyawan</label>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="namakaryawan" name="namakaryawan" placeholder="Masukkan Nama Karyawan">
+                            <input type="text" class="form-control" id="namakaryawan" name="namakaryawan" placeholder="" value="{{ $data->nama }}">
                             <label for="firstnamefloatingInput">Masukkan Nama Karyawan</label>
                         </div>
                         <br>
       
                         <label for="customername-field" class="form-label">Alamat</label>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">
+                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="" value="{{ $data->alamat }}">
                             <label for="alamatfloatingInput">Masukkan  Alamat</label>
                         </div>
                         <br>
 
                         <label for="customername-field" class="form-label">Tempat Lahir</label>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan Tempat Lahir">
+                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="" value="{{ $data->tempat_lahir }}">
                             <label for="tempatlahirfloatingInput">Masukkan Tempat Lahir</label>
                         </div>
                         <br>
@@ -62,14 +48,14 @@
                         
                         <label for="customername-field" class="form-label">Tanggal Lahir</label>
                         <div class="form-floating">
-                            <input type="date" class="form-control" id="tgl_lahir" name="tanggal_lahir" placeholder="Masukkan Tanggal Lahir">
+                            <input type="date" class="form-control" id="tgl_lahir" name="tanggal_lahir" placeholder="" value="{{ $data->tanggal_lahir }}">
                             <label for="tgllahirfloatingInput">Masukkan Tanggal Lahir</label>
                         </div>
                         <br>
 
                         <label for="agama-field" class="form-label">Agama</label>
                         <select class="form-select mb-3" aria-label="Default select example" name="agama">
-                            <option selected disabled>Agama</option>
+                            <option value="{{ $data->agama }}">{{ $data->agama }}</option>
                             <option value="Islam">Islam</option>
                             <option value="Kristen">Kristen</option>
                             <option value="Hindhu">Hindhu</option>
@@ -80,7 +66,7 @@
                         
                         <label for="customername-field" class="form-label">Gaji</label>
                         <div class="form-floating">
-                            <input type="number" class="form-control" id="gaji" name="gaji" placeholder="Masukkan Gaji">
+                            <input type="number" class="form-control" id="gaji" name="gaji" placeholder="" value="{{ $data->gaji }}">
                             <label for="gajifloatingInput">Masukkan Gaji</label>
                         </div>
                         <br>
@@ -98,14 +84,14 @@
                         
                         <label for="customername-field" class="form-label">Telepon</label>
                         <div class="form-floating">
-                            <input type="number" class="form-control" name="telepon" id="telepon" placeholder="Masukkan Telepon">
+                            <input type="number" class="form-control" name="telepon" id="telepon" placeholder="" value="{{ $data->telepon }}">
                             <label for="teleponfloatingInput">Masukkan Telepon</label>
                         </div>
                         <br>
 
                         <label for="agama-field" class="form-label">Tanggungan</label>
                         <select class="form-select mb-3" aria-label="Default select example" name="tanggungan">
-                            <option selected disabled>Tanggungan</option>
+                            <option value="{{ $data->tanggungan }}">{{ $data->tanggungan }}</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -114,7 +100,7 @@
 
                         <label for="agama-field" class="form-label">Status Pernikahan</label>
                         <select class="form-select mb-3" aria-label="Default select example" name="status">
-                            <option selected disabled>Status Pernikahan</option>
+                            <option value="{{ $data->status }}">{{ $data->status }}</option>
                             <option value="Menikah">Menikah</option>
                             <option value="Belum Menikah">Belum Menikah</option>
                         </select>
@@ -122,8 +108,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <a href="/karyawan"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button></a>
-                            <button type="submit" class="btn btn-primary" id="add-btn">Add Karyawan</button>
+                            <a href="{{ route('show_karyawan') }}"><button type="button" class="btn btn-light">Close</button></a>
+                            <button type="submit" class="btn btn-primary" id="add-btn">Update Karyawan</button>
                         </div>
                     </div>
                 </form>
