@@ -53,12 +53,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/iuran" class="nav-link">
+                        <a href="{{ route('index_iuran') }}" class="nav-link">
                             <i class="mdi mdi-cash-minus"></i><span>Data Iuran</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/gaji" class="nav-link">
+                        <a href="{{ route('index_gaji') }}" class="nav-link">
                             <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
                         </a>
                     </li>
