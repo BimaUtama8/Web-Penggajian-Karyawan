@@ -55,6 +55,7 @@
                                 <td class="namajabatan">{{ $kar ['nama_jabatan'] }}</td>
                                 <td class="gaji">{{ $kar ['gaji'] }}</td>
                                 <td class="iuran">{{ $kar ['iuran'] }}</td>
+                                
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
