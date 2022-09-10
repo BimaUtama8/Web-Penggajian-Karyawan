@@ -68,7 +68,7 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         Route::get('keuangan/editJabatan/{id}', [Keuangan\JabatanController::class, 'tampilEditJabatan'])->name('edit_jabatan_keuangan');
         Route::get('keuangan/hapusJabatan/{id}', [Keuangan\JabatanController::class, 'hapusJabatan'])->name('hapus_jabatan_keuangan');
         //Data Iuran
-        Route::get('keuangan/iuran', [Keuangan\IuranController::class, 'index'])->name('index_iuran');
+        Route::get('keuangan/tampilIuran', [Keuangan\IuranController::class, 'tampilIuran'])->name('show_iuran');
         //Data Gaji
         Route::get('keuangan/gaji', [Keuangan\GajiController::class, 'index'])->name('index_gaji');
 

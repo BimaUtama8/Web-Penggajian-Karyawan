@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('index_iuran') }}" class="nav-link">
+                        <a href="{{ route('show_iuran') }}" class="nav-link">
                             <i class="mdi mdi-cash-minus"></i><span>Data Iuran</span>
                         </a>
                     </li>
