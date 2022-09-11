@@ -46,9 +46,6 @@
                                 <th class="sort" data-sort="tm">Tunjangan Makan</th>
                                 <th class="sort" data-sort="tt">Tunjangan Transportasi</th>
                                 <th class="sort" data-sort="gaji">Gaji</th>
-                                <th class="sort" data-sort="iuran">Iuran</th>
-                                <th class="sort" data-sort="hk">Jumlah Hari Kerja</th>
-                                <th class="sort" data-sort="jk">Jumlah Jam Kerja</th>
                                 <th class="sort" data-sort="action">Action</th>
                             </tr>
                         </thead>
@@ -57,16 +54,13 @@
                             <tr>
                                 <td class="nk">{{$kar ['nama'] }}</td>
                                 <td class="nj">{{$kar ['nama_jabatan'] }}</td>
-                                <td class="tm">{{$kar ['tunjangang_makan'] }}</td>
+                                <td class="tm">{{$kar ['tunjangan_makan'] }}</td>
                                 <td class="tt">{{$kar ['tunjangan_transportasi'] }}</td>
                                 <td class="gaji">{{$kar ['gaji'] }}</td>
-                                <td class="iuran"></td>
-                                <td class="hk"></td>
-                                <td class="jk"></td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
-                                            {{-- <a href="" class="btn btn-sm btn-primary edit-item-btn">Edit</a> --}}
+                                            <a href="{{ route('show_detail_gaji', $kar['id_karyawan'])}}" class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                         </div>
                                     </div>
                                 </td>
