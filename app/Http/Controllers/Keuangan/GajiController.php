@@ -15,24 +15,14 @@ class GajiController extends Controller
     }
 
     function tampilGaji(){
-        $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
-                        ->join('presensi', 'presensi.id_karyawan', '=', 'karyawan.id_karyawan')->get();
-        $total_hari = Presensi::where('id_karyawan', 1)
-                                ->where('status',1)
-                                ->whereTime('keluar', '<=', '17:00:00')
-                                ->count();
-        $total_lembur = Presensi::where('id_karyawan', 1)
-                                ->where('status',1)
-                                ->whereTime('keluar', '>', '17:00:00')
-                                ->count();
+        $karyawan = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->get();
         return view('keuangan/gaji/gaji', [
-            'karyawan' => $data
+            'karyawan' => $karyawan
         ]);
     }
 
     function detailGaji($id){
-        $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
-                        ->join('presensi', 'presensi.id_karyawan', '=', 'karyawan.id_karyawan')->get();
+        $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->get();
         $total_hari = Presensi::where('id_karyawan', $id)
                                 ->where('status',$id)
                                 ->whereTime('keluar', '<=', '17:00:00')
