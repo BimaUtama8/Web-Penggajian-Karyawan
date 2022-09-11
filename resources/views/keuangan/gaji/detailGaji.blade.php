@@ -39,32 +39,32 @@
                 <tr>
                     <td>Tunjangan Makan</td>
                     <td>:</td>
-                    <td>{{ $data->tunjangan_makan }}</td>
+                    <td>Rp {{ number_format($data->tunjangan_makan,2,',','.') }}</td>
                 </tr>
                 <tr>
                     <td>Tunjangan Transportasi</td>
                     <td>:</td>
-                    <td>{{ $data->tunjangan_transportasi }}</td>
+                    <td>Rp {{ number_format($data->tunjangan_transportasi,2,',','.') }}</td>
                 </tr>
                 <tr>
                     <td>Gaji</td>
                     <td>:</td>
-                    <td>{{ $data->gaji }}</td>
+                    <td>Rp {{ number_format($data->gaji,2,',','.') }}</td>
                 </tr>
                 <tr>
                     <td>JHT</td>
                     <td>:</td>
-                    <td></td>
+                    <td>Rp {{ number_format($data->gaji * ($jht['nilai']/100),2,',','.')}}</td>
                 </tr>
                 <tr>
                     <td>JP</td>
                     <td>:</td>
-                    <td></td>
+                    <td>Rp {{ number_format($data->gaji * ($jp['nilai']/100),2,',','.')}}%</td>
                 </tr>
                 <tr>
                     <td>Jumlah Hari Kerja</td>
                     <td>:</td>
-                    <td></td>
+                    <td>{{$jhk}} Hari</td>
                 </tr>
                 <tr>
                     <td>Jumalah Jam Kerja</td>
