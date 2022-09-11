@@ -52,9 +52,9 @@
                             <tr>
                                 <td class="nama">{{ $kar ['nama'] }}</td>
                                 <td class="namajabatan">{{ $kar ['nama_jabatan'] }}</td>
-                                <td class="gaji">{{ $kar ['gaji'] }}</td>
-                                <td class="jht">{{ $kar ['gaji'] * ($jht['nilai']/100) }}</td>
-                                <td class="jp">{{$kar['gaji'] * ($jp['nilai']/100) }}</td>
+                                <td class="gaji">Rp {{ number_format($kar ['gaji'],2,',','.') }}</td>
+                                <td class="jht">Rp {{ number_format($kar ['gaji'] * ($jht['nilai']/100),2,',','.') }}</td>
+                                <td class="jp">Rp {{ number_format($kar ['gaji'] * ($jp['nilai']/100),2,',','.') }}</td>
                             </tr>
                             @endforeach
                         </tbody>
