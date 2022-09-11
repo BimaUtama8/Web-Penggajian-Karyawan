@@ -69,13 +69,14 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         Route::get('keuangan/hapusJabatan/{id}', [Keuangan\JabatanController::class, 'hapusJabatan'])->name('hapus_jabatan_keuangan');
         //Data Iuran
         Route::get('keuangan/tampilIuran', [Keuangan\IuranController::class, 'tampilIuran'])->name('show_iuran');
+        Route::get('keuangan/tampilEditIuran', [Keuangan\IuranController::class, 'tampilEditIuran'])->name('show_edit_iuran');
         //Data Gaji
         Route::get('keuangan/gaji', [Keuangan\GajiController::class, 'index'])->name('index_gaji');
-
+        Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'tampilGaji'])->name('show_gaji');
     //Put Method
         //Data Jabatan
         Route::put('keuangan/editjabatan/{id}', [Keuangan\JabatanController::class, 'editJabatan'])->name('store_edit_jabatan_keuangan');
-
+        Route::put('keuangan/editjabatan', [Keuangan\IuranController::class, 'editIuran'])->name('store_edit_iuran');
 
 
 

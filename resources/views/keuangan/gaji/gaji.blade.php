@@ -46,22 +46,23 @@
                                 <th class="sort" data-sort="tm">Tunjangan Makan</th>
                                 <th class="sort" data-sort="tt">Tunjangan Transportasi</th>
                                 <th class="sort" data-sort="gaji">Gaji</th>
-                                {{-- <th class="sort" data-sort="iuran">Iuran</th>
+                                <th class="sort" data-sort="iuran">Iuran</th>
                                 <th class="sort" data-sort="hk">Jumlah Hari Kerja</th>
-                                <th class="sort" data-sort="jk">Jumlah Jam Kerja</th> --}}
+                                <th class="sort" data-sort="jk">Jumlah Jam Kerja</th>
                                 <th class="sort" data-sort="action">Action</th>
                             </tr>
                         </thead>
-                        <tbody class="list form-check-all">                            
+                        <tbody class="list form-check-all">
+                            @foreach ($karyawan as $kar)
                             <tr>
-                                <td class="nk"></td>
-                                <td class="nj"></td>
-                                <td class="tm"></td>
-                                <td class="tt"></td>
-                                <td class="gaji"></td>
-                                {{-- <td class="iuran"></td>
+                                <td class="nk">{{$kar ['nama'] }}</td>
+                                <td class="nj">{{$kar ['nama_jabatan'] }}</td>
+                                <td class="tm">{{$kar ['tunjangang_makan'] }}</td>
+                                <td class="tt">{{$kar ['tunjangan_transportasi'] }}</td>
+                                <td class="gaji">{{$kar ['gaji'] }}</td>
+                                <td class="iuran"></td>
                                 <td class="hk"></td>
-                                <td class="jk"></td> --}}
+                                <td class="jk"></td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
@@ -70,6 +71,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="noresult" style="display: none">

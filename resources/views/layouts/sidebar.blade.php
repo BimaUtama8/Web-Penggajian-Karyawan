@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('index_gaji') }}" class="nav-link">
+                        <a href="{{ route('show_gaji') }}" class="nav-link">
                             <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
                         </a>
                     </li>

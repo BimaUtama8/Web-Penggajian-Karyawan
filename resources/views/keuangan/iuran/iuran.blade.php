@@ -24,7 +24,7 @@
             <div class="row g-4 mb-3">
                     <div class="col-sm-auto">
                         <div>
-                            <a href=""><button type="button" class="btn btn-primary add-btn" ><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
+                            <a href="{{ route('show_edit_iuran') }}"><button type="button" class="btn btn-primary add-btn" ><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
                         </div>
                     </div>
                     <div class="col-sm">
@@ -45,7 +45,6 @@
                                 <th class="sort" data-sort="gaji">Gaji</th>
                                 <th class="sort" data-sort="jht">Jaminan Hari Tua</th>
                                 <th class="sort" data-sort="jp">Jaminan Pensiun</th>
-                                <th class="sort" data-sort="action">Action</th>
                             </tr>
                         </thead>
                         <tbody class="list form-check-all">
@@ -54,15 +53,8 @@
                                 <td class="nama">{{ $kar ['nama'] }}</td>
                                 <td class="namajabatan">{{ $kar ['nama_jabatan'] }}</td>
                                 <td class="gaji">{{ $kar ['gaji'] }}</td>
-                                <td class="iuran">{{ $kar ['iuran'] }}</td>
-                                
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <div class="edit">
-                                            {{-- <a href="" class="btn btn-sm btn-primary edit-item-btn">Edit</a> --}}
-                                        </div>
-                                    </div>
-                                </td>
+                                <td class="jht">{{ $kar ['gaji'] * ($jht['nilai']/100) }}</td>
+                                <td class="jp">{{$kar['gaji'] * ($jp['nilai']/100) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

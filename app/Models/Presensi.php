@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Iuran extends Model
+class Presensi extends Model
 {
     use HasFactory;
-    protected $table = 'setting';
-    protected $primaryKey = 'id_setting';
+    protected $table = 'presensi';
+    protected $primaryKey = 'id_presensi';
 }
