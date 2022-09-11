@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/presensi" class="nav-link">
+                        <a href="{{ route('show_presensi') }}" class="nav-link">
                             <i class="mdi mdi-calendar-account"></i><span>Rekap Presensi</span>
                         </a>
                     </li>

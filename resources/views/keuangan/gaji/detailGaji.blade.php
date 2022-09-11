@@ -59,7 +59,7 @@
                 <tr>
                     <td>JP</td>
                     <td>:</td>
-                    <td>Rp {{ number_format($data->gaji * ($jp['nilai']/100),2,',','.')}}%</td>
+                    <td>Rp {{ number_format($data->gaji * ($jp['nilai']/100),2,',','.')}}</td>
                 </tr>
                 <tr>
                     <td>Jumlah Hari Kerja</td>

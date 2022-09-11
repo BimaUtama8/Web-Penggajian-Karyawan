@@ -19,6 +19,8 @@ Route::get('/', [Auth\LoginController::class, 'index'])->name('login');
 Route::post('/auth', [Auth\LoginController::class, 'login'])->name('auth_login');
 Route::get('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
 
+Route::get('/presensi', [AbsensiController::class, 'tampilPresensi']);
+
 
 //level hrd
 Route::middleware('auth', 'validatelevels:hrd')->group(function () {
@@ -40,6 +42,7 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
 
         //Data Presensi
         Route::get('hrd/presensi', function () { return view('hrd/presensi/presensi');});
+        Route::get('hrd/index', [Hrd\PresensiController::class, 'index'])->name('show_presensi');
 
     //Post Method
         //Data Karyawan
