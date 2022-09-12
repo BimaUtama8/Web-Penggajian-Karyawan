@@ -16,31 +16,35 @@ class AbsensiController extends Controller
             'karyawan' => $optionkaryawan
         ]);
     }
-    function cekPresensi($id){
 
-        // $request->validate([
-        //     'karyawan'=>'required',
-        // ]);
+    function cekPresensi(Request $request){
+
+        $request->validate([
+            'karyawan'=>'required',
+        ]);
+
         $absensi = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')
-        ->where('karyawan.id_karyawan', $id)->orderBy('presensi.masuk', 'DESC')
+        ->where('karyawan.id_karyawan', $request->karyawan)->orderBy('presensi.masuk', 'DESC')
         ->get();
         // dd($absensi);
         return view('absen.cekPresensi', [
             'absensi' => $absensi
         ]);
     }
-    function cekInAbsen($id){
+    function cekInAbsen(Request $request){
         Presensi::create([
-            'id_karyawan' => $id,
+            'id_karyawan' => $request->id_karyawan,
             'masuk' => now(),
             'status' => 1,
         ]);
-        return redirect()->route('cek_presensi', $id)->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('presensi')->with('success', 'Data Berhasil Ditambahkan');
     }
-    function cekOutAbsen($id){
-        $absen = Presensi::find($id);
-        $absen -> keluar = date('Y-m-d H:i:s') ;
-        $absen -> save();
+    function cekOutAbsen(Request $request){
+        $absen = Presensi::where('id_karyawan',$request->id_karyawan)
+        ->where('keluar',null)
+        ->first();
+        $absen->keluar = now();
+        $absen->save();
         return redirect()->route('presensi')->with('success', 'Data Berhasil Ditambahkan');
     }
 }

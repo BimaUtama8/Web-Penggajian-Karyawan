@@ -41,7 +41,8 @@
                                     <p class="text-muted">Silahkan Melakukan Presensi</p>
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="absen.blade.php" method="POST">
+                                    <form action="{{ route('cek_presensi')}}" method="POST">
+                                        @csrf
                                         <input type="hidden" name="action" value="karyawan">
                                         <label for="customername-field" class="form-label">Nama Karyawan</label>
                                         <select class="form-select mb-3" name="karyawan">
@@ -52,7 +53,7 @@
                                         </select>
                                         <div class="mt-4">
                                             <div class="d-flex align-items-center">
-                                                <a href="/cekPresensi/5" class="btn btn-success w-100" type="submit">Check Status Absensi</a>&nbsp;
+                                                <button type="submit" class="btn btn-success w-100">Check Status Absensi</button>
                                             </div>
                                         </div>
                                         
