@@ -19,6 +19,58 @@
           <div class="card-header">
               <h4 class="card-title mb-0">Data Presensi</h4>
           </div>
+          <div class="card-body">
+            <div id="customerList">
+                <div class="table-responsive table-card mt-3 mb-1">
+                    <table class="table align-middle table-nowrap" id="customerTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="sort" data-sort="nk">Nama Karyawan</th>
+                                <th class="sort" data-sort="ak">Alamat Karyawan</th>
+                                <th class="sort" data-sort="action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list form-check-all">
+                            @foreach ($karyawan as $kar)
+                            <tr>
+                                <td class="nk">{{ $kar ['nama'] }}</td>
+                                <td class="ak">{{ $kar ['alamat'] }}</td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <div class="edit">
+                                            <a href="{{ route('show_detail_presensi', $kar['id_karyawan'])}}" class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="noresult" style="display: none">
+                        <div class="text-center">
+                            <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                colors="primary:#25a0e2,secondary:#00bd9d" style="width:75px;height:75px">
+                            </lord-icon>
+                            <h5 class="mt-2">Sorry! No Result Found</h5>
+                            <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                                orders for you search.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <div class="pagination-wrap hstack gap-2">
+                        <a class="page-item pagination-prev disabled" href="#">
+                            Previous
+                        </a>
+                        <ul class="pagination listjs-pagination mb-0"></ul>
+                        <a class="page-item pagination-next" href="#">
+                            Next
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
   </div>
 </div>
