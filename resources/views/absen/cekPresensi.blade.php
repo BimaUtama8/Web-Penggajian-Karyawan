@@ -35,24 +35,29 @@
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card mt-4">
 
+                            @foreach ($absensi as $absensi)
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
+                                    <?php $i=1?>
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p class="text-muted">Silahkan Melakukan Presensi</p>
+                                    <h5>{{ $absensi->nama }}</h5>
+                                    {{-- <p class="text-muted">Silahkan Melakukan Presensi</p> --}}
                                 </div>
                                 <div class="p-2 mt-4">
-                                    <form action="absen.blade.php" method="POST">
-                                        <input type="hidden" name="action" value="karyawan">
-                                        <label for="customername-field" class="form-label">Nama Karyawan</label>
-                                        <select class="form-select mb-3" name="karyawan">
-                                            <option selected disabled>Nama Karyawan</option>
-                                            @foreach ($karyawan as $item)
-                                                <option value="{{ $item->id_karyawan }}">{{ $item->nama }}</option>
-                                            @endforeach
-                                        </select>
+                                    <form action="#">
                                         <div class="mt-4">
                                             <div class="d-flex align-items-center">
-                                                <a href="/cekPresensi/5" class="btn btn-success w-100" type="submit">Check Status Absensi</a>&nbsp;
+                                                <?php 
+                                                    if($absensi->keluar == null){ ?>
+                                                        <a href="/cekInAbsen/{{ $absensi->id_karyawan }}" class="btn btn-success w-100 disabled" type="submit">Check In</a>&nbsp;
+                                                        <a href="/cekOutAbsen/{{ $absensi->id_presensi }}" class="btn btn-danger w-100" type="submit">Check Out</a>&nbsp;
+                                                    <?php }else{ ?>
+                                                        <a href="/cekInAbsen/{{ $absensi->id_karyawan }}" class="btn btn-success w-100" type="submit" >Check In</a>&nbsp;
+                                                        <a href="/cekOutAbsen/{{ $absensi->id_presensi }}" class="btn btn-danger w-100 disabled" type="submit">Check Out</a>&nbsp;
+                                                    <?php }
+                                                    
+                                                    ?>
+
                                             </div>
                                         </div>
                                         
@@ -60,6 +65,10 @@
                                     </form>
                                 </div>
                             </div>
+                            <?php if($i >=1){break;} 
+                            $i=$i+1;
+                            ?>
+                            @endforeach
                             <!-- end card body -->
                         </div>
                         <!-- end card -->

@@ -67,7 +67,7 @@
                     <td>{{$jhk}} Hari</td>
                 </tr>
                 <tr>
-                    <td>Jumalah Jam Kerja</td>
+                    <td>Jumlah Jam Kerja</td>
                     <td>:</td>
                     <td></td>
                 </tr>

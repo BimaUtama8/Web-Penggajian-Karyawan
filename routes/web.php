@@ -19,8 +19,13 @@ Route::get('/', [Auth\LoginController::class, 'index'])->name('login');
 Route::post('/auth', [Auth\LoginController::class, 'login'])->name('auth_login');
 Route::get('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
 
-Route::get('/presensi', [AbsensiController::class, 'tampilPresensi']);
 
+
+//Presensi
+Route::get('/presensi', [AbsensiController::class, 'tampilPresensi'])->name('presensi');
+Route::get('/cekPresensi/{id}', [AbsensiController::class, 'cekPresensi'])->name('cek_presensi');
+Route::get('/cekInAbsen/{id}', [AbsensiController::class, 'cekInAbsen'])->name('cek_in');
+Route::get('/cekOutAbsen/{id}', [AbsensiController::class, 'cekOutAbsen'])->name('cek_out');
 
 //level hrd
 Route::middleware('auth', 'validatelevels:hrd')->group(function () {

@@ -31,14 +31,14 @@ class GajiController extends Controller
         $jp = Iuran::where('id_setting', 2)->first();
 
         $total_hari = Presensi::where('id_karyawan', $id)
-                                ->where('status',$id)
-                                ->whereTime('keluar', '<=', '17:00:00')
+                                ->where('status', 1)
+                                ->whereTime('masuk', '<=', '9:00:00')
                                 ->count();
         $total_lembur = Presensi::where('id_karyawan', $id)
-                                ->where('status',$id)
+                                ->where('status', 1)
                                 ->whereTime('keluar', '>', '17:00:00')
                                 ->count();
-
+        
         return view('keuangan/gaji/detailGaji', [
             'karyawan' => $data,
             'jhk'      => $total_hari,
