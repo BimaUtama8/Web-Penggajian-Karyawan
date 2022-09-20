@@ -85,7 +85,7 @@
                             <tbody>
                                 <tr>
                                     <th class="ps-0" scope="row">Penghasilan Bersih {{$jhk}} Hari Kerja :</th>
-                                    <td class="text-muted"></td>
+                                    <td class="text-muted">Rp {{ number_format($penghasilan_bersih,2,',','.') }}</td>
                                 </tr>                      
                                 @endforeach
                             </tbody>

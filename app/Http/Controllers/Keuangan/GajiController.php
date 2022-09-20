@@ -42,6 +42,7 @@ class GajiController extends Controller
         $ht_makan           = $data[0]['tunjangan_makan'] * $total_hari;
         $ht_transportasi    = $data[0]['tunjangan_transportasi'] * $total_hari;
         $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi;
+        $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp;
 
         return view('keuangan/gaji/detailGaji', [
             'karyawan'          => $data,
@@ -51,7 +52,8 @@ class GajiController extends Controller
             'ht_jabatan'        => $ht_jabatan,
             'ht_makan'          => $ht_makan,
             'ht_transportasi'   => $ht_transportasi,
-            'penghasilan_bruto' => $penghasilan_bruto
+            'penghasilan_bruto' => $penghasilan_bruto,
+            'penghasilan_bersih'=> $penghasilan_bersih,
         ]);
     }
     
