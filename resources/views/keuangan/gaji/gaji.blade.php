@@ -22,21 +22,7 @@
           <div class="card-body">
             <div id="customerList">
                 <div class="row g-4 mb-3">
-                    <div class="col-sm-auto">
-                        <div>
-                            <a href=""><button type="button" class="btn btn-primary add-btn" ><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="d-flex justify-content-sm-end">
-                            <div class="search-box ms-2">
-                                <input type="text" class="form-control search" placeholder="Search...">
-                                <i class="ri-search-line search-icon"></i>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="table-responsive table-card mt-3 mb-1">
                     <table class="table align-middle table-nowrap" id="customerTable">
                         <thead class="table-light">
@@ -61,6 +47,9 @@
                                     <div class="d-flex gap-2">
                                         <div class="edit">
                                             <a href="{{ route('show_detail_gaji', $kar['id_karyawan'])}}" class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                        </div>
+                                        <div class="slip">
+                                            <a href="#" class="btn btn-sm btn-primary edit-item-btn">Cetak Slip Gaji</a>
                                         </div>
                                     </div>
                                 </td>
