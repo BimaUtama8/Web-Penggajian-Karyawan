@@ -38,32 +38,63 @@
                                     <td class="text-muted">{{ $data->nama_jabatan }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="ps-0" scope="row">Tunjangan Makan :</th>
-                                    <td class="text-muted">Rp {{ number_format($data->tunjangan_makan,2,',','.') }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Tunjangan Transportasi :</th>
-                                    <td class="text-muted">Rp {{ number_format($data->tunjangan_transportasi,2,',','.') }}</td>
-                                </tr>
-                                <tr>
                                     <th class="ps-0" scope="row">Gaji Pokok :</th>
                                     <td class="text-muted">Rp {{ number_format($data->gaji,2,',','.') }}</td>
                                 </tr>
                                 <tr>
+                                    <th class="ps-0" scope="row">Jumlah Hari Kerja :</th>
+                                    <td class="text-muted">{{$jhk}} Hari</td>
+                                </tr> 
+                                <tr>
+                                    <th class="ps-0" scope="row">Tunjangan Makan * ({{($jhk)}}) :</th>
+                                    <td class="text-muted">Rp {{ number_format($ht_makan,2,',','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Tunjangan Transportasi * ({{($jhk)}})  :</th>
+                                    <td class="text-muted">Rp {{ number_format($ht_transportasi,2,',','.') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <th class="ps-0" scope="row">Penghasilan Bruto {{$jhk}} Hari Kerja :</th>
+                                    <td class="text-muted">Rp {{ number_format($penghasilan_bruto,2,',','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Biaya Jabatan :</th>
+                                    <td class="text-muted">Rp {{ number_format($ht_jabatan,2,',','.') }}</td>
+                                </tr>
+                                <tr>
                                     <th class="ps-0" scope="row">Jaminan Hari Tua :</th>
-                                    <td class="text-muted">Rp {{ number_format($data->gaji * ($jht['nilai']/100),2,',','.')}}</td>
+                                    <td class="text-muted">Rp {{ number_format($ht_jht,2,',','.')}}</td>
                                 </tr>
                                 <tr>
                                     <th class="ps-0" scope="row">Jaminan Pensiun :</th>
-                                    <td class="text-muted">Rp {{ number_format($data->gaji * ($jp['nilai']/100),2,',','.')}}</td>
-                                </tr>
+                                    <td class="text-muted">Rp {{ number_format($ht_jp,2,',','.')}}</td>
+                                </tr>  
                                 <tr>
-                                    <th class="ps-0" scope="row">Jumlah Hari Kerja :</th>
-                                    <td class="text-muted">{{$jhk}} Hari</td>
-                                </tr>                           
+                                    <th class="ps-0" scope="row">Pajak Penghasilan :</th>
+                                    <td class="text-muted"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                <tr>
+                                    <th class="ps-0" scope="row">Penghasilan Bersih {{$jhk}} Hari Kerja :</th>
+                                    <td class="text-muted"></td>
+                                </tr>                      
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="modal-footer">
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="submit" class="btn btn-primary" id="add-btn">Cetak Slip</button>
+                        </div>
+                    </div>
                     </div>
                 </div><!-- end card body -->
             </div>
