@@ -40,9 +40,9 @@
                             <tr>
                                 <td class="nk">{{$kar ['nama'] }}</td>
                                 <td class="nj">{{$kar ['nama_jabatan'] }}</td>
-                                <td class="tm">{{$kar ['tunjangan_makan'] }}</td>
-                                <td class="tt">{{$kar ['tunjangan_transportasi'] }}</td>
-                                <td class="gaji">{{$kar ['gaji'] }}</td>
+                                <td class="tm">Rp {{ number_format($kar ['tunjangan_makan'],2,',','.') }}</td>
+                                <td class="tt">Rp {{ number_format($kar ['tunjangan_transportasi'],2,',','.') }}</td>
+                                <td class="gaji">Rp {{ number_format($kar ['gaji'],2,',','.') }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">

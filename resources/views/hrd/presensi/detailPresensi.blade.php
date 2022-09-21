@@ -37,6 +37,8 @@
                 <th scope="col">Nama</th>
                 <th scope="col">Masuk</th>
                 <th scope="col">Keluar</th>
+                <th scope="col">Lembur</th>
+                <th scope="col">Hari</th>
                 <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -46,6 +48,8 @@
                     <td>{{ $presensi ['nama'] }}</td>
                     <td>{{ $presensi ['masuk'] }}</td>
                     <td>{{ $presensi ['keluar'] }}</td>
+                    <td></td>
+                    <td>{{ date('l', strtotime($presensi ['masuk'])) }}</td>
                     <td><span class="badge badge-soft-success">Masuk</span></td>
                 </tr>             
                 @endforeach

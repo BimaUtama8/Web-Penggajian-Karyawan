@@ -17,13 +17,13 @@ class PresensiController extends Controller
     }
 
     function detailPresensi($id){
-        $data = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')->where('presensi.id_karyawan', $id)->get();
-        
+        $data = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')->where('presensi.id_karyawan', $id)->get();    
+
         $hari_kerja = Presensi::where('id_karyawan', $id)
         ->where('status', 1)
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
-
+        
         return view('hrd.presensi.detailPresensi', [
             'presensi' => $data,
             'jhk' => $hari_kerja,
