@@ -83,7 +83,7 @@ class GajiController extends Controller
                 $pph = $pajak_penghasilan * 0.35;
             }
 
-            
+            //PPH Per Bulan
             if($pph == 'Tidak Kena Pajak'){
                 $pph_bulan = "Tidak Kena Pajak";
             }else{
