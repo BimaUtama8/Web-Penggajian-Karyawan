@@ -74,10 +74,6 @@
                                     <th class="ps-0" scope="row">Jaminan Pensiun :</th>
                                     <td class="text-muted">Rp {{ number_format($ht_jp,2,',','.')}}</td>
                                 </tr>  
-                                <tr>
-                                    <th class="ps-0" scope="row">Pajak Penghasilan :</th>
-                                    <td class="text-muted"></td>
-                                </tr>
                             </tbody>
                         </table>
                         <hr>
@@ -86,6 +82,24 @@
                                 <tr>
                                     <th class="ps-0" scope="row">Penghasilan Bersih {{$jhk}} Hari Kerja :</th>
                                     <td class="text-muted">Rp {{ number_format($penghasilan_bersih,2,',','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Pajak Penghasilan (1 Tahun) :</th>
+                                    <td class="text-muted">
+                                        @if ($pph == 'Tidak Kena Pajak')
+                                            {{ $pph }}
+                                        @else 
+                                        Rp {{ number_format($pph,2,',','.')}}</td>
+                                        @endif
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Pajak Penghasilan (1 Bulan) :</th>
+                                    <td class="text-muted">
+                                        @if ($pph == 'Tidak Kena Pajak')
+                                            {{ $pph_bulan }}
+                                        @else 
+                                        Rp {{ number_format($pph_bulan,2,',','.')}}</td>
+                                        @endif
                                 </tr>                      
                                 @endforeach
                             </tbody>
