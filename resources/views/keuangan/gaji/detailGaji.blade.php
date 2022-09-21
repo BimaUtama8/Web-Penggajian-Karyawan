@@ -24,7 +24,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-3">Info</h5>
+                    <h5 class="card-title mb-3">Informasi Karyawan dan Penghasilan Karyawan</h5>
                     <div class="table-responsive">
                         <table class="table table-borderless mb-0">
                             <tbody>
@@ -36,6 +36,14 @@
                                 <tr>
                                     <th class="ps-0" scope="row">Jabatan :</th>
                                     <td class="text-muted">{{ $data->nama_jabatan }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Tanggungan :</th>
+                                    <td class="text-muted">{{ $data->tanggungan }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="ps-0" scope="row">Status :</th>
+                                    <td class="text-muted">{{ $data->status }}</td>
                                 </tr>
                                 <tr>
                                     <th class="ps-0" scope="row">Gaji Pokok :</th>
