@@ -24,18 +24,20 @@ class PresensiController extends Controller
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
         
+        // $lembur = Presensi::all('select datediff(hour,keluar,'17:00:00') from presensi');
+
         //Lembur
-        $time = $data[0]['keluar'];
-        $split = explode(" ", $time);
-        $get_time = $split[1];
-        $keluar = strtotime('17:00:00');
-        $cekOut = strtotime($get_time);
-        $diff   = $cekOut - $keluar;
-        $diff = $diff/3600;
+        $time           = $data[0]['keluar'];
+        $split          = explode(" ", $time);
+        $get_time       = $split[1];
+        $batas_keluar   = strtotime('17:00:00');
+        $keluar         = strtotime($get_time);
+        $diff           = $keluar - $batas_keluar;
+        $diff           = $diff / 3600;
         if($diff < 1){
-            $diff = "Tidak Lembur";
+            $diff   = "Tidak Lembur";
         }else if($diff >= 0){
-            $diff = $diff;
+            $diff   = $diff;
         }
         
         return view('hrd.presensi.detailPresensi', [

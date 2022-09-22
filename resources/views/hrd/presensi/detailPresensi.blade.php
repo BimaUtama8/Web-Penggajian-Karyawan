@@ -44,6 +44,20 @@
                 </thead>
                 <tbody>
                 @foreach ($presensi as $presensi)
+                <?php
+                    $time           = $presensi['keluar'];
+                    $split          = explode(" ", $time);
+                    $get_time       = $split[1];
+                    $batas_keluar   = strtotime('17:00:00');
+                    $keluar         = strtotime($get_time);
+                    $diff           = $keluar - $batas_keluar;
+                    $diff           = $diff / 3600;
+                    if($diff < 1){
+                        $diff   = "Tidak Lembur";
+                    }else if($diff >= 0){
+                        $diff   = $diff." Jam";
+                    }
+                ?>
                 <tr>
                     <td>{{ $presensi ['nama'] }}</td>
                     <td>{{ $presensi ['masuk'] }}</td>
