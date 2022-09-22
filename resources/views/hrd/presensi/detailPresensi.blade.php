@@ -44,14 +44,14 @@
                 </thead>
                 <tbody>
                 @foreach ($presensi as $presensi)
-                    <tr>
+                <tr>
                     <td>{{ $presensi ['nama'] }}</td>
                     <td>{{ $presensi ['masuk'] }}</td>
                     <td>{{ $presensi ['keluar'] }}</td>
-                    <td></td>
+                    <td>{{ $diff }}</td>
                     <td>{{ date('l', strtotime($presensi ['masuk'])) }}</td>
                     <td><span class="badge badge-soft-success">Masuk</span></td>
-                </tr>             
+                </tr> 
                 @endforeach
                 </tbody>
             </table>

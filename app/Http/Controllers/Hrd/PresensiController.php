@@ -24,9 +24,24 @@ class PresensiController extends Controller
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
         
+        //Lembur
+        $time = $data[0]['keluar'];
+        $split = explode(" ", $time);
+        $get_time = $split[1];
+        $keluar = strtotime('17:00:00');
+        $cekOut = strtotime($get_time);
+        $diff   = $cekOut - $keluar;
+        $diff = $diff/3600;
+        if($diff < 1){
+            $diff = "Tidak Lembur";
+        }else if($diff >= 0){
+            $diff = $diff;
+        }
+        
         return view('hrd.presensi.detailPresensi', [
             'presensi' => $data,
             'jhk' => $hari_kerja,
+            'diff' => $diff,
         ]);
     }
 }
