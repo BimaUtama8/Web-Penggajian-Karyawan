@@ -27,6 +27,11 @@
                     <th>&nbsp;:&nbsp;</th>
                     <th>{{$jhk}} Hari</th>
                 </tr>
+                <tr>
+                    <th>Lembur</th>
+                    <th>&nbsp;:&nbsp;</th>
+                    <th>{{ $jum_lem }} Jam</th>
+                </tr>
                 </tbody>
             </table>
           </div>
@@ -51,19 +56,53 @@
                     $batas_keluar   = strtotime('17:00:00');
                     $keluar         = strtotime($get_time);
                     $diff           = $keluar - $batas_keluar;
-                    $diff           = $diff / 3600;
-                    if($diff < 1){
-                        $diff   = "Tidak Lembur";
+                    $total_diff     = $diff / 3600;
+                    if($total_diff < 1){
+                        $hasil   = "Tidak Lembur";
                     }else if($diff >= 0){
-                        $diff   = $diff." Jam";
+                        $hasil   = floor($total_diff)." Jam";
                     }
+                    $hari =  date('l', strtotime($presensi ['masuk']));
+                    switch($hari){
+                    case 'Sunday':
+                        $hari_ini = "Minggu";
+                    break;
+            
+                    case 'Monday':			
+                        $hari_ini = "Senin";
+                    break;
+            
+                    case 'Tuesday':
+                        $hari_ini = "Selasa";
+                    break;
+            
+                    case 'Wednesday':
+                        $hari_ini = "Rabu";
+                    break;
+            
+                    case 'Thursday':
+                        $hari_ini = "Kamis";
+                    break;
+            
+                    case 'Friday':
+                        $hari_ini = "Jumat";
+                    break;
+            
+                    case 'Saturday':
+                        $hari_ini = "Sabtu";
+                    break;
+                    
+                    default:
+                        $hari_ini = "Tidak di ketahui";		
+                    break;
+                }
                 ?>
                 <tr>
                     <td>{{ $presensi ['nama'] }}</td>
                     <td>{{ $presensi ['masuk'] }}</td>
                     <td>{{ $presensi ['keluar'] }}</td>
-                    <td>{{ $diff }}</td>
-                    <td>{{ date('l', strtotime($presensi ['masuk'])) }}</td>
+                    <td>{{ $hasil }}</td>
+                    <td>{{ $hari_ini }}</td>
                     <td><span class="badge badge-soft-success">Masuk</span></td>
                 </tr> 
                 @endforeach

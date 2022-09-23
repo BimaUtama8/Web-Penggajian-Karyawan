@@ -50,6 +50,10 @@
                                     <td class="text-muted">Rp {{ number_format($data->gaji,2,',','.') }}</td>
                                 </tr>
                                 <tr>
+                                    <th class="ps-0" scope="row">Lembur :</th>
+                                    <td class="text-muted"></td>
+                                </tr>
+                                <tr>
                                     <th class="ps-0" scope="row">Jumlah Hari Kerja :</th>
                                     <td class="text-muted">{{$jhk}} Hari</td>
                                 </tr> 
