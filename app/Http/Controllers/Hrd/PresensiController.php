@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Presensi;
 use App\Models\Karyawan;
+use Carbon\Carbon;
 
 class PresensiController extends Controller
 {
@@ -23,27 +24,32 @@ class PresensiController extends Controller
         ->where('status', 1)
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
-        
-        // $lembur = Presensi::all('select datediff(hour,keluar,'17:00:00') from presensi');
 
-        //Lembur
-        $time           = $data[0]['keluar'];
-        $split          = explode(" ", $time);
-        $get_time       = $split[1];
-        $batas_keluar   = strtotime('17:00:00');
-        $keluar         = strtotime($get_time);
-        $diff           = $keluar - $batas_keluar;
-        $diff           = $diff / 3600;
-        if($diff < 1){
-            $diff   = "Tidak Lembur";
-        }else if($diff >= 0){
-            $diff   = $diff;
+        $lembur = Presensi::where('id_karyawan', $id)
+        ->where('status', 3)
+        ->whereTime('keluar', '>', '17:00:00')
+        ->get();
+        // foreach($lembur as $lem => $val){
+        //     // $keluar = strtotime('17:00:00');
+        //     // $getTime = strtotime($val->keluar);
+        //     // $diff = floor(($getTime-$keluar)/3600);
+        //     return $val;
+        // }
+        $hasil = 0;
+        for($i = 0; $i < count($lembur) ;$i++){
+            $keluar = strtotime('17:00:00');
+            $pecah = explode(' ', $lembur[$i]['keluar']);
+            $waktu = strtotime($pecah[1]);
+            $beda = floor(($waktu - $keluar)/3600);
+            $hasil+=$beda;
         }
+
         
+
         return view('hrd.presensi.detailPresensi', [
             'presensi' => $data,
             'jhk' => $hari_kerja,
-            'diff' => $diff,
+            'jum_lem' => $hasil,
         ]);
     }
 }
