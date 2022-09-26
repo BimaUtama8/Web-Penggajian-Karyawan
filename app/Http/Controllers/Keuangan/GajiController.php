@@ -32,10 +32,31 @@ class GajiController extends Controller
         $jp = Iuran::where('id_setting', 2)->first();
 
 
-        $total_hari = Presensi::where('id_karyawan', $id)
+        $hari_masuk = Presensi::where('id_karyawan', $id)
                                 ->where('status', 1)
                                 ->whereTime('masuk', '<=', '9:00:00')
                                 ->count();
+        $hari_lembur = Presensi::where('id_karyawan', $id)
+        ->where('status', 3)
+        ->whereTime('masuk', '<=', '9:00:00')
+        ->count();
+        $total_hari = $hari_masuk + $hari_lembur;
+
+        //Lembur
+        $lembur = Presensi::where('id_karyawan', $id)
+        ->where('status', 3)
+        ->whereTime('keluar', '>', '17:00:00')
+        ->get();
+        $hasil = 0;
+        for($i = 0; $i < count($lembur) ;$i++){
+            $keluar         = strtotime('17:00:00');
+            $pecah          = explode(' ', $lembur[$i]['keluar']);
+            $waktu          = strtotime($pecah[1]);
+            $beda           = floor(($waktu - $keluar)/3600);
+            $hasil+=$beda;
+        }
+        
+
         $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
         $ht_jp              = $data[0]['gaji'] * ($jp['nilai']/100);
         $ht_jabatan         = $data[0]['gaji'] * 0.05;
@@ -102,7 +123,8 @@ class GajiController extends Controller
             'penghasilan_bersih'=> $penghasilan_bersih,
             'pajak_penghasilan' => $pajak_penghasilan,
             'pph'               => $pph,
-            'pph_bulan'         => $pph_bulan
+            'pph_bulan'         => $pph_bulan,
+            'hasil'             => $hasil
         ]);
     }
     

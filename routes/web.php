@@ -99,4 +99,3 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
 
     //Data Aturan PPh 21
     Route::get('/pph', function () { return view('manager/pph/pph');});
-
