@@ -24,7 +24,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title mb-3">Informasi Karyawan dan Penghasilan Karyawan</h5>
+                        <h5 class="card-title mb-3">Informasi Penghasilan Karyawan</h5>
                         <div class="table-responsive">
                             <table class="table table-borderless mb-0">
                                 <tbody>
@@ -66,8 +66,8 @@
                                         <td class="text-muted">Rp {{ number_format($ht_transportasi,2,',','.') }}</td>
                                     </tr>
                                     <tr>
-                                        <th class="ps-0" scope="row">Tunjangan Lembur * ({{($jhk)}}) :</th>
-                                        <td class="text-muted">Rp {{ number_format($ht_transportasi,2,',','.') }}</td>
+                                        <th class="ps-0" scope="row">Upah Lembur :</th>
+                                        <td class="text-muted">Rp </td>
                                     </tr>
                                 </tbody>
                             </table>

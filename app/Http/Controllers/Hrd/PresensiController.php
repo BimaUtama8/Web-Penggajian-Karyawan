@@ -48,14 +48,23 @@ class PresensiController extends Controller
         $upah_jam = $data[0]['gaji'] * 0.00578;
         //Upah Lembur 1 Jam
         $upah_perjam = $upah_jam * 1.5;
+        $upah_lembur = 0;
+        $upah_lembur_pertama = 0;
+        $upah_lembur_kedua = 0;
+        $upah_lembur_ketiga = 0;
         if($hasil < 1){
             $upah_lembur = 0;
         }else if($hasil == 1){
-            $upah_lembur = $upah_perjam;
+            $upah_lembur_pertama = $upah_perjam;
         }else if($hasil == 2){
-            $upah_lembur = $upah_jam * 2 + $upah_perjam;
+            $upah_lembur_kedua = $upah_jam * 2 + $upah_perjam;
         }else if($hasil > 2){
-            $upah_lembur = ($upah_jam * 2) + ($upah_perjam * $hasil);
+            $upah_lembur_ketiga = ($upah_jam * 2) + ($upah_perjam * $hasil);
+        }
+
+        $total_upah = 0;
+        for($l = 0; $l < count($lembur);$l++){
+            $total_upah = ($upah_lembur_pertama + $upah_lembur_kedua + $upah_lembur_ketiga);
         }
 
 
@@ -63,6 +72,7 @@ class PresensiController extends Controller
             'presensi' => $data,
             'jhk' => $hari_kerja,
             'jum_lem' => $hasil,
+            'total_upah' => $total_upah
         ]);
     }
 }

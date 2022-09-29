@@ -17,9 +17,29 @@ class GajiController extends Controller
     }
 
     function tampilGaji(){
-        $karyawan = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->get();
+        $masuk = Presensi::selectRaw('DATE_FORMAT(masuk, "%M") as bulan')
+        ->groupBy('bulan')
+        ->get();
+
         return view('keuangan/gaji/gaji', [
-            'karyawan' => $karyawan
+            'masuk'    => $masuk
+        ]);
+    }
+
+    function sortirGaji($id, Request $request){
+        $request->validate([
+            'bulan'  =>'required',
+        ]);
+
+        $karyawan = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')->join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan');
+        
+        $masuk = Presensi::selectRaw('DATE_FORMAT(masuk, "%M") as bulan')
+        ->groupBy('bulan')
+        ->get();
+
+        return view('keuangan/gaji/gaji', [
+            'karyawan' => $karyawan,
+            'masuk'    => $masuk
         ]);
     }
 
@@ -128,7 +148,4 @@ class GajiController extends Controller
         ]);
     }
     
-    function storeSlip(Request $request){
-        
-    }
 }

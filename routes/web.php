@@ -81,6 +81,7 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         //Data Gaji
         Route::get('keuangan/gaji', [Keuangan\GajiController::class, 'index'])->name('index_gaji');
         Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'tampilGaji'])->name('show_gaji');
+        Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'sortirGaji'])->name('sortir_gaji');
         Route::get('keuangan/detailGaji/{id}', [Keuangan\GajiController::class, 'detailGaji'])->name('show_detail_gaji');
     //Put Method
         //Data Jabatan

@@ -35,7 +35,7 @@
                         <tr>
                             <th>Upah Lembur</th>
                             <th>&nbsp;:&nbsp;</th>
-                            <th>Rp </th>
+                            <th>Rp {{ number_format($total_upah,2,',','.') }}</th>
                         </tr>
                     </tbody>
                 </table>
@@ -50,7 +50,7 @@
                             <th scope="col">Lembur</th>
                             <th scope="col">Uang Lembur</th>
                             <th scope="col">Hari</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,7 +81,7 @@
                     }else if($hasil == 1){
                         $upah_lembur = $upah_perjam;
                     }else if($hasil == 2){
-                        $upah_lembur = $upah_jam * 2 + $upah_perjam;
+                        $upah_lembur= $upah_jam * 2 + $upah_perjam;
                     }else if($hasil > 2){
                         $upah_lembur = ($upah_jam * 2) + ($upah_perjam * $hasil);
                     }
