@@ -9,6 +9,7 @@ use App\Models\Iuran;
 use App\Models\Karyawan;
 use App\Models\Presensi;
 use App\Models\Jabatan;
+use App\Models\Transaksi;
 
 class GajiController extends Controller
 {
@@ -17,53 +18,71 @@ class GajiController extends Controller
     }
 
     function tampilGaji(){
-        $masuk = Presensi::selectRaw('DATE_FORMAT(masuk, "%M") as bulan')
+        $karyawan = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->get();
+        $masuk = Presensi::selectRaw('MONTH(masuk) as bulan')
         ->groupBy('bulan')
         ->get();
-
-        return view('keuangan/gaji/gaji', [
-            'masuk'    => $masuk
-        ]);
-    }
-
-    function sortirGaji($id, Request $request){
-        $request->validate([
-            'bulan'  =>'required',
-        ]);
-
-        $karyawan = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')->join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan');
         
-        $masuk = Presensi::selectRaw('DATE_FORMAT(masuk, "%M") as bulan')
-        ->groupBy('bulan')
-        ->get();
+        
+
+        
+        // $tanggal = Presensi::all();
+        // $splitTime = date('Y-m-d', strtotime($tanggal[0]['masuk']));
+        // $bulan = date('F', strtotime($splitTime));
+        // // $tes = 0;
+        // // if($masuk == 'September'){
+        // //     $tes = "September";
+        // // }else{
+        // //     $tes = "Gagal";
+        // // }
+        // return $bulan;
+        // die();
+        
+        
 
         return view('keuangan/gaji/gaji', [
             'karyawan' => $karyawan,
-            'masuk'    => $masuk
         ]);
     }
 
     function detailGaji($id){
+
+        $id_karyawan = $id;
+        return view('keuangan/gaji/detailGaji', [
+            'id_kar' => $id_karyawan
+        ]);
+    }
+
+    function hitungGaji(Request $request){
+        $id_karyawan = $request->id_karyawan;
+        $bulan = $request->bulan;
+
         $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
-        ->where('id_karyawan', $id)
+        ->where('id_karyawan', $id_karyawan)
+        ->get();
+
+        $masuk = Presensi::selectRaw('DATE_FORMAT(masuk, "%M") as bulan')
+        ->groupBy('bulan')
         ->get();
 
         $jht = Iuran::where('id_setting', 1)->first();
         $jp = Iuran::where('id_setting', 2)->first();
 
-
-        $hari_masuk = Presensi::where('id_karyawan', $id)
+        //Jumlah Hari Kerja
+        $hari_masuk = Presensi::where('id_karyawan', $id_karyawan)
                                 ->where('status', 1)
+                                ->whereMonth('masuk', '=', $bulan)
                                 ->whereTime('masuk', '<=', '9:00:00')
                                 ->count();
-        $hari_lembur = Presensi::where('id_karyawan', $id)
+        $hari_lembur = Presensi::where('id_karyawan', $id_karyawan)
         ->where('status', 3)
+        ->whereMonth('masuk', '=', $bulan)
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
         $total_hari = $hari_masuk + $hari_lembur;
 
         //Lembur
-        $lembur = Presensi::where('id_karyawan', $id)
+        $lembur = Presensi::where('id_karyawan', $id_karyawan)
         ->where('status', 3)
         ->whereTime('keluar', '>', '17:00:00')
         ->get();
@@ -131,21 +150,39 @@ class GajiController extends Controller
                 $pph_bulan = $pph / 12;
             }
 
-        return view('keuangan/gaji/detailGaji', [
-            'karyawan'          => $data,
-            'jhk'               => $total_hari,
-            'ht_jht'            => $ht_jht,
-            'ht_jp'             => $ht_jp,
-            'ht_jabatan'        => $ht_jabatan,
-            'ht_makan'          => $ht_makan,
-            'ht_transportasi'   => $ht_transportasi,
-            'penghasilan_bruto' => $penghasilan_bruto,
-            'penghasilan_bersih'=> $penghasilan_bersih,
-            'pajak_penghasilan' => $pajak_penghasilan,
-            'pph'               => $pph,
-            'pph_bulan'         => $pph_bulan,
-            'hasil'             => $hasil
-        ]);
+            Transaksi::updateOrCreate([
+                'id_karyawan' => $id_karyawan,
+                'bulan'       => $bulan
+            ],[
+                'id_karyawan'           => $id_karyawan,
+                'bulan'                 => $bulan,
+                'lembur'                => $hasil,
+                'total_tmakan'          => $ht_makan,
+                'total_ttransportasi'   => $ht_transportasi,
+                'penghasilan_bruto'     => $penghasilan_bruto,
+                'penghasilan_bersih'    => $penghasilan_bersih,
+                'biaya_jabatan'         => $ht_jabatan,
+                'jaminan_ht'            => $ht_jht,
+                'jaminan_p'             => $ht_jp,
+                'pajak_penghasilan'     => $pajak_penghasilan,
+            ]);
+
+            return view('keuangan/gaji/cetakSlip', [
+                'karyawan'          => $data,
+                'jhk'               => $total_hari,
+                'ht_jht'            => $ht_jht,
+                'ht_jp'             => $ht_jp,
+                'ht_jabatan'        => $ht_jabatan,
+                'ht_makan'          => $ht_makan,
+                'ht_transportasi'   => $ht_transportasi,
+                'penghasilan_bruto' => $penghasilan_bruto,
+                'penghasilan_bersih'=> $penghasilan_bersih,
+                'pajak_penghasilan' => $pajak_penghasilan,
+                'pph'               => $pph,
+                'pph_bulan'         => $pph_bulan,
+                'hasil'             => $hasil,
+            ]);
+            
     }
     
 }

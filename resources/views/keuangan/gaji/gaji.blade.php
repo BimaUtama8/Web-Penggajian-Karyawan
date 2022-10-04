@@ -20,25 +20,70 @@
                 <h4 class="card-title mb-0">Data Gaji</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('sortir_gaji', $data->id_jabatan) }}" method="POST">
-                @csrf
-                    <div id="customerList">
-                        <div class="row g-4 mb-3">
+                <div id="customerList">
+                    <div class="row g-4 mb-3">
                     </div>
-                    <select class="form-select mb-3" aria-label="Default select example" name="bulan"
-                        onchange="this.form.submit()">
-                        <option selected disabled>Bulan</option>
-                        @foreach ($masuk as $masuk)
-                        <option value="{{ $masuk->bulan }}">{{ $masuk->bulan }}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="hstack gap-2 justify-content-end">
-                            <button type="submit" class="btn btn-primary" id="add-btn">Sort</button>
+                    <div class="table-responsive table-card mt-3 mb-1">
+                        <table class="table align-middle table-nowrap" id="demo">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="sort" data-sort="nk">Nama Karyawan</th>
+                                    <th class="sort" data-sort="nj">Nama Jabatan</th>
+                                    <th class="sort" data-sort="tm">Tunjangan Makan</th>
+                                    <th class="sort" data-sort="tt">Tunjangan Transportasi</th>
+                                    <th class="sort" data-sort="gaji">Gaji</th>
+                                    <th class="sort" data-sort="action">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list form-check-all">
+                                @foreach ($karyawan as $kar)
+                                <tr>
+                                    <td class="nk">{{$kar ['nama'] }}</td>
+                                    <td class="nj">{{$kar ['nama_jabatan'] }}</td>
+                                    <td class="tm">Rp {{ number_format($kar ['tunjangan_makan'],2,',','.') }}</td>
+                                    <td class="tt">Rp {{ number_format($kar ['tunjangan_transportasi'],2,',','.') }}
+                                    </td>
+                                    <td class="gaji">Rp {{ number_format($kar ['gaji'],2,',','.') }}</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <a href="{{ route('show_detail_gaji', $kar['id_karyawan'])}}"
+                                                    class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                            </div>
+                                            <div class="slip">
+                                                <a href="#" class="btn btn-sm btn-primary edit-item-btn">Cetak Slip
+                                                    Gaji</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="noresult" style="display: none">
+                            <div class="text-center">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                                    colors="primary:#25a0e2,secondary:#00bd9d" style="width:75px;height:75px">
+                                </lord-icon>
+                                <h5 class="mt-2">Sorry! No Result Found</h5>
+                                <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                                    orders for you search.</p>
+                            </div>
                         </div>
                     </div>
-                </form>
+
+                    <div class="d-flex justify-content-end">
+                        <div class="pagination-wrap hstack gap-2">
+                            <a class="page-item pagination-prev disabled" href="#">
+                                Previous
+                            </a>
+                            <ul class="pagination listjs-pagination mb-0"></ul>
+                            <a class="page-item pagination-next" href="#">
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
