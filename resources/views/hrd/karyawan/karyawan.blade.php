@@ -28,26 +28,12 @@
                               <a href="{{ route("tambah_karyawan") }}"><button type="button" class="btn btn-primary add-btn" ><i class="ri-add-line align-bottom me-1"></i> Add</button></a>
                           </div>
                       </div>
-                      <div class="col-sm">
-                          <div class="d-flex justify-content-sm-end">
-                              <div class="search-box ms-2">
-                                  <input type="text" class="form-control search" placeholder="Search...">
-                                  <i class="ri-search-line search-icon"></i>
-                              </div>
-                          </div>
-                      </div>
                   </div>
 
                   <div class="table-responsive table-card mt-3 mb-1">
                       <table class="table align-middle table-nowrap" id="customerTable">
                           <thead class="table-light">
                               <tr>
-                                  <th scope="col" style="width: 50px;">
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="checkAll"
-                                              value="option">
-                                      </div>
-                                  </th>
                                   {{-- <th class="sort" data-sort="nip">ID Karyawan</th> --}}
                                   <th class="sort" data-sort="nama">Nama Karyawan</th>
                                   <th class="sort" data-sort="alamat">Alamat</th>
@@ -60,12 +46,6 @@
                           <tbody class="list form-check-all">
                             @foreach ($karyawan as $karyawan)                            
                               <tr>
-                                  <th scope="row">
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" name="chk_child"
-                                              value="option1">
-                                      </div>
-                                  </th>
                                   {{-- <td class="nip">{{ $karyawan ['id_karyawan'] }}</td> --}}
                                   <td class="nama">{{ $karyawan ['nama'] }}</td>
                                   <td class="alamat">{{ $karyawan ['alamat'] }}</td>
