@@ -28,12 +28,6 @@
                       <table class="table align-middle table-nowrap" id="customerTable">
                           <thead class="table-light">
                               <tr>
-                                  <th scope="col" style="width: 50px;">
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="checkAll"
-                                              value="option">
-                                      </div>
-                                  </th>
                                   <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
                                   <th class="sort" data-sort="tunjanganmakan">Tunjangan Makan</th>
                                   <th class="sort" data-sort="tunjangantransport">Tunjangan Transportasi</th>
@@ -43,12 +37,6 @@
                           <tbody class="list form-check-all">
                             @foreach ($jabatan as $jabatan)                            
                               <tr>
-                                  <th scope="row">
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" name="chk_child"
-                                              value="option1">
-                                      </div>
-                                  </th>
                                   <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
                                   <td class="tunjanganmakan">{{ $jabatan ['tunjangan_makan'] }}</td>
                                   <td class="tunjangantransport">{{ $jabatan ['tunjangan_transportasi'] }}</td>

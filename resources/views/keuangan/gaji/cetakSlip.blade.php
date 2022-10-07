@@ -121,7 +121,7 @@
                                     <tr>
                                         <td>Upah Lembur</td>
                                         <td>:</td>
-                                        <td></td>
+                                        <td>Rp {{ number_format($total_upah,2,',','.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Penghasilan Bruto</td>
