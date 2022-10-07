@@ -27,7 +27,7 @@
                         <form action="{{ route('hitung_gaji') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id_karyawan" value="{{ $id_kar }}">
-                            <select class="form-select mb-3" aria-label="Default select example" name="bulan">
+                            <select class="form-select mb-3" aria-label="Default select example" name="bulan" required>
                                 <option selected disabled>Bulan</option>
                                 <option value="01">Januari</option>
                                 <option value="02">Februari</option>
@@ -42,119 +42,21 @@
                                 <option value="11">November</option>
                                 <option value="12">Desember</option>
                             </select>
+                            <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
+                                <option selected disabled>Tahun</option>
+                                @foreach ($tahun as $tahun)
+                                <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                @endforeach
+                            </select>
                             <div class="hstack gap-2 justify-content-end">
+                                <a href="{{ route('show_gaji') }}"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button></a>
                                 <button type="submit" class="btn btn-primary" id="add-btn">Lanjutkan</button>
                             </div>
                         </form>
-                        {{-- @foreach ($masuk as $masuk)
-                        <h5 class="card-title mb-3">Informasi Penghasilan Karyawan Bulan {{ $masuk->bulan }}</h5>
-                        @endforeach --}}
-                        {{-- <div class="table-responsive">
-                            <table class="table table-borderless mb-0">
-                                <tbody>
-                                    @foreach ($karyawan as $data)
-                                    <tr>
-                                        <th class="ps-0" scope="row">Nama :</th>
-                                        <td class="text-muted">{{ $data->nama }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Jabatan :</th>
-                            <td class="text-muted">{{ $data->nama_jabatan }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Tanggungan :</th>
-                            <td class="text-muted">{{ $data->tanggungan }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Status :</th>
-                            <td class="text-muted">{{ $data->status }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Gaji Pokok :</th>
-                            <td class="text-muted">Rp {{ number_format($data->gaji,2,',','.') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Lembur :</th>
-                            <td class="text-muted">{{ $hasil }} Jam</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Jumlah Hari Kerja :</th>
-                            <td class="text-muted">{{$jhk}} Hari</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Tunjangan Makan * ({{($jhk)}}) :</th>
-                            <td class="text-muted">Rp {{ number_format($ht_makan,2,',','.') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Tunjangan Transportasi * ({{($jhk)}}) :</th>
-                            <td class="text-muted">Rp {{ number_format($ht_transportasi,2,',','.') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="ps-0" scope="row">Upah Lembur :</th>
-                            <td class="text-muted">Rp </td>
-                        </tr>
-                        </tbody>
-                        </table>
-                        <hr>
-                        <table class="table table-borderless mb-0">
-                            <tbody>
-                                <tr>
-                                    <th class="ps-0" scope="row">Penghasilan Bruto {{$jhk}} Hari Kerja :</th>
-                                    <td class="text-muted">Rp {{ number_format($penghasilan_bruto,2,',','.') }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Biaya Jabatan :</th>
-                                    <td class="text-muted">Rp {{ number_format($ht_jabatan,2,',','.') }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Jaminan Hari Tua :</th>
-                                    <td class="text-muted">Rp {{ number_format($ht_jht,2,',','.')}}</td>
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Jaminan Pensiun :</th>
-                                    <td class="text-muted">Rp {{ number_format($ht_jp,2,',','.')}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <table class="table table-borderless mb-0">
-                            <tbody>
-                                <tr>
-                                    <th class="ps-0" scope="row">Penghasilan Bersih {{$jhk}} Hari Kerja :</th>
-                                    <td class="text-muted">Rp {{ number_format($penghasilan_bersih,2,',','.') }}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Pajak Penghasilan (1 Tahun) :</th>
-                                    <td class="text-muted">
-                                        @if ($pph == 'Tidak Kena Pajak')
-                                        {{ $pph }}
-                                        @else
-                                        Rp {{ number_format($pph,2,',','.')}}</td>
-                                    @endif
-                                </tr>
-                                <tr>
-                                    <th class="ps-0" scope="row">Pajak Penghasilan (1 Bulan) :</th>
-                                    <td class="text-muted">
-                                        @if ($pph == 'Tidak Kena Pajak')
-                                        {{ $pph_bulan }}
-                                        @else
-                                        Rp {{ number_format($pph_bulan,2,',','.')}}</td>
-                                    @endif
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="modal-footer">
-                            <div class="hstack gap-2 justify-content-end">
-                                <button type="submit" class="btn btn-primary" id="add-btn">Cetak Slip</button>
-                            </div>
-                        </div>
-                    </div> --}}
-                </div><!-- end card body -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 @endsection

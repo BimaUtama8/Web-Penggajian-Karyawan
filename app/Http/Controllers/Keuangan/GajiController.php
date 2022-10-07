@@ -24,32 +24,20 @@ class GajiController extends Controller
         ->get();
         
         
-
-        
-        // $tanggal = Presensi::all();
-        // $splitTime = date('Y-m-d', strtotime($tanggal[0]['masuk']));
-        // $bulan = date('F', strtotime($splitTime));
-        // // $tes = 0;
-        // // if($masuk == 'September'){
-        // //     $tes = "September";
-        // // }else{
-        // //     $tes = "Gagal";
-        // // }
-        // return $bulan;
-        // die();
-        
-        
-
         return view('keuangan/gaji/gaji', [
             'karyawan' => $karyawan,
         ]);
     }
 
     function detailGaji($id){
-
         $id_karyawan = $id;
+        $tahun = Presensi::selectRaw('YEAR(masuk) as tahun')
+        ->groupBy('tahun')
+        ->get();
+
         return view('keuangan/gaji/detailGaji', [
-            'id_kar' => $id_karyawan
+            'id_kar' => $id_karyawan,
+            'tahun'  => $tahun
         ]);
     }
 
@@ -181,6 +169,7 @@ class GajiController extends Controller
                 'pph'               => $pph,
                 'pph_bulan'         => $pph_bulan,
                 'hasil'             => $hasil,
+                'bulan'             => $bulan,
             ]);
             
     }

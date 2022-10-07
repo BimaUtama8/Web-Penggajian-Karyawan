@@ -14,6 +14,7 @@ class Transaksi extends Model
     protected $fillable = [
         'id_karyawan',
         'bulan',
+        'tahun',
         'lembur',
         'total_tmakan',
         'total_ttransportasi',

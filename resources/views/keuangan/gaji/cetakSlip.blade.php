@@ -17,7 +17,50 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title mb-0">Detail Data Gaji</h4>
+                <?php 
+                    switch ($bulan) {
+                        case '01':
+                            $bulan_ini = "Januari";
+                        break;
+                        case '02':
+                            $bulan_ini = "Februari";
+                        break;
+                        case '03':
+                            $bulan_ini = "Maret";
+                        break;
+                        case '04':
+                            $bulan_ini = "April";
+                        break;
+                        case '05':
+                            $bulan_ini = "Mei";
+                        break;
+                        case '06':
+                            $bulan_ini = "Juni";
+                        break;
+                        case '07':
+                            $bulan_ini = "Juli";
+                        break;
+                        case '08':
+                            $bulan_ini = "Agustus";
+                        break;
+                        case '09':
+                            $bulan_ini = "September";
+                        break;
+                        case '10':
+                            $bulan_ini = "Oktober";
+                        break;
+                        case '11':
+                            $bulan_ini = "November";
+                        break;
+                        case '12':
+                            $bulan_ini = "Desember";
+                        break;
+                        default:
+                            $bulan_ini = "Tidak di ketahui";		
+                        break;
+                    }
+                    ?>
+                <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }}</h4>
             </div>
             <div class="card-body">
                 <div id="customerList">
@@ -100,7 +143,7 @@
                                         <td>:</td>
                                         <td>Rp {{ number_format($ht_jp,2,',','.')}}</td>
                                     </tr>
-                                    <tfoot>
+                                <tfoot>
                                     <tr>
                                         <td>Penghasilan Bersih</td>
                                         <td>:</td>
@@ -122,26 +165,23 @@
                                             {{ $pph_bulan }}
                                             @else
                                             Rp {{ number_format($pph_bulan,2,',','.')}}</td>
-                                            @endif</td>
+                                        @endif</td>
                                     </tr>
-                                    </tfoot>
+                                </tfoot>
                                 </tbody>
                                 @endforeach
                             </table>
                         </div>
-                        {{-- @foreach ($masuk as $masuk)
-                        <h5 class="card-title mb-3">Informasi Penghasilan Karyawan Bulan {{ $masuk->bulan }}</h5>
-                        @endforeach --}}
-                            <div class="modal-footer">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="submit" class="btn btn-primary" id="add-btn">Cetak Slip</button>
-                                </div>
+                        <div class="modal-footer">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="submit" class="btn btn-primary" id="add-btn" disabled>Cetak Slip</button>
                             </div>
                         </div>
-                    </div><!-- end card body -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection

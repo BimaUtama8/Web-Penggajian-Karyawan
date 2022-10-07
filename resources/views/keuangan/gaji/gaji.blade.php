@@ -50,10 +50,10 @@
                                                 <a href="{{ route('show_detail_gaji', $kar['id_karyawan'])}}"
                                                     class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                             </div>
-                                            <div class="slip">
-                                                <a href="#" class="btn btn-sm btn-primary edit-item-btn">Cetak Slip
+                                            {{-- <div class="slip">
+                                                <a href="#" class="btn btn-sm btn-primary edit-item-btn" disabled>Cetak Slip
                                                     Gaji</a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </td>
                                 </tr>
