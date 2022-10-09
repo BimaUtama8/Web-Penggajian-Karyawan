@@ -60,7 +60,7 @@
                         break;
                     }
                     ?>
-                <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }}</h4>
+                <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }} Tahun {{ $tahun }}</h4>
             </div>
             <div class="card-body">
                 <div id="customerList">
@@ -121,7 +121,7 @@
                                     <tr>
                                         <td>Upah Lembur</td>
                                         <td>:</td>
-                                        <td>Rp {{ number_format($total_upah,2,',','.') }}</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td>Penghasilan Bruto</td>

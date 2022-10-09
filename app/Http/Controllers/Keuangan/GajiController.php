@@ -42,8 +42,14 @@ class GajiController extends Controller
     }
 
     function hitungGaji(Request $request){
+        $this->validate($request, [
+            'bulan'      => 'required',
+            'tahun'      => 'required'
+        ]);
+
         $id_karyawan = $request->id_karyawan;
         $bulan = $request->bulan;
+        $tahun = $request->tahun;
 
         $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
         ->where('id_karyawan', $id_karyawan)
@@ -60,16 +66,18 @@ class GajiController extends Controller
         $hari_masuk = Presensi::where('id_karyawan', $id_karyawan)
                                 ->where('status', 1)
                                 ->whereMonth('masuk', '=', $bulan)
+                                ->whereYear('masuk', '=', $tahun)
                                 ->whereTime('masuk', '<=', '9:00:00')
                                 ->count();
         $hari_lembur = Presensi::where('id_karyawan', $id_karyawan)
         ->where('status', 3)
         ->whereMonth('masuk', '=', $bulan)
+        ->whereYear('masuk', '=', $tahun)
         ->whereTime('masuk', '<=', '9:00:00')
         ->count();
         $total_hari = $hari_masuk + $hari_lembur;
 
-        //Lembur
+        //Jumlah Jam Lembur
         $lembur = Presensi::where('id_karyawan', $id_karyawan)
         ->where('status', 3)
         ->whereTime('keluar', '>', '17:00:00')
@@ -83,23 +91,23 @@ class GajiController extends Controller
             $hasil+=$beda;
         }
         
-        //Hitung Lembur
-        $transaksi      = Transaksi::all();
-        $jumlah_lembur  = $transaksi[0]['lembur'];
-        $gaji_kar       = $data[0]['gaji'];
-        $upah_jam       = $gaji_kar * 0.00578;
-        $upah_perjam    = $upah_jam * 1.5;
-        $upah_pertama   = $upah_perjam;
-        $upah_kedua     = $upah_jam * 2 + $upah_perjam;
-        $upah_ketiga    = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
-        $total_upah     = 0;
-        if($jumlah_lembur == 1){
-            $total_upah = $upah_pertama;
-        }else if($jumlah_lembur == 2){
-            $total_upah = $upah_kedua;
-        }else if($jumlah_lembur >= 3){
-            $total_upah = $upah_ketiga;
-        }
+        //Hitung Upah Lembur
+        // $transaksi      = Transaksi::all();
+        // $jumlah_lembur  = $transaksi[0]['lembur'];
+        // $gaji_kar       = $data[0]['gaji'];
+        // $upah_jam       = $gaji_kar * 0.00578;
+        // $upah_perjam    = $upah_jam * 1.5;
+        // $upah_pertama   = $upah_perjam;
+        // $upah_kedua     = $upah_jam * 2 + $upah_perjam;
+        // $upah_ketiga    = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
+        // $total_upah     = 0;
+        // if($jumlah_lembur == 1){
+        //     $total_upah = $upah_pertama;
+        // }else if($jumlah_lembur == 2){
+        //     $total_upah = $upah_kedua;
+        // }else if($jumlah_lembur >= 3){
+        //     $total_upah = $upah_ketiga;
+        // }
 
 
         $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
@@ -110,7 +118,7 @@ class GajiController extends Controller
         }                       
         $ht_makan           = $data[0]['tunjangan_makan'] * $total_hari;
         $ht_transportasi    = $data[0]['tunjangan_transportasi'] * $total_hari;
-        $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi + $total_upah;
+        $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi;
         $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp;
 
         //Pajak Penghasilan
@@ -162,10 +170,11 @@ class GajiController extends Controller
             ],[
                 'id_karyawan'           => $id_karyawan,
                 'bulan'                 => $bulan,
+                'tahun'                 => $tahun,
                 'lembur'                => $hasil,
                 'total_tmakan'          => $ht_makan,
                 'total_ttransportasi'   => $ht_transportasi,
-                'upah_lembur'           => $total_upah,
+                // 'upah_lembur'           => $total_upah,
                 'penghasilan_bruto'     => $penghasilan_bruto,
                 'penghasilan_bersih'    => $penghasilan_bersih,
                 'biaya_jabatan'         => $ht_jabatan,
@@ -189,7 +198,8 @@ class GajiController extends Controller
                 'pph_bulan'         => $pph_bulan,
                 'hasil'             => $hasil,
                 'bulan'             => $bulan,
-                'total_upah'        => $total_upah
+                'tahun'             => $tahun,
+                // 'total_upah'        => $total_upah
             ]);
             
     }

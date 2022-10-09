@@ -45,7 +45,7 @@
                             <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
                                 <option selected disabled>Tahun</option>
                                 @foreach ($tahun as $tahun)
-                                <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>
                                 @endforeach
                             </select>
                             <div class="hstack gap-2 justify-content-end">
