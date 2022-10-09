@@ -97,8 +97,10 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
     Route::view('manager/dashboard', 'manager.index')->name('dashboard_manager');
 });
     //Get Method
-    //Data PTKP
-    Route::get('/ptkp', function () { return view('manager/ptkp/ptkp');});
-
-    //Data Aturan PPh 21
-    Route::get('/pph', function () { return view('manager/pph/pph');});
+        //Validasi Slip Gaji
+        Route::get('manager/validasi/validasiGaji', [Manager\ValidasiController::class, 'validasiGaji'])->name('validasi_gaji');
+        //Laporan Pajak
+        Route::get('manager/laporanPajak/laporanPajak', [Manager\LaporanPajakController::class, 'laporanPajak'])->name('laporan_pajak');
+        //Laporan Gaji
+        Route::get('manager/laporanGaji/laporanGaji', [Manager\LaporanGajiController::class, 'laporanGaji'])->name('laporan_gaji');
+        

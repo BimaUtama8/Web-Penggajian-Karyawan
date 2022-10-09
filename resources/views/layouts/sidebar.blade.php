@@ -65,17 +65,17 @@
                 @elseif (Auth::user()->level == 'manager')
                     <li class="menu-title"><span>Manager</span></li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('validasi_gaji') }}" class="nav-link">
                             <i class="mdi mdi-text-box-check"></i><span>Validasi Slip Gaji</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('laporan_gaji') }}" class="nav-link">
                             <i class="mdi mdi-archive"></i><span>Laporan Gaji Karyawan</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('laporan_pajak') }}" class="nav-link">
                             <i class="mdi mdi-archive"></i><span>Laporan Pajak Penghasilan Karyawan</span>
                         </a>
                     </li>
