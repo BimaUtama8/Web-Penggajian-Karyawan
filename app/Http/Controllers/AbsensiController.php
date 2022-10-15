@@ -26,7 +26,7 @@ class AbsensiController extends Controller
         $absensi = Presensi::join('karyawan', 'karyawan.id_karyawan', '=', 'presensi.id_karyawan')
         ->where('karyawan.id_karyawan', $request->karyawan)->orderBy('presensi.masuk', 'DESC')
         ->get();
-        // dd($absensi);
+        //dd($absensi);
         return view('absen.cekPresensi', [
             'absensi' => $absensi
         ]);

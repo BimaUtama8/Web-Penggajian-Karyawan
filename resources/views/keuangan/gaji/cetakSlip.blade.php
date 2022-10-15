@@ -86,7 +86,7 @@
                                     <tr>
                                         <td>Tanggungan</td>
                                         <td>:</td>
-                                        <td>{{ $data->tanggungan }}</td>
+                                        <td>{{ $data->tanggungan }} Tanggungan</td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
@@ -121,7 +121,7 @@
                                     <tr>
                                         <td>Upah Lembur</td>
                                         <td>:</td>
-                                        <td></td>
+                                        <td>Rp {{ number_format($total_upah,2,',','.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Penghasilan Bruto</td>

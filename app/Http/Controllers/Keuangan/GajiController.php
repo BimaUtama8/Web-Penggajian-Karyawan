@@ -80,6 +80,8 @@ class GajiController extends Controller
         //Jumlah Jam Lembur
         $lembur = Presensi::where('id_karyawan', $id_karyawan)
         ->where('status', 3)
+        ->whereMonth('masuk', '=', $bulan)
+        ->whereYear('masuk', '=', $tahun)
         ->whereTime('keluar', '>', '17:00:00')
         ->get();
         $hasil = 0;
@@ -92,22 +94,42 @@ class GajiController extends Controller
         }
         
         //Hitung Upah Lembur
+        $jumlah_lembur = $hasil;
+        $gaji_kar = $data[0]['gaji'];
+        $upah_jam = $gaji_kar * 0.00578;
+        $upah_perjam = $upah_jam * 1.5;
+        $upah_pertama = $upah_perjam;
+        $upah_kedua = $upah_jam * 2 + $upah_perjam;
+        $upah_ketiga = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
+        $total_upah = 0;
+        if($jumlah_lembur == 1){
+            $total_upah = $upah_perjam;
+        }else if($jumlah_lembur == 2){
+            $total_upah = $upah_kedua;
+        }else if($jumlah_lembur >= 3){
+            $total_upah = $upah_ketiga;
+        }
         // $transaksi      = Transaksi::all();
         // $jumlah_lembur  = $transaksi[0]['lembur'];
-        // $gaji_kar       = $data[0]['gaji'];
-        // $upah_jam       = $gaji_kar * 0.00578;
-        // $upah_perjam    = $upah_jam * 1.5;
-        // $upah_pertama   = $upah_perjam;
-        // $upah_kedua     = $upah_jam * 2 + $upah_perjam;
-        // $upah_ketiga    = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
-        // $total_upah     = 0;
-        // if($jumlah_lembur == 1){
-        //     $total_upah = $upah_pertama;
-        // }else if($jumlah_lembur == 2){
-        //     $total_upah = $upah_kedua;
-        // }else if($jumlah_lembur >= 3){
-        //     $total_upah = $upah_ketiga;
+        // $total_upah = 0;
+        // if($jumlah_lembur == 0){
+        //     $total_upah = 0;
+        // }else if($jumlah_lembur >= 0){
+        //     $gaji_kar       = $data[0]['gaji'];
+        //     $upah_jam       = $gaji_kar * 0.00578;
+        //     $upah_perjam    = $upah_jam * 1.5;
+        //     $upah_pertama   = $upah_perjam;
+        //     $upah_kedua     = $upah_jam * 2 + $upah_perjam;
+        //     $upah_ketiga    = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
+        //     if($jumlah_lembur == 1){
+        //         $total_upah = $upah_pertama;
+        //     }else if($jumlah_lembur == 2){
+        //         $total_upah = $upah_kedua;
+        //     }else if($jumlah_lembur >= 3){
+        //         $total_upah = $upah_ketiga;
+        //     }
         // }
+        
 
 
         $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
@@ -174,7 +196,7 @@ class GajiController extends Controller
                 'lembur'                => $hasil,
                 'total_tmakan'          => $ht_makan,
                 'total_ttransportasi'   => $ht_transportasi,
-                // 'upah_lembur'           => $total_upah,
+                'upah_lembur'           => $total_upah,
                 'penghasilan_bruto'     => $penghasilan_bruto,
                 'penghasilan_bersih'    => $penghasilan_bersih,
                 'biaya_jabatan'         => $ht_jabatan,
@@ -199,7 +221,7 @@ class GajiController extends Controller
                 'hasil'             => $hasil,
                 'bulan'             => $bulan,
                 'tahun'             => $tahun,
-                // 'total_upah'        => $total_upah
+                'total_upah'        => $total_upah
             ]);
             
     }
