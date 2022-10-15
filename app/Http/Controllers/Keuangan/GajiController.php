@@ -109,28 +109,7 @@ class GajiController extends Controller
         }else if($jumlah_lembur >= 3){
             $total_upah = $upah_ketiga;
         }
-        // $transaksi      = Transaksi::all();
-        // $jumlah_lembur  = $transaksi[0]['lembur'];
-        // $total_upah = 0;
-        // if($jumlah_lembur == 0){
-        //     $total_upah = 0;
-        // }else if($jumlah_lembur >= 0){
-        //     $gaji_kar       = $data[0]['gaji'];
-        //     $upah_jam       = $gaji_kar * 0.00578;
-        //     $upah_perjam    = $upah_jam * 1.5;
-        //     $upah_pertama   = $upah_perjam;
-        //     $upah_kedua     = $upah_jam * 2 + $upah_perjam;
-        //     $upah_ketiga    = ($upah_jam * 2) + ($upah_perjam * $jumlah_lembur);
-        //     if($jumlah_lembur == 1){
-        //         $total_upah = $upah_pertama;
-        //     }else if($jumlah_lembur == 2){
-        //         $total_upah = $upah_kedua;
-        //     }else if($jumlah_lembur >= 3){
-        //         $total_upah = $upah_ketiga;
-        //     }
-        // }
         
-
 
         $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
         $ht_jp              = $data[0]['gaji'] * ($jp['nilai']/100);
