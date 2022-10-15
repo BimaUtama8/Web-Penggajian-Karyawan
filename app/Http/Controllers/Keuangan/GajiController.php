@@ -111,7 +111,6 @@ class GajiController extends Controller
         }
         
 
-
         $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
         $ht_jp              = $data[0]['gaji'] * ($jp['nilai']/100);
         $ht_jabatan         = $data[0]['gaji'] * 0.05;
