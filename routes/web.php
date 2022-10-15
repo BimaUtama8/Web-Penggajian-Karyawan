@@ -82,6 +82,7 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         Route::get('keuangan/gaji', [Keuangan\GajiController::class, 'index'])->name('index_gaji');
         Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'tampilGaji'])->name('show_gaji');
         Route::get('keuangan/detailGaji/{id}', [Keuangan\GajiController::class, 'detailGaji'])->name('show_detail_gaji');
+        Route::get('keuangan/print_out/{id}', [Keuangan\GajiController::class, 'printOut'])->name('print_out');
     //Put Method
         //Data Jabatan
         Route::put('keuangan/editjabatan/{id}', [Keuangan\JabatanController::class, 'editJabatan'])->name('store_edit_jabatan_keuangan');

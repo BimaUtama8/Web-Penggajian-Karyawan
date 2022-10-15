@@ -14,7 +14,7 @@
 <body>
   <table style="width:100%">
     <tr>
-      <td colspan="7" style="text-align:center"><img src="{{ public_path('logo_perusahaan_2.png') }}" /></td>
+      <td colspan="7" style="text-align:center"><img src="" /></td>
     </tr>
     <tr>
       <th colspan="7">Slip Gaji {{$bulan_gaji}} {{$tahun_gaji}}</th>

@@ -174,7 +174,7 @@
                         </div>
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="submit" class="btn btn-primary" id="add-btn" disabled>Cetak Slip</button>
+                                <button type="submit" class="btn btn-primary" id="add-btn" >Cetak Slip</button>
                             </div>
                         </div>
                     </div>
