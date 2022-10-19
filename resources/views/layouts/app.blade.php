@@ -15,6 +15,7 @@
     <script src="{{ asset('home/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
     <link href="{{ asset('home/css/bootstrap.min.css') }}"  rel="stylesheet" type="text/css" />
+    <link href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <!-- Icons Css -->
     <link href="{{ asset('home/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
@@ -47,6 +48,7 @@
 <script src="{{ asset('home/libs/feather-icons/feather-icons.min.js') }}"></script>
 <script src="{{ asset('home/js/pages/plugins/lord-icon-2.1.0.min.js') }}"></script>
 <script src="{{ asset('home/js/plugins.min.js') }}"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <!-- apexcharts -->
 <script src="{{ asset('home/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ asset('home/libs/jsvectormap/jsvectormap.min.js') }}"></script>

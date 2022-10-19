@@ -19,7 +19,7 @@
             <div class="card-header">
                 <h4 class="card-title mb-0">Data Jabatan</h4>
             </div><!-- end card header -->
-
+            
             <div class="card-body">
                 <div id="customerList">
                     <div class="row g-4 mb-3">
