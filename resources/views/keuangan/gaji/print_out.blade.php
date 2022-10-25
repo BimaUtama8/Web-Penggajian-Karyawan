@@ -49,7 +49,7 @@
     <tr>
       <td>Gaji Pokok</td>
       <td style="text-align:center">:</td>
-      <td style="text-align:right">Rp {{ number_format($gapok,0,',','.') }}</td>
+      <td colspan="text-align:right">Rp {{ number_format($gapok,0,',','.') }}</td>
       <td style="width:10%"></td>
       {{-- <td>Biaya Jabatan</td>
       <td style="text-align:center">:</td>
@@ -128,7 +128,7 @@
       <td height="50" colspan="7"></td>
     </tr>
     <tr>
-      <td style="text-align:center" colspan="3">PT. INDOTIRTA SUAKA LIVESTOCK</td>
+      <td style="text-align:center" colspan="3">PT. SURYA GLOBALINDO SEJAHTERA</td>
       <td></td>
       <td style="text-align:center" colspan="3">Penerima</td>
     </tr>
@@ -136,7 +136,7 @@
       <td height="70" colspan="7"></td>
     </tr>
     <tr>
-      <td style="text-align:center" colspan="3">General Manager HRD</td>
+      <td style="text-align:center" colspan="3">Manager</td>
       <td></td>
       <td style="text-align:center" colspan="3">{{$nama}}</td>
     </tr>

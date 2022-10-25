@@ -21,6 +21,8 @@
           </div>
           <div class="card-body">
             <div id="customerList">
+                <div class="row g-4 mb-3">
+                </div>
                 <div class="table-responsive table-card mt-3 mb-1">
                     <table class="table align-middle table-nowrap" id="customerTable">
                         <thead class="table-light">

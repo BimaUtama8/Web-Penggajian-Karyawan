@@ -31,6 +31,7 @@
                                     <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
                                     <th class="sort" data-sort="gaji">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
+                                    <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -77,11 +78,18 @@
                                             $bulan_ini = "Desember";
                                         break;
                                         default:
-                                            $bulan_ini = "Tidak di ketahui";		
+                                            $bulan_ini = "Tidak di ketahui";
                                         break;
                                     }
                                     ?>{{ $bulan_ini }}</td>
-                                    <td class="tahun"></td>
+                                    <td class="tahun">{{ $data['tahun'] }}</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <div class="edit">
+                                                <a href="" class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -23,13 +23,13 @@
             <div class="card-body">
                 <div id="customerList">
                     <div class="row g-4 mb-3">
-                        <div class="col-sm-auto">
+                        {{-- <div class="col-sm-auto">
                             <div>
                                 <a href="{{ route("tambah_jabatan_keuangan") }}"><button type="button"
                                         class="btn btn-primary add-btn"><i class="ri-add-line align-bottom me-1"></i>
                                         Add</button></a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="table-responsive table-card mt-3 mb-1">
                         <table class="table align-middle table-nowrap" id="customerTable">
@@ -45,8 +45,8 @@
                                 @foreach ($jabatan as $jabatan)
                                 <tr>
                                     <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
-                                    <td class="tunjanganmakan">{{ $jabatan ['tunjangan_makan'] }}</td>
-                                    <td class="tunjangantransport">{{ $jabatan ['tunjangan_transportasi'] }}</td>
+                                    <td class="tunjanganmakan">Rp {{ number_format($jabatan ['tunjangan_makan'],2,',','.') }}</td>
+                                    <td class="tunjangantransport">Rp {{ number_format($jabatan ['tunjangan_transportasi'],2,',','.') }}</td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">

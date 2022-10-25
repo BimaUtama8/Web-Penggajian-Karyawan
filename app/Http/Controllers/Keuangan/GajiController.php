@@ -224,16 +224,16 @@ class GajiController extends Controller
             'gapok' => $gapok,
             'bulan' => $bulan,
         ]);
-    	return $pdf->download('gaji-'.$nama.'.pdf');
+    	// return $pdf->download('gaji-'.$nama.'.pdf');
 
         // dibawah ini untuk cek view manual html
-    //     return view ('keuangan.gaji.print_out', [
-    //         'nama' => $nama,
-    //         'nip'  => $nip,
-    //         'jabatan'  => $jabatan,
-    //         'gapok' => $gapok,
-    //         'bulan' => $bulan,
-    //     ]);
+        return view ('keuangan.gaji.print_out', [
+            'nama' => $nama,
+            'nip'  => $nip,
+            'jabatan'  => $jabatan,
+            'gapok' => $gapok,
+            'bulan' => $bulan,
+        ]);
     }
     
 }

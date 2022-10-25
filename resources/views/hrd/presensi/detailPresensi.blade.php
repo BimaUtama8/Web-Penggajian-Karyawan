@@ -32,11 +32,6 @@
                             <th>&nbsp;:&nbsp;</th>
                             <th>{{ $jum_lem }} Jam</th>
                         </tr>
-                        <tr>
-                            <th>Upah Lembur</th>
-                            <th>&nbsp;:&nbsp;</th>
-                            <th>Rp {{ number_format($total_upah,2,',','.') }}</th>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -48,7 +43,6 @@
                             <th scope="col">Masuk</th>
                             <th scope="col">Keluar</th>
                             <th scope="col">Lembur</th>
-                            <th scope="col">Uang Lembur</th>
                             <th scope="col">Hari</th>
                             <th scope="col">Status</th>
                         </tr>
@@ -70,20 +64,6 @@
                         }
                     }else if($diff >= 0){
                         $hasil   = floor($total_diff);
-                    }
-
-                    //Upah Sejam
-                    $upah_jam = $presensi['gaji'] * 0.00578;
-                    //Upah Lembur 1 Jam
-                    $upah_perjam = $upah_jam * 1.5;
-                    if($hasil < 1){
-                        $upah_lembur = 0;
-                    }else if($hasil == 1){
-                        $upah_lembur = $upah_perjam;
-                    }else if($hasil == 2){
-                        $upah_lembur= $upah_jam * 2 + $upah_perjam;
-                    }else if($hasil > 2){
-                        $upah_lembur = ($upah_jam * 2) + ($upah_perjam * $hasil);
                     }
 
                     $hari =  date('l', strtotime($presensi ['masuk']));
@@ -127,7 +107,6 @@
                             <td>{{ $presensi ['masuk'] }}</td>
                             <td>{{ $presensi ['keluar'] }}</td>
                             <td>{{ $hasil }} Jam</td>
-                            <td>Rp {{ number_format($upah_lembur,2,',','.') }}</td>
                             <td>{{ $hari_ini }}</td>
                             <td><span class="badge badge-soft-success">Masuk</span></td>
                         </tr>
