@@ -165,7 +165,8 @@
                                             {{ $pph_bulan }}
                                             @else
                                             Rp {{ number_format($pph_bulan,2,',','.')}}</td>
-                                        @endif</td>
+                                        @endif
+                                    </td>
                                     </tr>
                                 </tfoot>
                                 </tbody>
@@ -174,7 +175,17 @@
                         </div>
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
-                                <button type="submit" class="btn btn-primary" id="add-btn" >Cetak Slip</button>
+                                <form method="POST" action="{{route('print_out')}}">
+                                    @csrf
+                                    @foreach ($karyawan as $data)
+                                    <input type="hidden" name="nama" value="{{$data->nama}}">
+                                    <input type="hidden" name="nip" value="{{$data->nip}}">
+                                    <input type="hidden" name="jabatan" value="{{$data->nama_jabatan}}">
+                                    <input type="hidden" name="gapok" value="{{$data->gaji}}">
+                                    <input type="hidden" name="bulan" value="{{$bulan}}">
+                                    @endforeach
+                                    <button class="btn btn-primary" type="submit">Cetak Slip</button>
+                                </form>
                             </div>
                         </div>
                     </div>

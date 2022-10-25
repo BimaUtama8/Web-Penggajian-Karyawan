@@ -10,6 +10,7 @@ use App\Models\Karyawan;
 use App\Models\Presensi;
 use App\Models\Jabatan;
 use App\Models\Transaksi;
+use PDF;
 
 class GajiController extends Controller
 {
@@ -185,6 +186,7 @@ class GajiController extends Controller
             ]);
 
             return view('keuangan/gaji/cetakSlip', [
+                'id_karyawan'       => $id_karyawan,
                 'karyawan'          => $data,
                 'jhk'               => $total_hari,
                 'ht_jht'            => $ht_jht,
@@ -205,14 +207,33 @@ class GajiController extends Controller
             
     }
 
-    function printOut($id){
-        $cetak = Transaksi::all()->where('id_gaji', $id)
-        ->whereMonth('masuk', '=', $bulan)
-        ->whereYear('masuk', '=', $tahun)
-        ->get();
-        return view ('keuangan.gaji.print_out', [
-            'cetak' => $cetak
+    function printOut(Request $request){
+        // $cetak = Transaksi::all()->where('id_gaji', $id)
+        // ->whereMonth('masuk', '=', $bulan)
+        // ->whereYear('masuk', '=', $tahun)
+        // ->get();
+        $nama = $request->nama;
+        $nip  = 1234;
+        $jabatan = $request->jabatan;
+        $gapok = $request->gapok;
+        $bulan = $request->bulan;
+        $pdf = PDF::loadview('keuangan.gaji.print_out',[
+            'nama' => $nama,
+            'nip'  => $nip,
+            'jabatan'  => $jabatan,
+            'gapok' => $gapok,
+            'bulan' => $bulan,
         ]);
+    	return $pdf->download('gaji-'.$nama.'.pdf');
+
+        // dibawah ini untuk cek view manual html
+    //     return view ('keuangan.gaji.print_out', [
+    //         'nama' => $nama,
+    //         'nip'  => $nip,
+    //         'jabatan'  => $jabatan,
+    //         'gapok' => $gapok,
+    //         'bulan' => $bulan,
+    //     ]);
     }
     
 }

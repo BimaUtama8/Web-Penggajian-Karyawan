@@ -17,27 +17,27 @@
       <td colspan="7" style="text-align:center"><img src="" /></td>
     </tr>
     <tr>
-      <th colspan="7">Slip Gaji {{$bulan_gaji}} {{$tahun_gaji}}</th>
+      <th colspan="7">Slip Gaji {{$bulan}} {{date('Y-m-d H:i:s')}}</th>
     </tr>
-    <tr>
+    {{-- <tr>
       <td>NIP</td>
       <td style="text-align:center">:</td>
       <td colspan="5">{{$data->nip}}</td>
     </tr>
-    <tr>
+    <tr> --}}
       <td>Nama</td>
       <td style="text-align:center">:</td>
-      <td colspan="5">{{$data->nama_karyawan}}</td>
+      <td colspan="5">{{$nama}}</td>
     </tr>
-    <tr>
+    {{-- <tr>
       <td>Divisi</td>
       <td style="text-align:center">:</td>
       <td colspan="5">{{$nama_divisi}}</td>
-    </tr>
+    </tr> --}}
     <tr>
       <td>Jabatan</td>
       <td style="text-align:center">:</td>
-      <td colspan="5">{{$nama_jabatan}}</td>
+      <td colspan="5">{{$jabatan}}</td>
     </tr>
     <tr>
       <td height="20" colspan="7"></td>
@@ -49,13 +49,13 @@
     <tr>
       <td>Gaji Pokok</td>
       <td style="text-align:center">:</td>
-      <td style="text-align:right">Rp {{ number_format($gaji_pokok,0,',','.') }}</td>
+      <td style="text-align:right">Rp {{ number_format($gapok,0,',','.') }}</td>
       <td style="width:10%"></td>
-      <td>Biaya Jabatan</td>
+      {{-- <td>Biaya Jabatan</td>
       <td style="text-align:center">:</td>
-      <td style="text-align:right">Rp {{ number_format($biaya_jabatan,0,',','.') }}</td>
+      <td style="text-align:right">Rp {{ number_format($biaya_jabatan,0,',','.') }}</td> --}}
     </tr>
-    <tr>
+    {{-- <tr>
       <td>Tunjangan Transport</td>
       <td style="text-align:center">:</td>
       <td style="text-align:right">Rp {{ number_format($tunjangan_transport,0,',','.') }}</td>
@@ -123,7 +123,7 @@
       <td></td>
       <td></td>
       <td></td>
-    </tr>
+    </tr> --}}
     <tr>
       <td height="50" colspan="7"></td>
     </tr>
@@ -138,7 +138,7 @@
     <tr>
       <td style="text-align:center" colspan="3">General Manager HRD</td>
       <td></td>
-      <td style="text-align:center" colspan="3">{{$data->nama_karyawan}}</td>
+      <td style="text-align:center" colspan="3">{{$nama}}</td>
     </tr>
   </table>
 </body>
