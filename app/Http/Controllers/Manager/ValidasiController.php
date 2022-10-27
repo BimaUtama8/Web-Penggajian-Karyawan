@@ -16,6 +16,7 @@ class ValidasiController extends Controller
     function validasiGaji(){
         $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
         ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+        ->where('status_slip', 1)
         ->where('total_tmakan', '>', 0)
         ->get();
         
@@ -25,8 +26,8 @@ class ValidasiController extends Controller
     }
 
     function detailSlip($id, Request $request){
-        $slip = Transaksi::find($id)->get();
-        dd($slip);
+        $slip = Transaksi::where('id_gaji', $id)->get();
+        
         return view('manager.validasi.detailSlip', [
             'slip'  => $slip
         ]);

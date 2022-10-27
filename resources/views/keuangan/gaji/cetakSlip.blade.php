@@ -63,6 +63,9 @@
                 <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }} Tahun {{ $tahun }}</h4>
             </div>
             <div class="card-body">
+                <form action="{{ route('edit_gaji', $) }}" method="POST">
+                    @csrf
+                    {{ method_field('PUT') }}
                 <div id="customerList">
                 </div>
                 <div class="card">
@@ -175,7 +178,8 @@
                         </div>
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
-                                <form method="POST" action="{{route('print_out')}}">
+                                <button class="btn btn-danger" type="submit">Request Validasi Slip</button>
+                                <!-- <form method="POST" action="{{route('print_out')}}">
                                     @csrf
                                     @foreach ($karyawan as $data)
                                     <input type="hidden" name="nama" value="{{$data->nama}}">
@@ -185,11 +189,12 @@
                                     <input type="hidden" name="bulan" value="{{$bulan}}">
                                     @endforeach
                                     <button class="btn btn-primary" type="submit">Request Validasi Slip</button>
-                                </form>
+                                </form> -->
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
