@@ -86,7 +86,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <a href="" class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                                <a href="{{ route('detail_slip', $data->id_gaji) }}" class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                             </div>
                                         </div>
                                     </td>

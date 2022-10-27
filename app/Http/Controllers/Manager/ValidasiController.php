@@ -23,4 +23,12 @@ class ValidasiController extends Controller
             'data'  => $data,
         ]);
     }
+
+    function detailSlip($id, Request $request){
+        $slip = Transaksi::find($id)->get();
+        dd($slip);
+        return view('manager.validasi.detailSlip', [
+            'slip'  => $slip
+        ]);
+    }
 }

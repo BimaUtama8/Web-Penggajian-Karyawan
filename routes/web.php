@@ -100,6 +100,7 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
     //Get Method
         //Validasi Slip Gaji
         Route::get('manager/validasi/validasiGaji', [Manager\ValidasiController::class, 'validasiGaji'])->name('validasi_gaji');
+        Route::get('manager/validasi/detailSlip/{id}', [Manager\ValidasiController::class, 'detailSlip'])->name('detail_slip');
         //Laporan Pajak
         Route::get('manager/laporanPajak/laporanPajak', [Manager\LaporanPajakController::class, 'laporanPajak'])->name('laporan_pajak');
         //Laporan Gaji
