@@ -207,6 +207,23 @@ class GajiController extends Controller
             
     }
 
+    function editGaji(Request $request){
+        $request->validate([
+            'id_karyawan' => 'required',
+            'bulan'       => 'required',
+            'tahun'       => 'required'
+        ]);
+        $status = Transaksi::where('id_karyawan', $request->id_karyawan)
+        ->where('bulan', $request->bulan)
+        ->where('tahun', $request->tahun)
+        ->first();
+
+        $status -> status_slip = 1;
+        $status -> save();
+
+        return redirect()->route('show_gaji')->with('success', 'Data Berhasil Ditambahkan');
+    }
+
     function printOut(Request $request){
         // $cetak = Transaksi::all()->where('id_gaji', $id)
         // ->whereMonth('masuk', '=', $bulan)

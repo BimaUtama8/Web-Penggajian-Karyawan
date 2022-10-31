@@ -38,6 +38,7 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
         Route::get('hrd/tambahkaryawan', [Hrd\KaryawanController::class, 'tambahKaryawan'])->name('tambah_karyawan');
         Route::get('hrd/editKaryawan/{id}', [Hrd\KaryawanController::class, 'tampilEditKaryawan'])->name('edit_karyawan');
         Route::get('hrd/hapusKaryawan/{id}', [Hrd\KaryawanController::class, 'hapusKaryawan'])->name('hapus_karyawan');
+        Route::get('hrd/detailKaryawan/{id}', [Hrd\KaryawanController::class, 'detailKaryawan'])->name('detail_karyawan');
 
         //Data Jabatan
         Route::get('hrd/jabatan', [Hrd\JabatanController::class, 'tampilJabatan'])->name('show_jabatan');
@@ -87,12 +88,13 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         //Data Jabatan
         Route::put('keuangan/editjabatan/{id}', [Keuangan\JabatanController::class, 'editJabatan'])->name('store_edit_jabatan_keuangan');
         Route::put('keuangan/editjabatan', [Keuangan\IuranController::class, 'editIuran'])->name('store_edit_iuran');
-        
         //Data Gaji
         Route::put('keuangan/editGaji', [Keuangan\GajiController::class, 'editGaji'])->name('edit_gaji');
+        
     //POST Method
         Route::post('keuangan/print_out', [Keuangan\GajiController::class, 'printOut'])->name('print_out');
         Route::post('keuangan/detailGaji/', [Keuangan\GajiController::class, 'hitungGaji'])->name('hitung_gaji');
+        
 
 
 

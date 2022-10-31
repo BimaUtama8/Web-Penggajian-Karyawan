@@ -57,6 +57,9 @@
                                           <div class="edit">
                                               <a href="{{ route('edit_karyawan', $karyawan->id_karyawan) }}" class="btn btn-sm btn-primary edit-item-btn">Edit</a>
                                           </div>
+                                          <div class="detail">
+                                            <a href="{{ route('detail_karyawan', $karyawan->id_karyawan) }}" class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                        </div>
                                           <div class="remove">
                                               <a href="{{ route('hapus_karyawan', $karyawan->id_karyawan) }}" class="btn btn-sm btn-danger remove-item-btn">Delete</a>
                                           </div>

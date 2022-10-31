@@ -17,6 +17,14 @@ class KaryawanController extends Controller
         ]);
     }
 
+    function detailKaryawan($id, Request $request){
+        $karyawan = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->where('id_karyawan', $id)->get();
+
+        return view('hrd.karyawan.detailKaryawan', [
+            'karyawan'  => $karyawan
+        ]);
+    }
+
     function tambahKaryawan(){
         $nip = Karyawan::count()+1;
         $kode_nip = "500".$nip;
@@ -79,7 +87,7 @@ class KaryawanController extends Controller
             'active'        =>1,
         ]);
         
-        return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_gaji')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     function tampilEditKaryawan($id){

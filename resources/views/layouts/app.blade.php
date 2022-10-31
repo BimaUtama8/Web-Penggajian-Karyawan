@@ -65,6 +65,10 @@
     <script src="{{ asset('home/libs/list.pagination.js/list.pagination.js.min.js') }}"></script>
     <script src="{{ asset('home/js/pages/listjs.init.js') }}"></script>
     <script src="{{ asset('home/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    <script src="{{ asset("home/libs/particles.js/particles.js.min.js") }}"></script>
+    <script src="{{ asset("home/js/pages/particles.app.js") }}"></script>
+    <script src="{{ asset("home/js/pages/password-addon.init.js") }}"></script>
 </body>
 
 </html>
