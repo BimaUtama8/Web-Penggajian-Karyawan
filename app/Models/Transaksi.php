@@ -16,6 +16,7 @@ class Transaksi extends Model
         'bulan',
         'tahun',
         'lembur',
+        'jumlah_hari',
         'total_tmakan',
         'total_ttransportasi',
         'upah_lembur',

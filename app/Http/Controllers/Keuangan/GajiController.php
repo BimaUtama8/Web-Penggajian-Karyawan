@@ -174,6 +174,7 @@ class GajiController extends Controller
                 'bulan'                 => $bulan,
                 'tahun'                 => $tahun,
                 'lembur'                => $hasil,
+                'jumlah_hari'           => $total_hari,
                 'total_tmakan'          => $ht_makan,
                 'total_ttransportasi'   => $ht_transportasi,
                 'upah_lembur'           => $total_upah,
@@ -182,7 +183,7 @@ class GajiController extends Controller
                 'biaya_jabatan'         => $ht_jabatan,
                 'jaminan_ht'            => $ht_jht,
                 'jaminan_p'             => $ht_jp,
-                'pajak_penghasilan'     => $pajak_penghasilan,
+                'pajak_penghasilan'     => $pph,
             ]);
 
             return view('keuangan/gaji/cetakSlip', [

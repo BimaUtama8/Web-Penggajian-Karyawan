@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-header">
                 {{-- <?php 
-                    switch ($bulan) {
+                    switch ($slip->bulan) {
                         case '01':
                             $bulan_ini = "Januari";
                         break;
@@ -60,7 +60,7 @@
                         break;
                     }
                     ?> --}}
-                {{-- <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }} Tahun {{ $tahun }}</h4> --}}
+                <h4 class="card-title mb-0">Detail Data Gaji</h4>
             </div>
             <div class="card-body">
                 <div id="customerList">
@@ -74,29 +74,29 @@
                                     <tr>
                                         <th>Nama</th>
                                         <th>:</th>
-                                        <th></th>
+                                        <th>{{ $slip->nama }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Jabatan</td>
                                         <td>:</td>
-                                        <td></td>
+                                        <td>{{ $slip->nama_jabatan }}</td>
                                     </tr>
                                     <tr>
                                         <td>Tanggungan</td>
                                         <td>:</td>
-                                        <td> Tanggungan</td>
+                                        <td>{{ $slip->tanggungan }} Tanggungan</td>
                                     </tr>
                                     <tr>
                                         <td>Status</td>
                                         <td>:</td>
-                                        <td></td>
+                                        <td>{{ $slip->status }}</td>
                                     </tr>
                                     <tr>
                                         <td>Gaji Pokok</td>
                                         <td>:</td>
-                                        <td>Rp </td>
+                                        <td>Rp {{ number_format($slip->gaji,2,',','.') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Lembur</td>
@@ -106,7 +106,7 @@
                                     <tr>
                                         <td>Jumlah Hari Kerja</td>
                                         <td>:</td>
-                                        <td>Hari</td>
+                                        <td>{{ $slip->jumlah_hari }} Hari</td>
                                     </tr>
                                     <tr>
                                         <td>Total Tunjangan Makan</td>
@@ -141,7 +141,7 @@
                                     <tr>
                                         <td>Jaminan Pensiun</td>
                                         <td>:</td>
-                                        <td>Rp {{ number_format($slip->jaminan_jp,2,',','.')}}</td>
+                                        <td>Rp {{ number_format($slip->jaminan_p,2,',','.')}}</td>
                                     </tr>
                                 <tfoot>
                                     <tr>
@@ -152,23 +152,22 @@
                                     <tr>
                                         <td>Pajak Penghasilan 1 Tahun</td>
                                         <td>:</td>
-                                        <td>
-                                            {{-- @if ($pph == 'Tidak Kena Pajak')
-                                            {{ $pph }}
+                                        <td>@if ($slip->pajak_penghasilan < 0)
+                                            Tidak Kena Pajak
                                             @else
-                                            Rp {{ number_format($slip->pajak_penghasilan,2,',','.')}}</td>
-                                        @endif --}}
+                                            Rp {{ number_format($slip->pajak_penghasilan,2,',','.')}}
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Pajak Penghasilan 1 Bulan</td>
                                         <td>:</td>
                                         <td>
-                                            {{-- @if ($pph == 'Tidak Kena Pajak')
-                                            {{ $pph_bulan }}
+                                            @if ($slip->pajak_penghasilan < 0)
+                                            Tidak Kena Pajak
                                             @else
-                                            Rp {{ number_format($pph_bulan,2,',','.')}}</td>
-                                        @endif --}}
+                                            Rp {{ number_format($slip->pajak_penghasilan/12,2,',','.')}}
+                                        @endif
                                         </td>
                                     </tr>
                                 </tfoot>

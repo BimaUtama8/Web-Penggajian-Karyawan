@@ -121,7 +121,7 @@
                                     <tr>
                                         <td>Tanggungan</td>
                                         <td>:</td>
-                                        <td>{{ $karyawan->tanggungan }} Anak</td>
+                                        <td>{{ $karyawan->tanggungan }} Tanggungan</td>
                                     </tr>
                                     <tr>
                                         <td>Status Pernikahan</td>
