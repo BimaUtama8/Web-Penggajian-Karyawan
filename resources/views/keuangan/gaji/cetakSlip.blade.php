@@ -183,7 +183,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <button class="btn btn-danger" type="submit">Request Validasi Slip</button>
+                            <button class="btn btn-success" type="submit">Request Validasi Slip</button>
                             <!-- <form method="POST" action="{{route('print_out')}}">
                             @csrf
                             @foreach ($karyawan as $data)
