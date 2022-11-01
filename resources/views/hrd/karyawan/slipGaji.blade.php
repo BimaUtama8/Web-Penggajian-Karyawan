@@ -35,7 +35,7 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach ($data as $data)
+                                @foreach ($gaji as $data)
                                 <tr>
                                     <td class="nama">{{ $data['nama'] }}</td>
                                     <td class="namajabatan">{{ $data['nama_jabatan'] }}</td>
@@ -86,7 +86,26 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <a href="#" class="btn btn-sm btn-success edit-item-btn">Cetak Slip</a>
+                                                <form method="POST" action="{{ route('print') }}">
+                                                    @csrf
+                                                    @foreach ($gaji as $data)
+                                                    <input type="hidden" name="nama" value="{{$data->nama}}">
+                                                    <input type="hidden" name="nip" value="{{$data->nip}}">
+                                                    <input type="hidden" name="jabatan" value="{{$data->nama_jabatan}}">
+                                                    <input type="hidden" name="gapok" value="{{$data->gaji}}">
+                                                    <input type="hidden" name="bulan" value="{{ $data->bulan }}">
+                                                    <input type="hidden" name="bjabatan" value="{{ $data->biaya_jabatan }}">
+                                                    <input type="hidden" name="jaminanht" value="{{ $data->jaminan_ht }}">
+                                                    <input type="hidden" name="jaminanp" value="{{ $data->jaminan_p }}">
+                                                    <input type="hidden" name="tmakan" value="{{ $data->total_tmakan }}">
+                                                    <input type="hidden" name="ttransportasi" value="{{ $data->total_ttransportasi }}">
+                                                    <input type="hidden" name="lembur" value="{{ $data->upah_lembur }}">
+                                                    <input type="hidden" name="bruto" value="{{ $data->penghasilan_bruto }}">
+                                                    <input type="hidden" name="bersih" value="{{ $data->penghasilan_bersih }}">
+                                                    <input type="hidden" name="pph" value="{{ $data->pajak_penghasilan }}">
+                                                    @endforeach
+                                                    <button class="btn btn-sm btn-success edit-item-btn" type="submit">Cetak Slip</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>

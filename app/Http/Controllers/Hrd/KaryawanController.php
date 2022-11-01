@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Hrd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Karyawan;
+use App\Models\Iuran;
+use App\Models\Presensi;
 use App\Models\Jabatan;
 use App\Models\Transaksi;
 use App\Models\User;
+use PDF;
 
 class KaryawanController extends Controller
 {
@@ -19,15 +22,71 @@ class KaryawanController extends Controller
     }
 
     function tampilSlip(){
-        $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
+        $gaji = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
         ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
         ->where('status_slip', 2)
         ->where('total_tmakan', '>', 0)
         ->get();
         
         return view ('hrd.karyawan.slipGaji', [
-            'data'  => $data,
+            'gaji'  => $gaji,
         ]);
+    }
+
+    function print(Request $request){
+        // $cetak = Transaksi::all()->where('id_gaji', $id)
+        // ->whereMonth('masuk', '=', $bulan)
+        // ->whereYear('masuk', '=', $tahun)
+        // ->get();
+        $nama       = $request->nama;
+        $nip        = 1234;
+        $jabatan    = $request->jabatan;
+        $gapok      = $request->gapok;
+        $bulan      = $request->bulan;
+        $bjabatan   = $request->bjabatan;
+        $jaminanht  = $request->jaminanht;
+        $jaminanp   = $request->jaminanp;
+        $tmakan     = $request->tmakan;
+        $ttransportasi = $request->ttransportasi;
+        $lembur     = $request->lembur;
+        $bruto      = $request->bruto;
+        $bersih     = $request->bersih;
+        $pph        = $request->pph;
+        $pdf = PDF::loadview('hrd.karyawan.print',[
+            'nama'      => $nama,
+            'nip'       => $nip,
+            'jabatan'   => $jabatan,
+            'gapok'     => $gapok,
+            'bulan'     => $bulan,
+            'bjabatan'  => $bjabatan,
+            'jaminanht' => $jaminanht,
+            'jaminanp'  => $jaminanp,
+            'tmakan'    => $tmakan,
+            'ttransportasi' => $ttransportasi,
+            'lembur'    => $lembur,
+            'bruto'     => $bruto,
+            'bersih'    => $bersih,
+            'pph'       => $pph
+        ]);
+    	return $pdf->download('Gaji-'.$nama.'.pdf');
+
+        // dibawah ini untuk cek view manual html
+        // return view ('hrd.karyawan.print', [
+        //     'nama'      => $nama,
+        //     'nip'       => $nip,
+        //     'jabatan'   => $jabatan,
+        //     'gapok'     => $gapok,
+        //     'bulan'     => $bulan,
+        //     'bjabatan'  => $bjabatan,
+        //     'jaminanht' => $jaminanht,
+        //     'jaminanp'  => $jaminanp,
+        //     'tmakan'    => $tmakan,
+        //     'ttransportasi' => $ttransportasi,
+        //     'lembur'    => $lembur,
+        //     'bruto'     => $bruto,
+        //     'bersih'    => $bersih,
+        //     'pph'       => $pph
+        // ]);
     }
 
     function detailKaryawan($id, Request $request){
@@ -145,4 +204,5 @@ class KaryawanController extends Controller
         $hapus_karyawan->delete();
         return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Dihapus');
     }
+
 }
