@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Karyawan;
 use App\Models\Jabatan;
+use App\Models\Transaksi;
 use App\Models\User;
 
 class KaryawanController extends Controller
@@ -14,6 +15,18 @@ class KaryawanController extends Controller
         $data = Karyawan::leftjoin('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->get();
         return view('hrd/karyawan/karyawan', [
             'karyawan' => $data
+        ]);
+    }
+
+    function tampilSlip(){
+        $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
+        ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+        ->where('status_slip', 2)
+        ->where('total_tmakan', '>', 0)
+        ->get();
+        
+        return view ('hrd.karyawan.slipGaji', [
+            'data'  => $data,
         ]);
     }
 

@@ -43,7 +43,7 @@
                             </a>
                         </ul>
                         <ul class="nav nav-sm flex-column">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('show_slip') }}" class="nav-link">
                                 <span>Cetak Slip Gaji</span>
                             </a>
                         </ul>

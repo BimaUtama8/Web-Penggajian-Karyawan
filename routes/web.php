@@ -39,6 +39,7 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
         Route::get('hrd/editKaryawan/{id}', [Hrd\KaryawanController::class, 'tampilEditKaryawan'])->name('edit_karyawan');
         Route::get('hrd/hapusKaryawan/{id}', [Hrd\KaryawanController::class, 'hapusKaryawan'])->name('hapus_karyawan');
         Route::get('hrd/detailKaryawan/{id}', [Hrd\KaryawanController::class, 'detailKaryawan'])->name('detail_karyawan');
+        Route::get('hrd/tampilSlip', [Hrd\KaryawanController::class, 'tampilSlip'])->name('show_slip');
 
         //Data Jabatan
         Route::get('hrd/jabatan', [Hrd\JabatanController::class, 'tampilJabatan'])->name('show_jabatan');
@@ -111,4 +112,6 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
         //Laporan Gaji
         Route::get('manager/laporanGaji/laporanGaji', [Manager\LaporanGajiController::class, 'laporanGaji'])->name('laporan_gaji');
     
-    //Put Method    
+    //Put Method
+        //Validasi Slip Gaji
+        Route::put('manager/simpanValidasi', [Manager\ValidasiController::class, 'simpanValidasi'])->name('simpan_validasi');

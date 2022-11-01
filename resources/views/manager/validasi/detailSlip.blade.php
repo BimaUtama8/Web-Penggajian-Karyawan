@@ -63,6 +63,9 @@
                 <h4 class="card-title mb-0">Detail Data Gaji</h4>
             </div>
             <div class="card-body">
+                <form action="{{ route('simpan_validasi') }}" method="POST">
+                @csrf
+                {{ method_field('PUT') }}
                 <div id="customerList">
                 </div>
                 <div class="card">
@@ -71,6 +74,7 @@
                             <table class="table table-borderless mb-0">
                                 @foreach ($slip as $slip)
                                 <thead>
+                                    <input type="hidden" name="id_gaji" value="{{ $slip->id_gaji }}">
                                     <tr>
                                         <th>Nama</th>
                                         <th>:</th>
@@ -188,11 +192,16 @@
                                 @endforeach
 
                                 </form> --}}
+                                @if ($slip->status_slip == 1)
                                 <button class="btn btn-primary" type="submit">Validasi Slip</button>
+                                @else
+                                <button class="btn btn-primary" type="submit" disabled>Telah Di Validasi</button>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
