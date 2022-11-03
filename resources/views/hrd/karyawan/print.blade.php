@@ -23,21 +23,24 @@
       <td>NIP</td>
       <td style="text-align:center">:</td>
       <td colspan="5">{{$data->nip}}</td>
-    </tr>
-    <tr> --}}
-      <td>Nama</td>
-      <td style="text-align:center">:</td>
-      <td colspan="5">{{$nama}}</td>
-    </tr>
-    {{-- <tr>
-      <td>Divisi</td>
-      <td style="text-align:center">:</td>
-      <td colspan="5">{{$nama_divisi}}</td>
     </tr> --}}
+    <tr>
+      <td>Nama Karyawan</td>
+      <td style="text-align:center">:</td>
+      <td style="text-align:right">{{ $nama }}</td>
+      <td style="width:10%"></td>
+      <td>Jumlah Hari Masuk</td>
+      <td style="text-align:center">:</td>
+      <td style="text-align:right">{{ $jhk }} Hari</td>
+    </tr>
     <tr>
       <td>Jabatan</td>
       <td style="text-align:center">:</td>
-      <td colspan="5">{{$jabatan}}</td>
+      <td style="text-align:right">{{$jabatan}}</td>
+      <td style="width:10%"></td>
+      <td>Jumlah Jam Lembur</td>
+      <td style="text-align:center">:</td>
+      <td style="text-align:right">{{ $jlembur }} Jam</td>
     </tr>
     <tr>
       <td height="20" colspan="7"></td>
@@ -104,13 +107,13 @@
       <td height="20" colspan="7"></td>
     </tr>
     <tr>
-      <td>Total Penerimaan</td>
+      <td>Gaji Kotor</td>
       <td style="text-align:center">:</td>
       <td style="text-align:right">Rp {{ number_format($bruto,0,',','.') }}</td>
       <td> </td>
       <td>Total Potongan</td>
       <td style="text-align:center">:</td>
-      <td style="text-align:right">Rp {{ number_format($bruto-$bersih,0,',','.') }}</td>
+      <td style="text-align:right">Rp {{ number_format($potongan,0,',','.') }}</td>
     </tr>
     <tr>
       <td>Upah Lembur</td>
@@ -133,7 +136,7 @@
     <tr>
       <td>Gaji Bersih</td>
       <td style="text-align:center">:</td>
-      <td style="text-align:right">Rp {{ number_format($bersih+$lembur+($pph/12),0,',','.') }}</td>
+      <td style="text-align:right">Rp {{ number_format($bersih,0,',','.') }}</td>
       <td></td>
       <td></td>
       <td></td>

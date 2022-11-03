@@ -24,7 +24,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('print_pajak') }}" method="POST">
                         @csrf
                         <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
                             <option selected disabled>Tahun</option>

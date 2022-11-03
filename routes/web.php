@@ -29,7 +29,7 @@ Route::post('/presensi/cekPresensi/cekOutAbsen/{id}', [AbsensiController::class,
 
 //level hrd
 Route::middleware('auth', 'validatelevels:hrd')->group(function () {
-    Route::view('hrd/dashboard', 'hrd.index')->name('dashboard_hrd');});
+    Route::view('hrd/dashboard', 'hrd.index')->name('dashboard_hrd');
 
     //Get method
     Route::get('/index', function () {return view('hrd/index');});
@@ -63,14 +63,14 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
         Route::put('hrd/editkaryawan/{id}', [Hrd\KaryawanController::class, 'editKaryawan'])->name('store_edit_karyawan');
         //Data jabatan
         Route::put('hrd/editjabatan/{id}', [Hrd\JabatanController::class, 'editJabatan'])->name('store_edit_jabatan');
-
+});
 
 
 
 //level keuangan
 Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
     Route::view('keuangan/dashboard', 'keuangan.index')->name('dashboard_keuangan');
-});
+
     
     //Get Method
         //Data Jabatan
@@ -96,14 +96,14 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
     //POST Method
         Route::post('keuangan/print_out', [Keuangan\GajiController::class, 'printOut'])->name('print_out');
         Route::post('keuangan/detailGaji/', [Keuangan\GajiController::class, 'hitungGaji'])->name('hitung_gaji');
-        
+});        
 
 
 
 //level manager
 Route::middleware('auth', 'validatelevels:manager')->group(function () {
     Route::view('manager/dashboard', 'manager.index')->name('dashboard_manager');
-});
+
     //Get Method
         //Validasi Slip Gaji
         Route::get('manager/validasi/validasiGaji', [Manager\ValidasiController::class, 'validasiGaji'])->name('validasi_gaji');
@@ -116,3 +116,11 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
     //Put Method
         //Validasi Slip Gaji
         Route::put('manager/simpanValidasi', [Manager\ValidasiController::class, 'simpanValidasi'])->name('simpan_validasi');
+
+    //Post Method
+        //Laporan Pajak
+        Route::post('manager/printPajak', [Manager\LaporanPajakController::class, 'printPajak'])->name('print_pajak');
+        //Laporan Gaji
+        Route::post('manager/printGaji', [Manager\LaporanGajiController::class, 'printGaji'])->name('print_gaji');
+
+});

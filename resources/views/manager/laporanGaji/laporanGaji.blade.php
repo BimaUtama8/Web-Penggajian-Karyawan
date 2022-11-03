@@ -24,7 +24,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('print_gaji') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id_karyawan" value="">
                         <select class="form-select mb-3" aria-label="Default select example" name="bulan" required>

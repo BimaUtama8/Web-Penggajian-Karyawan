@@ -90,6 +90,8 @@
                                                     @csrf
                                                     @foreach ($gaji as $data)
                                                     <input type="hidden" name="nama" value="{{$data->nama}}">
+                                                    <input type="hidden" name="jhk" value="{{$data->jumlah_hari}}">
+                                                    <input type="hidden" name="jlembur" value="{{$data->lembur}}">
                                                     <input type="hidden" name="nip" value="{{$data->nip}}">
                                                     <input type="hidden" name="jabatan" value="{{$data->nama_jabatan}}">
                                                     <input type="hidden" name="gapok" value="{{$data->gaji}}">

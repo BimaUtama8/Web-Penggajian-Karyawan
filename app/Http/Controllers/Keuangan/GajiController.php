@@ -121,7 +121,7 @@ class GajiController extends Controller
         $ht_makan           = $data[0]['tunjangan_makan'] * $total_hari;
         $ht_transportasi    = $data[0]['tunjangan_transportasi'] * $total_hari;
         $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi;
-        $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp;
+        $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp + $total_upah;
 
         //Pajak Penghasilan
         $penghasilan_setahun= $penghasilan_bersih * 12;

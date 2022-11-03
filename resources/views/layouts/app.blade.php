@@ -51,7 +51,8 @@
     <script src="{{ asset('home/libs/feather-icons/feather-icons.min.js') }}"></script>
     <script src="{{ asset('home/js/pages/plugins/lord-icon-2.1.0.min.js') }}"></script>
     <script src="{{ asset('home/js/plugins.min.js') }}"></script>
-    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> --}}
     <!-- apexcharts -->
     <script src="{{ asset('home/libs/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('home/libs/jsvectormap/jsvectormap.min.js') }}"></script>

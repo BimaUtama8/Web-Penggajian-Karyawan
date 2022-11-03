@@ -40,6 +40,8 @@ class KaryawanController extends Controller
         // ->get();
         $nama       = $request->nama;
         $nip        = 1234;
+        $jhk        = $request->jhk;
+        $jlembur    = $request->jlembur;
         $jabatan    = $request->jabatan;
         $gapok      = $request->gapok;
         $bulan      = $request->bulan;
@@ -52,9 +54,12 @@ class KaryawanController extends Controller
         $bruto      = $request->bruto;
         $bersih     = $request->bersih;
         $pph        = $request->pph;
+        $potongan   = $bjabatan + $jaminanht + $jaminanp;
         $pdf = PDF::loadview('hrd.karyawan.print',[
             'nama'      => $nama,
             'nip'       => $nip,
+            'jhk'       => $jhk,
+            'jlembur'   => $jlembur,
             'jabatan'   => $jabatan,
             'gapok'     => $gapok,
             'bulan'     => $bulan,
@@ -66,27 +71,31 @@ class KaryawanController extends Controller
             'lembur'    => $lembur,
             'bruto'     => $bruto,
             'bersih'    => $bersih,
-            'pph'       => $pph
+            'pph'       => $pph,
+            'potongan'  => $potongan
         ]);
-    	return $pdf->download('Gaji-'.$nama.'.pdf');
+    	// return $pdf->download('Gaji-'.$nama.'.pdf');
 
         // dibawah ini untuk cek view manual html
-        // return view ('hrd.karyawan.print', [
-        //     'nama'      => $nama,
-        //     'nip'       => $nip,
-        //     'jabatan'   => $jabatan,
-        //     'gapok'     => $gapok,
-        //     'bulan'     => $bulan,
-        //     'bjabatan'  => $bjabatan,
-        //     'jaminanht' => $jaminanht,
-        //     'jaminanp'  => $jaminanp,
-        //     'tmakan'    => $tmakan,
-        //     'ttransportasi' => $ttransportasi,
-        //     'lembur'    => $lembur,
-        //     'bruto'     => $bruto,
-        //     'bersih'    => $bersih,
-        //     'pph'       => $pph
-        // ]);
+        return view ('hrd.karyawan.print', [
+            'nama'      => $nama,
+            'nip'       => $nip,
+            'jhk'       => $jhk,
+            'jlembur'   => $jlembur,
+            'jabatan'   => $jabatan,
+            'gapok'     => $gapok,
+            'bulan'     => $bulan,
+            'bjabatan'  => $bjabatan,
+            'jaminanht' => $jaminanht,
+            'jaminanp'  => $jaminanp,
+            'tmakan'    => $tmakan,
+            'ttransportasi' => $ttransportasi,
+            'lembur'    => $lembur,
+            'bruto'     => $bruto,
+            'bersih'    => $bersih,
+            'pph'       => $pph,
+            'potongan'  => $potongan
+        ]);
     }
 
     function detailKaryawan($id, Request $request){
