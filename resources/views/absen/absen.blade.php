@@ -53,7 +53,7 @@
                                         </select>
                                         <div class="mt-4">
                                             <div class="d-flex align-items-center">
-                                                <button type="submit" class="btn btn-success w-100">Check Status Absensi</button>
+                                                <button type="submit" class="btn btn-success w-100">Check Status Presensi</button>
                                             </div>
                                         </div>
                                         
