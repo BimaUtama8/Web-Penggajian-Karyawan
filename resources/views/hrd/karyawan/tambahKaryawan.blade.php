@@ -44,6 +44,13 @@
                             <label for="firstnamefloatingInput">Masukkan Nama Karyawan</label>
                         </div>
                         <br>
+
+                        <label for="customername-field" class="form-label">Tanggal Masuk</label>
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="tgl_masuk" name="tanggal_masuk" placeholder="Masukkan Tanggal Masuk">
+                            <label for="tgllahirfloatingInput">Masukkan Tanggal Masuk</label>
+                        </div>
+                        <br>
       
                         <label for="customername-field" class="form-label">Alamat</label>
                         <div class="form-floating">

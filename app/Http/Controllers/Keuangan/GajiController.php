@@ -29,6 +29,15 @@ class GajiController extends Controller
             'karyawan' => $karyawan,
         ]);
     }
+    
+    function reqValidasi(){
+        $tahun = Presensi::selectRaw('YEAR(masuk) as tahun')
+        ->groupBy('tahun')
+        ->get();
+        return view('keuangan.gaji.reqValidasi', [
+            'tahun' => $tahun,
+        ]);
+    }
 
     function detailGaji($id){
         $id_karyawan = $id;
@@ -111,20 +120,21 @@ class GajiController extends Controller
             $total_upah = $upah_ketiga;
         }
         
-
-        $ht_jht             = $data[0]['gaji'] * ($jht['nilai']/100);
-        $ht_jp              = $data[0]['gaji'] * ($jp['nilai']/100);
-        $ht_jabatan         = $data[0]['gaji'] * 0.05;
-        if($ht_jabatan >= 500000){
-            $ht_jabatan = 500000;
-        }                       
+                     
         $ht_makan           = $data[0]['tunjangan_makan'] * $total_hari;
         $ht_transportasi    = $data[0]['tunjangan_transportasi'] * $total_hari;
-        $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi;
-        $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp + $total_upah;
+        $penghasilan_bruto  = $data[0]['gaji'] + $ht_makan + $ht_transportasi + $total_upah;
+        $ht_jabatan         = $penghasilan_bruto * 0.05;
+        if($ht_jabatan >= 500000){
+            $ht_jabatan = 500000;
+        }
+        $ht_jht             = $penghasilan_bruto * ($jht['nilai']/100);
+        $ht_jp              = $penghasilan_bruto * ($jp['nilai']/100);  
+        $penghasilan_bersih = $penghasilan_bruto - $ht_jabatan - $ht_jht - $ht_jp;
 
         //Pajak Penghasilan
-        $penghasilan_setahun= $penghasilan_bersih * 12;
+        $penghasilan_setahun= $data[0]['gaji'] * 12;
+        $pajak_penghasilan = 0;
             //PTKP
             if($data[0]['status'] == 'Belum Menikah' && $data[0]['tanggungan'] == '0'){
                 $pajak_penghasilan = $penghasilan_setahun - 54000000;

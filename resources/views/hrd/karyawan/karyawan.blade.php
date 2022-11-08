@@ -36,6 +36,7 @@
                               <tr>
                                   {{-- <th class="sort" data-sort="nip">ID Karyawan</th> --}}
                                   <th class="sort" data-sort="nama">Nama Karyawan</th>
+                                  <th class="sort" data-sort="tanggal_masuk">Tanggal Masuk</th>
                                   <th class="sort" data-sort="alamat">Alamat</th>
                                   <th class="sort" data-sort="telepon">Telepon</th>
                                   <th class="sort" data-sort="tempat_lahir">Tempat Lahir</th>
@@ -48,6 +49,7 @@
                               <tr>
                                   {{-- <td class="nip">{{ $karyawan ['id_karyawan'] }}</td> --}}
                                   <td class="nama">{{ $karyawan ['nama'] }}</td>
+                                  <td class="tanggal_masuk">{{ $karyawan ['tanggal_masuk'] }}</td>
                                   <td class="alamat">{{ $karyawan ['alamat'] }}</td>
                                   <td class="telepon">{{ $karyawan ['telepon'] }}</td>
                                   <td class="tempat_lahir">{{ $karyawan ['tempat_lahir'] }}</td>

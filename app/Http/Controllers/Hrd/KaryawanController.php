@@ -168,7 +168,7 @@ class KaryawanController extends Controller
             'active'        =>1,
         ]);
         
-        return redirect()->route('show_gaji')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     function tampilEditKaryawan($id){

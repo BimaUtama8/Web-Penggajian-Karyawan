@@ -24,6 +24,15 @@ class LaporanPajakController extends Controller
         ]);
     }
 
+    function laporanBulan(){
+        $tahun = Presensi::selectRaw('YEAR(masuk) as tahun')
+        ->groupBy('tahun')
+        ->get();
+        return view('manager.laporanPajak.laporanBulan', [
+            'tahun' => $tahun,
+        ]);
+    }
+
     function printPajak(Request $request){
         $this->validate($request,[
             'tahun' => 'required'

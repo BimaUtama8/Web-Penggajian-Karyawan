@@ -22,12 +22,12 @@ class Absensi extends Seeder
         //buat divisi
         // Presensi::truncate();
         $faker = Faker::create('id_ID');
-        for($i = 0; $i < 5; $i++){
+        for($i = 0; $i <= 50; $i++){
             Presensi::create([
-                'id_karyawan'         => $faker->numberBetween(1, 5),
-                'masuk'          => $faker->dateTimeInInterval('-3 hours','+1 hours'),
-                'keluar'          => $faker->dateTimeInInterval('+7 hours','-1 hours'),
-                'status'        => 1
+                'id_karyawan'         => $faker->unique()->numberBetween(1, 50),
+                'masuk'               => $faker->dateTimeInInterval('-5 hours','+1 hours'),
+                'keluar'              => $faker->dateTimeInInterval('+4 hours','-2 hours'),
+                'status'              => $faker->numberBetween(1, 3),
             ]);
         }
         Schema::enableForeignKeyConstraints();

@@ -79,12 +79,13 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         Route::get('keuangan/editJabatan/{id}', [Keuangan\JabatanController::class, 'tampilEditJabatan'])->name('edit_jabatan_keuangan');
         Route::get('keuangan/hapusJabatan/{id}', [Keuangan\JabatanController::class, 'hapusJabatan'])->name('hapus_jabatan_keuangan');
         //Data Iuran
-        Route::get('keuangan/tampilIuran', [Keuangan\IuranController::class, 'tampilIuran'])->name('show_iuran');
-        Route::get('keuangan/tampilEditIuran', [Keuangan\IuranController::class, 'tampilEditIuran'])->name('show_edit_iuran');
+        // Route::get('keuangan/tampilIuran', [Keuangan\IuranController::class, 'tampilIuran'])->name('show_iuran');
+        // Route::get('keuangan/tampilEditIuran', [Keuangan\IuranController::class, 'tampilEditIuran'])->name('show_edit_iuran');
         //Data Gaji
         Route::get('keuangan/gaji', [Keuangan\GajiController::class, 'index'])->name('index_gaji');
         Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'tampilGaji'])->name('show_gaji');
         Route::get('keuangan/detailGaji/{id}', [Keuangan\GajiController::class, 'detailGaji'])->name('show_detail_gaji');
+        Route::get('keuangan/reqValidasi', [Keuangan\GajiController::class, 'reqValidasi'])->name('show_req');
     
     //Put Method
         //Data Jabatan
@@ -110,6 +111,7 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
         Route::get('manager/validasi/detailSlip/{id}', [Manager\ValidasiController::class, 'detailSlip'])->name('detail_slip');
         //Laporan Pajak
         Route::get('manager/laporanPajak/laporanPajak', [Manager\LaporanPajakController::class, 'laporanPajak'])->name('laporan_pajak');
+        Route::get('manager/laporanBulan', [Manager\LaporanPajakController::class, 'laporanBulan'])->name('laporan_bulan');
         //Laporan Gaji
         Route::get('manager/laporanGaji/laporanGaji', [Manager\LaporanGajiController::class, 'laporanGaji'])->name('laporan_gaji');
     

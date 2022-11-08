@@ -76,6 +76,11 @@
                                         <th>:</th>
                                         <th>{{ $karyawan->nama }}</th>
                                     </tr>
+                                    <tr>
+                                        <th>Tanggal Masuk</th>
+                                        <th>:</th>
+                                        <th>{{ $karyawan->tanggal_masuk }}</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>

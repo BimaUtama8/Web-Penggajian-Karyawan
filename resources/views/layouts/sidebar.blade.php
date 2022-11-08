@@ -66,15 +66,28 @@
                         <i class="mdi mdi-book-edit"></i><span>Data Jabatan</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('show_iuran') }}" class="nav-link">
                         <i class="mdi mdi-cash-minus"></i><span>Data Iuran</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
-                    <a href="{{ route('show_gaji') }}" class="nav-link">
-                        <i class="mdi mdi-account-cash"></i><span>Data Gaji</span>
+                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarMultilevel">
+                        <i class="mdi mdi-account-cash"></i> <span>Data Gaji</span>
                     </a>
+                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                        <ul class="nav nav-sm flex-column">
+                            <a href="{{ route('show_gaji') }}" class="nav-link">
+                                <span>Hitung Gaji</span>
+                            </a>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <a href="{{ route('show_req') }}" class="nav-link">
+                                <span>Request Validasi Gaji</span>
+                            </a>
+                        </ul>
+                    </div>
                 </li>
                 @elseif (Auth::user()->level == 'manager')
                 <li class="menu-title"><span>Manager</span></li>
@@ -89,9 +102,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('laporan_pajak') }}" class="nav-link">
-                        <i class="mdi mdi-archive"></i><span>Laporan Pajak Penghasilan Karyawan</span>
+                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarMultilevel">
+                        <i class="mdi mdi-account-cash"></i> <span>Laporan Pajak</span>
                     </a>
+                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                        <ul class="nav nav-sm flex-column">
+                            <a href="{{ route('laporan_bulan') }}" class="nav-link">
+                                <span>Pajak Bulanan</span>
+                            </a>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <a href="{{ route('laporan_pajak') }}" class="nav-link">
+                                <span>Pajak Tahunan</span>
+                            </a>
+                        </ul>
+                    </div>
                 </li>
                 @endif
             </ul>
