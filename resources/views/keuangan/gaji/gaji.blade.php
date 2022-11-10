@@ -27,22 +27,21 @@
                         <table class="table align-middle table-nowrap" id="demo">
                             <thead class="table-light">
                                 <tr>
+                                    {{-- <th class="sort" data-sort="npwp">NPWP</th> --}}
                                     <th class="sort" data-sort="nk">Nama Karyawan</th>
                                     <th class="sort" data-sort="nj">Nama Jabatan</th>
-                                    <th class="sort" data-sort="tm">Tunjangan Makan</th>
-                                    <th class="sort" data-sort="tt">Tunjangan Transportasi</th>
-                                    <th class="sort" data-sort="gaji">Gaji</th>
+                                    <th class="sort" data-sort="tm">Tanggal Masuk</th>
+                                    <th class="sort" data-sort="gaji">Gaji</th>                                    
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach ($karyawan as $kar)
                                 <tr>
+                                    {{-- <td class="npwp">{{ $kar ['npwp'] }}</td> --}}
                                     <td class="nk">{{$kar ['nama'] }}</td>
                                     <td class="nj">{{$kar ['nama_jabatan'] }}</td>
-                                    <td class="tm">Rp {{ number_format($kar ['tunjangan_makan'],2,',','.') }}</td>
-                                    <td class="tt">Rp {{ number_format($kar ['tunjangan_transportasi'],2,',','.') }}
-                                    </td>
+                                    <td class="tm">{{ $kar ['tanggal_masuk'] }}</td>
                                     <td class="gaji">Rp {{ number_format($kar ['gaji'],2,',','.') }}</td>
                                     <td>
                                         <div class="d-flex gap-2">

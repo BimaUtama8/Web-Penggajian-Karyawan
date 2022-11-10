@@ -23,7 +23,7 @@ class KaryawanSeeder extends Seeder
             'id_jabatan'        => 9002,
             'id_user'           => 1,
             'nama'              => $faker->name,
-            'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-6 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
+            'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
             'alamat'            => $faker->address,
             'tempat_lahir'      => $faker->city,
             'tanggal_lahir'     => $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years', $timezone = 'Asia/Jakarta'),
@@ -33,6 +33,7 @@ class KaryawanSeeder extends Seeder
             'telepon'           => $faker->phoneNumber,
             'tanggungan'        => $faker->numberBetween(0, 3),
             'status'            => $faker->randomElement(['Menikah', 'Tidak Menikah']),
+            'npwp'              => 1,
         ]);
 
         for($k = 2; $k <= 6; $k++){
@@ -40,7 +41,7 @@ class KaryawanSeeder extends Seeder
                 'id_jabatan'        => 9003,
                 'id_user'           => $k,
                 'nama'              => $faker->name,
-                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-6 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
+                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
                 'alamat'            => $faker->address,
                 'tempat_lahir'      => $faker->city,
                 'tanggal_lahir'     => $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years', $timezone = 'Asia/Jakarta'),
@@ -50,6 +51,7 @@ class KaryawanSeeder extends Seeder
                 'telepon'           => $faker->phoneNumber,
                 'tanggungan'        => $faker->numberBetween(0, 3),
                 'status'            => $faker->randomElement(['Menikah', 'Tidak Menikah']),
+                'npwp'              => $faker->numberBetween(0, 1),
             ]);
         }
         for($i = 7; $i <= 12; $i++){
@@ -57,7 +59,7 @@ class KaryawanSeeder extends Seeder
                 'id_jabatan'        => 9004,
                 'id_user'           => $i,
                 'nama'              => $faker->name,
-                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-6 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
+                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
                 'alamat'            => $faker->address,
                 'tempat_lahir'      => $faker->city,
                 'tanggal_lahir'     => $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years', $timezone = 'Asia/Jakarta'),
@@ -67,6 +69,7 @@ class KaryawanSeeder extends Seeder
                 'telepon'           => $faker->phoneNumber,
                 'tanggungan'        => $faker->numberBetween(0, 3),
                 'status'            => $faker->randomElement(['Menikah', 'Tidak Menikah']),
+                'npwp'              => $faker->numberBetween(0, 1)
             ]);
         }
         for($karyawan = 13; $karyawan <= 41; $karyawan++){
@@ -74,7 +77,7 @@ class KaryawanSeeder extends Seeder
                 'id_jabatan'        => 9005,
                 'id_user'           => $karyawan,
                 'nama'              => $faker->name,
-                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-6 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
+                'tanggal_masuk'     => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = 'Asia/Jakarta'),
                 'alamat'            => $faker->address,
                 'tempat_lahir'      => $faker->city,
                 'tanggal_lahir'     => $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-20 years', $timezone = 'Asia/Jakarta'),
@@ -84,6 +87,7 @@ class KaryawanSeeder extends Seeder
                 'telepon'           => $faker->phoneNumber,
                 'tanggungan'        => $faker->numberBetween(0, 3),
                 'status'            => $faker->randomElement(['Menikah', 'Tidak Menikah']),
+                'npwp'              => $faker->numberBetween(0, 1)
             ]);
         }
         

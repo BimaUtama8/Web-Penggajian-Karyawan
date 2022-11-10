@@ -149,9 +149,9 @@
                 <h4 class="card-title mb-0">Detail Data Gaji Bulan {{ $bulan_ini }} Tahun {{ $tahun }}</h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('edit_gaji') }}" method="POST">
+                {{-- <form action="{{ route('edit_gaji') }}" method="POST">
                     @csrf
-                    {{ method_field('PUT') }}
+                    {{ method_field('PUT') }} --}}
                     <div id="customerList">
                     </div>
                     <div class="card">
@@ -168,23 +168,38 @@
                                             <th>:</th>
                                             <th>{{ $data->nama }}</th>
                                         </tr>
+                                        <tr>
+                                            <th>NPWP</th>
+                                            <th>:</th>
+                                            <th>{{ $status_npwp }}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Tanggal Masuk</th>
+                                            <th>:</th>
+                                            <th>{{ $data->tanggal_masuk }}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Jabatan</th>
+                                            <th>:</th>
+                                            <th>{{ $data->nama_jabatan }}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Tanggungan</th>
+                                            <th>:</th>
+                                            <th>{{ $data->tanggungan }} Tanggungan</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>:</th>
+                                            <th>{{ $data->status }}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Penghasilan 1 Tahun</th>
+                                            <th>:</th>
+                                            <th>Rp {{ number_format($penghasilan_setahun,2,',','.') }}</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Jabatan</td>
-                                            <td>:</td>
-                                            <td>{{ $data->nama_jabatan }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tanggungan</td>
-                                            <td>:</td>
-                                            <td>{{ $data->tanggungan }} Tanggungan</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status</td>
-                                            <td>:</td>
-                                            <td>{{ $data->status }}</td>
-                                        </tr>
                                         <tr>
                                             <td>Gaji Pokok</td>
                                             <td>:</td>
@@ -244,21 +259,12 @@
                                         <tr>
                                             <td>Pajak Penghasilan 1 Tahun</td>
                                             <td>:</td>
-                                            <td>@if ($pph == 'Tidak Kena Pajak')
-                                                {{ $pph }}
-                                                @else
-                                                Rp {{ number_format($pph,2,',','.')}}</td>
-                                            @endif</td>
+                                            <td>Rp {{ number_format($pph,2,',','.') }}</td>
                                         </tr>
                                         <tr>
                                             <td>Pajak Penghasilan 1 Bulan</td>
                                             <td>:</td>
-                                            <td>@if ($pph == 'Tidak Kena Pajak')
-                                                {{ $pph_bulan }}
-                                                @else
-                                                Rp {{ number_format($pph_bulan,2,',','.')}}</td>
-                                            @endif
-                                            </td>
+                                            <td>Rp {{ number_format($pph_bulan,2,',','.')}}</td>
                                         </tr>
                                     </tfoot>
                                     </tbody>
@@ -269,7 +275,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <button class="btn btn-success" type="submit">Request Validasi Slip</button>
+                            <a href="{{ route('show_gaji') }}"><button class="btn btn-light" type="submit">Close</button></a>
                             <!-- <form method="POST" action="{{route('print_out')}}">
                             @csrf
                             @foreach ($karyawan as $data)
@@ -283,7 +289,7 @@
                         </form> -->
                         </div>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
     </div>

@@ -47,11 +47,11 @@ class LaporanPajakController extends Controller
         $pdf = PDF::loadview('manager.laporanPajak.printPajak',[
             'data'      => $data,
         ]);
-        return $pdf->download('Laporan-Pajak.pdf');
+        // return $pdf->download('Laporan-Pajak.pdf');
 
         // dibawah ini untuk cek view manual html
-        // return view ('manager.laporanPajak.printPajak', [
-        //     'data'      => $data,
-        // ]);
+        return view ('manager.laporanPajak.printPajak', [
+            'data'      => $data,
+        ]);
     }
 }

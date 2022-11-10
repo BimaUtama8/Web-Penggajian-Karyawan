@@ -31,6 +31,7 @@
                                     <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
                                     <th class="sort" data-sort="gaji">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
+                                    <th class="sort" data-sort="status">Status</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -83,6 +84,13 @@
                                     }
                                     ?>{{ $bulan_ini }}</td>
                                     <td class="tahun">{{ $data['tahun'] }}</td>
+                                    <td class="status">
+                                        @if ($data['status_slip'] == 2)
+                                            <span class="badge badge-soft-success">Lunas</span>
+                                        @else
+                                            <span class="badge badge-soft-danger">Belum Lunas</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">

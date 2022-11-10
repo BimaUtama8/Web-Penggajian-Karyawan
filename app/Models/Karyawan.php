@@ -24,7 +24,8 @@ class Karyawan extends Model
         'kelamin',
         'telepon',
         'tanggungan',
-        'status'
+        'status',
+        'npwp'
     ];
 
     public $timestamps = FALSE;
