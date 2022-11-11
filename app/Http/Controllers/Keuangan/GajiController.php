@@ -255,6 +255,31 @@ class GajiController extends Controller
             
     }
 
+    function rValidasi(Request $request){
+        $request->validate([
+            'bulan'       => 'required',
+            'tahun'       => 'required'
+        ]);
+        $status = Transaksi::where('bulan', $request->bulan)
+        ->where('tahun', $request->tahun)
+        ->update(['status_slip' => 1]);
+
+        return redirect()->route('s_validasi')->with('success', 'Data Berhasil Ditambahkan');
+    }
+
+    // function sValidasi(){
+    //     $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
+    //     ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+    //     ->where(function($s){
+    //         $s->where('status_slip', 0)->orWhere('status_slip', null);
+    //     })
+    //     ->get();
+        
+    //     return view('keuangan.gaji.tampilValidasi',[
+    //         'data'      => $data,
+    //     ]);
+    // }
+
     function editGaji(Request $request){
         $request->validate([
             'id_karyawan' => 'required',

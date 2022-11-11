@@ -86,6 +86,7 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
         Route::get('keuangan/tampilGaji', [Keuangan\GajiController::class, 'tampilGaji'])->name('show_gaji');
         Route::get('keuangan/detailGaji/{id}', [Keuangan\GajiController::class, 'detailGaji'])->name('show_detail_gaji');
         Route::get('keuangan/reqValidasi', [Keuangan\GajiController::class, 'reqValidasi'])->name('show_req');
+        Route::get('keuangan/sValidasi', [Keuangan\GajiController::class, 'sValidasi'])->name('s_validasi');
     
     //Put Method
         //Data Jabatan
@@ -97,6 +98,7 @@ Route::middleware('auth', 'validatelevels:keuangan')->group(function () {
     //POST Method
         Route::post('keuangan/print_out', [Keuangan\GajiController::class, 'printOut'])->name('print_out');
         Route::post('keuangan/detailGaji/', [Keuangan\GajiController::class, 'hitungGaji'])->name('hitung_gaji');
+        Route::post('keuangan/rValidasi', [Keuangan\GajiController::class, 'rValidasi'])->name('r_validasi');
 });        
 
 

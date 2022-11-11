@@ -24,7 +24,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="{{ route('r_validasi') }}" method="POST">
                         @csrf
                         <input type="hidden" name="id_karyawan" value="">
                         <select class="form-select mb-3" aria-label="Default select example" name="bulan" required>
@@ -49,7 +49,7 @@
                             @endforeach                            
                         </select>
                         <div class="hstack gap-2 justify-content-end">
-                            <button type="submit" class="btn btn-primary" id="add-btn">Request Validasi Gaji</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Validasi Gaji</button>
                         </div>
                     </form>
                 </div>
