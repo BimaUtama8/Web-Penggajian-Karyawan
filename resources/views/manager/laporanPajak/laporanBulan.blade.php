@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <form action="{{ route('print_bulan') }}" method="POST">
                         @csrf
-                        <select class="form-select mb-3" aria-label="Default select example" name="bulan" required>
+                        <select class="form-select mb-1" aria-label="Default select example" name="bulan" required>
                             <option selected disabled>Bulan</option>
                             <option value="01">Januari</option>
                             <option value="02">Februari</option>
@@ -41,12 +41,24 @@
                             <option value="11">November</option>
                             <option value="12">Desember</option>
                         </select>
-                        <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
+                        <br>
+                            <div class="col-sm-15">
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" name="tahun" placeholder="Tahun" required>
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-white">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <br>
+                        {{-- <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
                             <option selected disabled>Tahun</option>
                             @foreach ($tahun as $tahun)
                                 <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>
                             @endforeach 
-                        </select>
+                        </select> --}}
                         <div class="hstack gap-2 justify-content-end">
                             <button type="submit" class="btn btn-primary" id="add-btn">Download</button>
                         </div>
@@ -57,4 +69,13 @@
       </div>
   </div>
 </div>
+@push('script')
+<script type="text/javascript">
+    $("#datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+</script>
+@endpush
 @endsection

@@ -37,14 +37,22 @@ class LaporanGajiController extends Controller
         ->where('transaksi.bulan', $bulan)
         ->where('transaksi.status_slip', 2)
         ->get();
+
+        $total_gaji = Transaksi::sum('penghasilan_bersih');
         
         $pdf = PDF::loadview('manager.laporanGaji.printGaji',[
             'data'      => $data,
+            'total_gaji'=> $total_gaji,
+            'bulan'     => $bulan,
+            'tahun'     => $tahun
         ]);
-        return $pdf->download('Laporan-Gaji.pdf');
+        // return $pdf->download('Laporan-Gaji.pdf');
 
-        // return view ('manager.laporanGaji.printGaji', [
-        //     'data'      => $data,
-        // ]);
+        return view ('manager.laporanGaji.printGaji', [
+            'data'      => $data,
+            'total_gaji'=> $total_gaji,
+            'bulan'     => $bulan,
+            'tahun'     => $tahun
+        ]);
     }
 }
