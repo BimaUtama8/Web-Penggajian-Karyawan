@@ -129,7 +129,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
-                            <a href="/karyawan"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button></a>
+                            <a href="{{ route('show_karyawan') }}"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button></a>
                             <button type="submit" class="btn btn-primary" id="add-btn">Add Karyawan</button>
                         </div>
                     </div>

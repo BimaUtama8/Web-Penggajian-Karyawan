@@ -32,7 +32,7 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
     Route::view('hrd/dashboard', 'hrd.index')->name('dashboard_hrd');
 
     //Get method
-    Route::get('/index', function () {return view('hrd/index');});
+    // Route::get('/index', function () {return view('hrd/index');});
         //Data Karyawan
         Route::get('hrd/karyawan', [Hrd\KaryawanController::class, 'tampilKaryawan'])->name('show_karyawan');
         Route::get('hrd/tambahkaryawan', [Hrd\KaryawanController::class, 'tambahKaryawan'])->name('tambah_karyawan');

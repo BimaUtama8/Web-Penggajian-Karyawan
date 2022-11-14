@@ -38,6 +38,7 @@ class KaryawanController extends Controller
         // ->whereMonth('masuk', '=', $bulan)
         // ->whereYear('masuk', '=', $tahun)
         // ->get();
+        
         $nama       = $request->nama;
         $nip        = 1234;
         $jhk        = $request->jhk;
@@ -55,6 +56,7 @@ class KaryawanController extends Controller
         $bersih     = $request->bersih;
         $pph        = $request->pph;
         $potongan   = $bjabatan + $jaminanht + $jaminanp;
+
         $pdf = PDF::loadview('hrd.karyawan.print',[
             'nama'      => $nama,
             'nip'       => $nip,
