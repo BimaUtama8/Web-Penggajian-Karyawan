@@ -124,6 +124,8 @@ Route::middleware('auth', 'validatelevels:manager')->group(function () {
     //Post Method
         //Laporan Pajak
         Route::post('manager/printPajak', [Manager\LaporanPajakController::class, 'printPajak'])->name('print_pajak');
+        //Laporan Bulan
+        Route::post('manager/printBulan', [Manager\LaporanPajakController::class, 'printBulan'])->name('print_bulan');
         //Laporan Gaji
         Route::post('manager/printGaji', [Manager\LaporanGajiController::class, 'printGaji'])->name('print_gaji');
 

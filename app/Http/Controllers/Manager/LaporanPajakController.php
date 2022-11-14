@@ -44,14 +44,55 @@ class LaporanPajakController extends Controller
         ->where('transaksi.status_slip', 2)
         ->get();
 
+        $total_pajak = Transaksi::sum('pajak_penghasilan');
+
         $pdf = PDF::loadview('manager.laporanPajak.printPajak',[
             'data'      => $data,
+            'total_pajak' => $total_pajak,
+            'tahun'     => $tahun
         ]);
         // return $pdf->download('Laporan-Pajak.pdf');
 
         // dibawah ini untuk cek view manual html
         return view ('manager.laporanPajak.printPajak', [
+            'data'        => $data,
+            'total_pajak' => $total_pajak,
+            'tahun'     => $tahun
+        ]);
+    }
+
+    function printBulan(Request $request){
+        $this->validate($request,[
+            'bulan' => 'required',
+            'tahun' => 'required'
+        ]);
+
+        $bulan = $request->bulan;
+        $tahun = $request->tahun;
+        $data = Karyawan::join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+        ->where('transaksi.bulan', $bulan)
+        ->where('transaksi.tahun', $tahun)
+        ->where('transaksi.status_slip', 2)
+        ->get();
+
+        // $pajak = $data[0]['pajak_pengasilan']/12;
+
+        $pdf = PDF::loadview('manager.laporanPajak.printBulan',[
             'data'      => $data,
+            // 'pajak'     => $pajak,
+            // 'total_pajak' => $total_pajak,
+            'bulan'     => $bulan,
+            'tahun'     => $tahun
+        ]);
+        // return $pdf->download('Laporan-Pajak.pdf');
+
+        // dibawah ini untuk cek view manual html
+        return view ('manager.laporanPajak.printBulan', [
+            'data'        => $data,
+            // 'pajak'     => $pajak,
+            // 'total_pajak' => $total_pajak,
+            'bulan'       => $bulan,
+            'tahun'       => $tahun
         ]);
     }
 }
