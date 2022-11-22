@@ -25,8 +25,8 @@ class Absensi extends Seeder
         for($i = 0; $i <= 50; $i++){
             Presensi::create([
                 'id_karyawan'         => $faker->unique()->numberBetween(1, 50),
-                'masuk'               => $faker->dateTimeInInterval('-5 hours','+1 hours'),
-                'keluar'              => $faker->dateTimeInInterval('+4 hours','-2 hours'),
+                'masuk'               => $faker->dateTimeInInterval('-6 hours','+1 hours'),
+                'keluar'              => $faker->dateTimeInInterval('+4 hours','-1 hours'),
                 'status'              => $faker->numberBetween(1, 3),
             ]);
         }
