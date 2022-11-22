@@ -11,7 +11,7 @@
   </style>
 </head>
 
-<body>
+<body onload="window.print()">
 
   <h2 style="text-align:center">PT. SURYA GLOBALINDO SEJAHTERA</h2>
   <p style="text-align:center">Laporan Gaji Karyawan Bulan 
