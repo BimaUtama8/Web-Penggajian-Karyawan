@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <style>
         table,
@@ -12,18 +11,15 @@
 
     </style>
 </head>
-
-<body>
-
-
-
+<body onload="window.print()">
     <table style="width:100%">
         <tr>
             <th style="text-align:left" colspan="3">
                 <h3 style="text-align:center">PT. SURYA GLOBALINDO SEJAHTERA</h3>
             </th>
             <th style="text-align:left" colspan="2">
-                <h4 style="text-align:left">NPWP :&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp<br>
+                <h4 style="text-align:left">NPWP
+                    :&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp<br>
                     <hr><br> Masa Pajak :
                     <?php 
                                     switch ($bulan) {
@@ -68,9 +64,9 @@
                                         break;
                                     }
                                     ?>{{ $bulan_ini }} &nbsp&nbsp&nbsp&nbsp&nbsp Tahun : {{ $tahun }} <h4>
-            <th style="text-align: center" colspan="2">
-                <h4 style="text-align:center">Laporan Pajak Karyawan Periode <br> Tahun {{ $tahun }} </h4>
-            </th>
+                <th style="text-align: center" colspan="2">
+                    <h4 style="text-align:center">Laporan Pajak Karyawan Periode <br> Tahun {{ $tahun }} </h4>
+                </th>
             </th>
         </tr>
         <tr>
@@ -105,7 +101,6 @@
                 // $total_pajak = array_sum(array ($pajak));
             ?>
             <td style="text-align:center">Rp {{ number_format($pajak,0,',','.') }}</td>
-
         </tr>
         @endforeach
         <tr>
@@ -114,5 +109,4 @@
         </tr>
     </table>
 </body>
-
 </html>

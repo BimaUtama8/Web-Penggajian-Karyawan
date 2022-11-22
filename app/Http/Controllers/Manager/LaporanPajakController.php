@@ -76,21 +76,16 @@ class LaporanPajakController extends Controller
         ->get();
 
         // $pajak = $data[0]['pajak_pengasilan']/12;
-
         $pdf = PDF::loadview('manager.laporanPajak.printBulan',[
             'data'      => $data,
-            // 'pajak'     => $pajak,
-            // 'total_pajak' => $total_pajak,
             'bulan'     => $bulan,
             'tahun'     => $tahun
         ]);
-        // return $pdf->download('Laporan-Pajak.pdf');
+        // return $pdf->download('Laporan-Pajak.pdf')->setPaper($custom_paper);
 
         // dibawah ini untuk cek view manual html
         return view ('manager.laporanPajak.printBulan', [
             'data'        => $data,
-            // 'pajak'     => $pajak,
-            // 'total_pajak' => $total_pajak,
             'bulan'       => $bulan,
             'tahun'       => $tahun
         ]);
