@@ -42,12 +42,17 @@
                                 <option value="11">November</option>
                                 <option value="12">Desember</option>
                             </select>
-                            <select class="form-select mb-3" aria-label="Default select example" name="tahun" required>
-                                <option selected disabled>Tahun</option>
-                                @foreach ($tahun as $tahun)
-                                <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>
-                                @endforeach
-                            </select>
+                            <div class="col-sm-15">
+                                <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" name="tahun" placeholder="Tahun" required>
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-white">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <br>
                             <div class="hstack gap-2 justify-content-end">
                                 <a href="{{ route('show_gaji') }}"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button></a>
                                 <button type="submit" class="btn btn-primary" id="add-btn">Lanjutkan</button>
@@ -59,4 +64,13 @@
         </div>
     </div>
 </div>
+@push('script')
+<script type="text/javascript">
+    $("#datepicker").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+</script>
+@endpush
 @endsection
