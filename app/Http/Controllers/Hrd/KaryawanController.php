@@ -33,70 +33,18 @@ class KaryawanController extends Controller
         ]);
     }
 
-    function print(Request $request){
-        // $cetak = Transaksi::all()->where('id_gaji', $id)
-        // ->whereMonth('masuk', '=', $bulan)
-        // ->whereYear('masuk', '=', $tahun)
-        // ->get();
+    function print($id){
+        $cetak = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
+        ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+        ->where('transaksi.id_gaji', $id)
+        ->first();
         
-        $nama       = $request->nama;
-        $nip        = 1234;
-        $jhk        = $request->jhk;
-        $jlembur    = $request->jlembur;
-        $jabatan    = $request->jabatan;
-        $gapok      = $request->gapok;
-        $bulan      = $request->bulan;
-        $bjabatan   = $request->bjabatan;
-        $jaminanht  = $request->jaminanht;
-        $jaminanp   = $request->jaminanp;
-        $tmakan     = $request->tmakan;
-        $ttransportasi = $request->ttransportasi;
-        $lembur     = $request->lembur;
-        $bruto      = $request->bruto;
-        $bersih     = $request->bersih;
-        $pph        = $request->pph;
-        $potongan   = $bjabatan + $jaminanht + $jaminanp;
-
-        $pdf = PDF::loadview('hrd.karyawan.print',[
-            'nama'      => $nama,
-            'nip'       => $nip,
-            'jhk'       => $jhk,
-            'jlembur'   => $jlembur,
-            'jabatan'   => $jabatan,
-            'gapok'     => $gapok,
-            'bulan'     => $bulan,
-            'bjabatan'  => $bjabatan,
-            'jaminanht' => $jaminanht,
-            'jaminanp'  => $jaminanp,
-            'tmakan'    => $tmakan,
-            'ttransportasi' => $ttransportasi,
-            'lembur'    => $lembur,
-            'bruto'     => $bruto,
-            'bersih'    => $bersih,
-            'pph'       => $pph,
-            'potongan'  => $potongan
-        ]);
-    	// return $pdf->download('Gaji-'.$nama.'.pdf');
+        $potongan = $cetak->jaminan_ht + $cetak->jaminan_p + $cetak->biaya_jabatan;
 
         // dibawah ini untuk cek view manual html
         return view ('hrd.karyawan.print', [
-            'nama'      => $nama,
-            'nip'       => $nip,
-            'jhk'       => $jhk,
-            'jlembur'   => $jlembur,
-            'jabatan'   => $jabatan,
-            'gapok'     => $gapok,
-            'bulan'     => $bulan,
-            'bjabatan'  => $bjabatan,
-            'jaminanht' => $jaminanht,
-            'jaminanp'  => $jaminanp,
-            'tmakan'    => $tmakan,
-            'ttransportasi' => $ttransportasi,
-            'lembur'    => $lembur,
-            'bruto'     => $bruto,
-            'bersih'    => $bersih,
-            'pph'       => $pph,
-            'potongan'  => $potongan
+            'cetak'   => $cetak,
+            'potongan'=> $potongan
         ]);
     }
 

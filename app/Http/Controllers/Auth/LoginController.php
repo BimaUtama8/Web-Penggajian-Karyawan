@@ -17,7 +17,14 @@ class LoginController extends Controller
 
     public function login(Request $request){
         if(Auth::attempt($request->only('email', 'password'))){
-            return redirect(Auth::user()->level.'/dashboard');
+            if(Auth::user()->level == 'hrd'){
+                return redirect(Auth::user()->level.'/karyawan');
+            }else if(Auth::user()->level == 'keuangan'){
+                return redirect(Auth::user()->level.'/gaji');
+            }else{
+                return redirect(Auth::user()->level.'/validasi/validasiGaji');
+            }
+            
         }
         return redirect('/')->withErrors(['Alamat Email atau Kata Sandi Salah']);
     }

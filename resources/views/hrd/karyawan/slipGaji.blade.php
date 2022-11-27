@@ -84,30 +84,13 @@
                                     ?>{{ $bulan_ini }}</td>
                                     <td class="tahun">{{ $data['tahun'] }}</td>
                                     <td>
-                                        <div class="d-flex gap-2">
-                                            <div class="edit">
-                                                <form method="POST" action="{{ route('print') }}">
-                                                    @csrf
-                                                    @foreach ($gaji as $data)
-                                                    <input type="hidden" name="nama" value="{{$data->nama}}">
-                                                    <input type="hidden" name="jhk" value="{{$data->jumlah_hari}}">
-                                                    <input type="hidden" name="jlembur" value="{{$data->lembur}}">
-                                                    <input type="hidden" name="nip" value="{{$data->nip}}">
-                                                    <input type="hidden" name="jabatan" value="{{$data->nama_jabatan}}">
-                                                    <input type="hidden" name="gapok" value="{{$data->gaji}}">
-                                                    <input type="hidden" name="bulan" value="{{ $data->bulan }}">
-                                                    <input type="hidden" name="bjabatan" value="{{ $data->biaya_jabatan }}">
-                                                    <input type="hidden" name="jaminanht" value="{{ $data->jaminan_ht }}">
-                                                    <input type="hidden" name="jaminanp" value="{{ $data->jaminan_p }}">
-                                                    <input type="hidden" name="tmakan" value="{{ $data->total_tmakan }}">
-                                                    <input type="hidden" name="ttransportasi" value="{{ $data->total_ttransportasi }}">
-                                                    <input type="hidden" name="lembur" value="{{ $data->upah_lembur }}">
-                                                    <input type="hidden" name="bruto" value="{{ $data->penghasilan_bruto }}">
-                                                    <input type="hidden" name="bersih" value="{{ $data->penghasilan_bersih }}">
-                                                    <input type="hidden" name="pph" value="{{ $data->pajak_penghasilan }}">
-                                                    @endforeach
-                                                    <button class="btn btn-sm btn-success edit-item-btn" type="submit">Cetak Slip</button>
-                                                </form>
+                                            <div class="d-flex gap-2">
+                                                <div class="slip">
+                                                    <a href="{{ route('print', $data->id_gaji) }}" class="btn btn-sm btn-primary edit-item-btn">Cetak Slip</a>
+                                                </div>
+                                                <div class="spt">
+                                                  <a href="#" class="btn btn-sm btn-success edit-item-btn">Cetak SPT</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
