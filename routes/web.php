@@ -54,7 +54,8 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
     //Post Method
         //Data Karyawan
         Route::post('hrd/storekaryawan', [Hrd\KaryawanController::class, 'storeKaryawan'])->name('store_karyawan');
-        Route::post('hrd/print', [Hrd\KaryawanController::class, 'print'])->name('print');
+        Route::get('hrd/print/{id}', [Hrd\KaryawanController::class, 'print'])->name('print');
+        Route::post('hrd/printSpt', [Hrd\KaryawanController::class, 'printSpt'])->name('print_spt');
         //Data Jabatan
         Route::post('hrd/storejabatan', [Hrd\JabatanController::class, 'storeJabatan'])->name('store_jabatan');
     
