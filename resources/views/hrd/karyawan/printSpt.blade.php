@@ -1,116 +1,288 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
+    <style type="text/css">
+        .tg {
             border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0px auto;
         }
-
+    
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+    
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
+    
+        .tg .tg-p0jh {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-3uj0 {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-a30r {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 11px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-63jj {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+    
+        .tg .tg-gbii {
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 10px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-hxn7 {
+            background-color: #656565;
+            border-color: inherit;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-37c6 {
+            border-color: inherit;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: top
+        }
+    
+        .tg .tg-i7q0 {
+            border-color: inherit;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-zp53 {
+            border-color: inherit;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-4f4e {
+            background-color: #656565;
+            font-family: "Times New Roman", Times, serif !important;
+            font-size: 12px;
+            text-align: left;
+            vertical-align: top
+        }
+    
+        .tg .tg-0lax {
+            text-align: left;
+            vertical-align: top
+        }
+    
+        @media screen and (max-width: 767px) {
+            .tg {
+                width: auto !important;
+            }
+    
+            .tg col {
+                width: auto !important;
+            }
+    
+            .tg-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: auto 0px;
+            }
+        }
+    
     </style>
 </head>
-
 <body onload="window.print()">
-    <table style="width:100%">
-        <tr>
-            <th style="text-align:left" colspan="3">
-                <h3 style="text-align:center">PT. SURYA GLOBALINDO SEJAHTERA</h3>
-            </th>
-            <th style="text-align:left" colspan="2">
-                <h4 style="text-align:left">NPWP
-                    :&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp.&nbsp&nbsp&nbsp<br>
-                    <hr><br> Masa Pajak :
-                    <?php 
-                                    switch ($bulan) {
-                                        case '01':
-                                            $bulan_ini = "Januari";
-                                        break;
-                                        case '02':
-                                            $bulan_ini = "Februari";
-                                        break;
-                                        case '03':
-                                            $bulan_ini = "Maret";
-                                        break;
-                                        case '04':
-                                            $bulan_ini = "April";
-                                        break;
-                                        case '05':
-                                            $bulan_ini = "Mei";
-                                        break;
-                                        case '06':
-                                            $bulan_ini = "Juni";
-                                        break;
-                                        case '07':
-                                            $bulan_ini = "Juli";
-                                        break;
-                                        case '08':
-                                            $bulan_ini = "Agustus";
-                                        break;
-                                        case '09':
-                                            $bulan_ini = "September";
-                                        break;
-                                        case '10':
-                                            $bulan_ini = "Oktober";
-                                        break;
-                                        case '11':
-                                            $bulan_ini = "November";
-                                        break;
-                                        case '12':
-                                            $bulan_ini = "Desember";
-                                        break;
-                                        default:
-                                            $bulan_ini = "Tidak di ketahui";
-                                        break;
-                                    }
-                                    ?>{{ $bulan_ini }} &nbsp&nbsp&nbsp&nbsp&nbsp Tahun : {{ $tahun }} <h4>
-            <th style="text-align: center" colspan="2">
-                <h4 style="text-align:center">Laporan Pajak Karyawan Periode <br> Tahun {{ $tahun }} </h4>
-            </th>
-            </th>
-        </tr>
-        <tr>
-            <th style="text-align:center">Nama Karyawan</th>
-            <th style="text-align:center">NPWP</th>
-            <th style="text-align:center">Status Menikah</th>
-            <th style="text-align:center">Tanggungan Anak</th>
-            <th style="text-align:center">Jumlah Penghasilan <br> Bruto (Rp)</th>
-            <th style="text-align:center">Total Potongan</th>
-            <th style="text-align:center">Pajak Penghasilan Per Bulan</th>
-        </tr>
-        <?php
-            $total = 0;
-        ?>
-        @foreach ($data as $data)
-        <tr>
-            <td style="text-align:center">{{ $data->nama }}</td>
-            <td style="text-align: center">
-                @if ($data['npwp'] == 0)
-                Tidak Ada
-                @else
-                Ada
-                @endif
-            </td>
-            <td style="text-align: center">{{ $data->status }}</td>
-            <td style="text-align: center">{{ $data->tanggungan }} Tanggungan</td>
-            <td style="text-align:center">Rp {{ number_format($data->penghasilan_bruto,0,',','.') }}</td>
-            <td style="text-align:center">
-                Rp{{ number_format($data->penghasilan_bruto-$data->penghasilan_bersih,0,',','.') }}</td>
-            <?php
-                $pajak = $data->pajak_penghasilan/12;
-                $total = $pajak + $total;
-                // $total_pajak = array_sum(array ($pajak));
-            ?>
-            <td style="text-align:center">Rp {{ number_format($pajak,0,',','.') }}</td>
-        </tr>
-        @endforeach
-        <tr>
-            <th colspan="6">Total Pajak Penghasilan Karyawan</th>
-            <th style="text-align:center">Rp {{ number_format($total,0,',','.') }}</th>
-        </tr>
-    </table>
+    <div class="tg-wrap">
+        <table class="tg">
+            <thead>
+                <tr>
+                    <th class="tg-p0jh" colspan="2" rowspan="2"><br><br>KEMENTRIAN KEUANGAN RI<br><br>DIREKTORAT JENDRAL
+                        PAJAK<br></th>
+                    <th class="tg-37c6" colspan="2">BUKTI PEMOTONGAN PAJAK PENGHASILAN<br>PASAL 21 BAGI PEGAWAI TETAP
+                        ATAU<br>PENERIMA PENSIUN ATAU TUNJANGAN HARI <br>TUA/JAMINAN HARI TUA BERKALA</th>
+                    <th class="tg-37c6" colspan="2" rowspan="2">FORMULIR 1721 - A1<br><br><br><br>MASA
+                        PEROLEHAN<br>PENGHASILAN[mm-mm]<br>______ - _____</th>
+                </tr>
+                <tr>
+                    <th class="tg-i7q0" colspan="2">NOMOR : 1 . 1 - ____ . ____ - _________________</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-3uj0" colspan="6">NPWP
+                        <br>PEMOTONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;_____________________ -
+                        _______ - _______
+                        <br><br>NAMA<br>PEMOTONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;_______________________________________________________________________________
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="6">A.&nbsp;&nbsp;IDENTITAS PENERIMA PENGHASILAN YANG DIPOTONG</td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="3">1. NPWP :<br><br>2. NIK/NO<br> PASPOR :<br><br>3. NAMA :<br><br>4.
+                        ALAMAT :<br><br><br>5. JENIS KELAMIN : </td>
+                    <td class="tg-zp53" colspan="3">6. STATUS/JUMLAH TANGGUNGAN KELUARGA UNTUK PTKP<br>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K
+                        /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TK
+                        /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HB
+                        /
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______<br><br>7.&nbsp;&nbsp;&nbsp;NAMA
+                        JABATAN : <br><br>8.&nbsp;&nbsp;&nbsp;KARYAWAN ASING :<br><br>9.&nbsp;&nbsp;&nbsp;KODE NEGARA
+                        DOMISILI :</td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="6">B.&nbsp;&nbsp;&nbsp;RINCIAN PENGHASILAN DAN PENGHITUNGAN PPh PASAL 21
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-63jj" colspan="4">URAIAN</td>
+                    <td class="tg-37c6" colspan="2">JUMLAH (Rp)</td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="4">KODE OBJEK PAJAK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</td>
+                    <td class="tg-hxn7" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="4">PENGHASILAN BRUTO&nbsp;&nbsp;: </td>
+                    <td class="tg-hxn7" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">1. GAJI/PENSIUN ATAU THT/JHT</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">2. TUNJANGAN PPh</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">3. TUNJANGAN LAINNYA, UANG LEMBUR DAN SEBAGAINYA</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">4. HONORARI DAN IMBALAN LAIN SEJENISNYA</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">5. PREMI ASURANSI YANG DIBAYAR PEMBERI KERJA</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-gbii" colspan="4">6. PENERIMAAN DALAM BENTUK NATURA DAN KENIKMATAN LAINNYA YANG DIKENAKAN
+                        PEMOTONGAN PPh PASAL 21</td>
+                    <td class="tg-zp53" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">7. TANTIEM, BONUS, GRATIFIKASI, JASA PRODUKSI DAN THR</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">8. JUMLAH PENGHASILAN BRUTO (1 S.D 7)</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="4">PENGURANGAN&nbsp;&nbsp;:</td>
+                    <td class="tg-4f4e" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">9. BIAYA JABATAN/BIAYA PENSIUN</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">10. IURAN PENSIUN ATAU IURAN THT/JHT</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">11. JUMLAH PENGURANGAN (9 S.D 10)</td>
+                    <td class="tg-0lax" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-p0jh" colspan="4">PENGHITUNGAN PPh PASAL 21&nbsp;&nbsp;:</td>
+                    <td class="tg-4f4e" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">12. JUMLAH PENGHASILAN NETO (8-11)</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">13. PENGHASILAN NETO MASA SEBELUMNYA</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-a30r" colspan="4">14. JUMLAH PENGHASILAN NETO UNTUK PENGHITUNGAN PPh PASAL 21
+                        (SETAHUN/DISETAHUNKAN)</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">15. PENGHASILAN TIDAK KENA PAJAK (PTKP)</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">16. PENGHASILAN KENA PAJAK SETAHUN/DISETAHUNKAN (14 - 15)</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">17. PPh PASAL 21 ATAS PENGHASILAN KENA PAJAK SETAHUN/DISETAHUNKAN</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">18. PPh PASAL 21 YANG TELAH DIPOTONG SEBELUMNYA</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">19. PPh PASAL 21 TERUTANG</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="tg-3uj0" colspan="4">20. PPh PASAL 21 DAN PPh PASAL 21 YANG TELAH DIPOTONG DAN DILUNASI</td>
+                    <td class="tg-3uj0" colspan="2"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
-
 </html>
+
+
