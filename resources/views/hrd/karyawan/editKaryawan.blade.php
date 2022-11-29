@@ -91,7 +91,7 @@
                         
                         <label for="customername-field" class="form-label">Telepon</label>
                         <div class="form-floating">
-                            <input type="number" class="form-control" name="telepon" id="telepon" placeholder="" value="{{ $data->telepon }}">
+                            <input type="text" class="form-control" name="telepon" id="telepon" placeholder="" value="{{ $data->telepon }}">
                             <label for="teleponfloatingInput">Masukkan Telepon</label>
                         </div>
                         <br>
