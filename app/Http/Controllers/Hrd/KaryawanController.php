@@ -70,6 +70,7 @@ class KaryawanController extends Controller
         
         $request->validate([
             'namakaryawan'  =>'required',
+            'tanggal_masuk' =>'required',
             'alamat'        =>'required',
             'tempat_lahir'  =>'required',
             'tanggal_lahir' =>'required',
@@ -90,6 +91,7 @@ class KaryawanController extends Controller
             'id_user'       =>$id_user,
             'id_jabatan'    =>$request->jabatan,
             'nama'          =>$request->namakaryawan,
+            'tanggal_masuk' =>$request->tanggal_masuk,
             'alamat'        =>$request->alamat,
             'tempat_lahir'  =>$request->tempat_lahir,
             'tanggal_lahir' =>$request->tanggal_lahir,
@@ -132,6 +134,7 @@ class KaryawanController extends Controller
     function editKaryawan($id, Request $request){
         $request->validate([
             'namakaryawan'  =>'required',
+            'tanggal_masuk' =>'required',
             'alamat'        =>'required',
             'tempat_lahir'  =>'required',
             'tanggal_lahir' =>'required',
@@ -144,6 +147,7 @@ class KaryawanController extends Controller
         ]);
         $data_karyawan = Karyawan::find($id);
         $data_karyawan -> nama          = $request -> namakaryawan;
+        $data_karyawan -> tanggal_masuk = $request -> tanggal_masuk;
         $data_karyawan -> alamat        = $request -> alamat;
         $data_karyawan -> tempat_lahir  = $request -> tempat_lahir;
         $data_karyawan -> tanggal_lahir = $request -> tanggal_lahir;

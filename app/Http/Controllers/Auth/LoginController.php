@@ -20,7 +20,7 @@ class LoginController extends Controller
             if(Auth::user()->level == 'hrd'){
                 return redirect(Auth::user()->level.'/karyawan');
             }else if(Auth::user()->level == 'keuangan'){
-                return redirect(Auth::user()->level.'/gaji');
+                return redirect(Auth::user()->level.'/jabatan');
             }else{
                 return redirect(Auth::user()->level.'/validasi/validasiGaji');
             }
