@@ -44,7 +44,7 @@ class LaporanPajakController extends Controller
         ->where('transaksi.status_slip', 2)
         ->get();
 
-        $total_pajak = Transaksi::sum('pajak_penghasilan');
+        $total_pajak = Transaksi::where('status_slip', 2)->sum('pajak_penghasilan');
 
         $pdf = PDF::loadview('manager.laporanPajak.printPajak',[
             'data'      => $data,
