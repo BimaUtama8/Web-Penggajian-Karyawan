@@ -88,9 +88,15 @@
                                                 <div class="slip">
                                                     <a href="{{ route('print', $data->id_gaji) }}" class="btn btn-sm btn-primary edit-item-btn">Cetak Slip</a>
                                                 </div>
+                                                @if ($data['bulan'] == '11')
                                                 <div class="spt">
-                                                  <a href="#" class="btn btn-sm btn-success edit-item-btn">Cetak SPT</a>
+                                                    <a href="{{ route('print_spt', $data->id_gaji) }}" class="btn btn-sm btn-success edit-item-btn">Cetak SPT</a>
                                                 </div>
+                                                @else
+                                                <div class="spt">
+                                                    <a href="{{ route('print_spt', $data->id_gaji) }}" class="btn btn-sm btn-success edit-item-btn" style="pointer-events: none">Cetak SPT</a>
+                                                </div>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>

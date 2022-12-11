@@ -155,22 +155,19 @@
                     <td class="tg-3uj0" colspan="6">NPWP
                         <br>PEMOTONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;_____________________ -
                         _______ - _______
-                        <br><br>NAMA<br>PEMOTONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;_______________________________________________________________________________
+                        <br><br>NAMA<br>PEMOTONG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp; PT. SURYA GLOBALINDO SEJAHTERA
                     </td>
                 </tr>
                 <tr>
                     <td class="tg-p0jh" colspan="6">A.&nbsp;&nbsp;IDENTITAS PENERIMA PENGHASILAN YANG DIPOTONG</td>
                 </tr>
                 <tr>
-                    <td class="tg-3uj0" colspan="3">1. NPWP :<br><br>2. NIK/NO<br> PASPOR :<br><br>3. NAMA :<br><br>4.
-                        ALAMAT :<br><br><br>5. JENIS KELAMIN : </td>
+                    <td class="tg-3uj0" colspan="3">1. NPWP :<br><br>2. NIK/NO PASPOR :<br><br>3. NAMA : {{ $cetak['nama'] }}<br><br>4.
+                        ALAMAT : {{ $cetak['alamat'] }}<br><br>5. JENIS KELAMIN : {{ $cetak['kelamin'] }}</td>
                     <td class="tg-zp53" colspan="3">6. STATUS/JUMLAH TANGGUNGAN KELUARGA UNTUK PTKP<br>
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;K
-                        /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TK
-                        /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HB
-                        /
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_______<br><br>7.&nbsp;&nbsp;&nbsp;NAMA
-                        JABATAN : <br><br>8.&nbsp;&nbsp;&nbsp;KARYAWAN ASING :<br><br>9.&nbsp;&nbsp;&nbsp;KODE NEGARA
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status Kawin&nbsp; : {{ $cetak['status'] }}
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tanggungan&nbsp;&nbsp;&nbsp; : {{ $cetak['tanggungan'] }}<br><br>7.&nbsp;&nbsp;&nbsp;NAMA
+                        JABATAN : {{ $cetak['nama_jabatan'] }}<br><br>8.&nbsp;&nbsp;&nbsp;KARYAWAN ASING :<br><br>9.&nbsp;&nbsp;&nbsp;KODE NEGARA
                         DOMISILI :</td>
                 </tr>
                 <tr>
@@ -191,7 +188,7 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">1. GAJI/PENSIUN ATAU THT/JHT</td>
-                    <td class="tg-zp53" colspan="2"></td>
+                    <td class="tg-zp53" colspan="2">Rp {{ number_format($cetak['gaji'],0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">2. TUNJANGAN PPh</td>
@@ -199,7 +196,7 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">3. TUNJANGAN LAINNYA, UANG LEMBUR DAN SEBAGAINYA</td>
-                    <td class="tg-zp53" colspan="2"></td>
+                    <td class="tg-zp53" colspan="2">Rp {{ number_format($tunjangan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">4. HONORARI DAN IMBALAN LAIN SEJENISNYA</td>
@@ -220,7 +217,7 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">8. JUMLAH PENGHASILAN BRUTO (1 S.D 7)</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($hasil_bruto,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-p0jh" colspan="4">PENGURANGAN&nbsp;&nbsp;:</td>
@@ -228,15 +225,15 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">9. BIAYA JABATAN/BIAYA PENSIUN</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($cetak->biaya_jabatan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">10. IURAN PENSIUN ATAU IURAN THT/JHT</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format(($cetak->jaminan_ht+$cetak->jaminan_p),0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">11. JUMLAH PENGURANGAN (9 S.D 10)</td>
-                    <td class="tg-0lax" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($potongan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-p0jh" colspan="4">PENGHITUNGAN PPh PASAL 21&nbsp;&nbsp;:</td>
@@ -244,7 +241,7 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">12. JUMLAH PENGHASILAN NETO (8-11)</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($cetak['penghasilan_bersih'],0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">13. PENGHASILAN NETO MASA SEBELUMNYA</td>
@@ -253,19 +250,19 @@
                 <tr>
                     <td class="tg-a30r" colspan="4">14. JUMLAH PENGHASILAN NETO UNTUK PENGHITUNGAN PPh PASAL 21
                         (SETAHUN/DISETAHUNKAN)</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($penghasilan_setahun,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">15. PENGHASILAN TIDAK KENA PAJAK (PTKP)</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($pajak_penghasilan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">16. PENGHASILAN KENA PAJAK SETAHUN/DISETAHUNKAN (14 - 15)</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($pkp_setahun,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">17. PPh PASAL 21 ATAS PENGHASILAN KENA PAJAK SETAHUN/DISETAHUNKAN</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($cetak->pajak_penghasilan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">18. PPh PASAL 21 YANG TELAH DIPOTONG SEBELUMNYA</td>
@@ -273,11 +270,11 @@
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">19. PPh PASAL 21 TERUTANG</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($cetak->pajak_penghasilan,0,',','.') }}</td>
                 </tr>
                 <tr>
                     <td class="tg-3uj0" colspan="4">20. PPh PASAL 21 DAN PPh PASAL 21 YANG TELAH DIPOTONG DAN DILUNASI</td>
-                    <td class="tg-3uj0" colspan="2"></td>
+                    <td class="tg-3uj0" colspan="2">Rp {{ number_format($cetak->pajak_penghasilan,0,',','.') }}</td>
                 </tr>
             </tbody>
         </table>

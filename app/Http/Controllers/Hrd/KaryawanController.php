@@ -48,6 +48,71 @@ class KaryawanController extends Controller
         ]);
     }
 
+    function printSpt($id){
+        $cetak = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
+        ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
+        ->where('transaksi.id_gaji', $id)
+        ->first();
+        
+        $penghasilan_bersih = $cetak->penghasilan_bruto - $cetak->biaya_jabatan - $cetak->jaminan_ht - $cetak->jaminan_p;
+        $orderdate      = explode('-', $cetak['tanggal_masuk']);
+            $year           = $orderdate[0];
+            $selisih_thn    = date('Y')-$year;
+            $month          = $orderdate[1];
+            $selisih        = 12 - $month;
+            $kali = 0 + $selisih;
+            $penghasilan_setahun = 0;
+            for($i = 0; $i <= $selisih; $i++){
+                if($selisih == $i && $selisih_thn == 0){
+                    $penghasilan_setahun = $penghasilan_bersih * $kali;
+                }else if($selisih_thn > 0){
+                    $penghasilan_setahun = $penghasilan_bersih * 12;
+                }else{
+                    $penghasilan_setahun = 0;
+                }
+            }
+        
+            $pajak_penghasilan = 0;
+            if($cetak['status'] == 'Tidak Menikah' && $cetak['tanggungan'] == '0'){
+                $pajak_penghasilan = 54000000;
+            }else if($cetak['status'] == 'Tidak Menikah' && $cetak['tanggungan'] == '1'){
+                $pajak_penghasilan = 58500000;
+            }else if($cetak['status'] == 'Tidak Menikah' && $cetak['tanggungan'] == '2'){
+                $pajak_penghasilan = 63000000;
+            }else if($cetak['status'] == 'Tidak Menikah' && $cetak['tanggungan'] == '3'){
+                $pajak_penghasilan = 67500000;
+            }else if($cetak['status'] == 'Menikah' && $cetak['tanggungan'] == '0'){
+                $pajak_penghasilan = 58500000;
+            }else if($cetak['status'] == 'Menikah' && $cetak['tanggungan'] == '1'){
+                $pajak_penghasilan = 63000000;
+            }else if($cetak['status'] == 'Menikah' && $cetak['tanggungan'] == '2'){
+                $pajak_penghasilan = 67500000;
+            }else if($cetak['status'] == 'Menikah' && $cetak['tanggungan'] == '3'){
+                $pajak_penghasilan = 72000000;
+            }else{
+                $pajak_penghasilan = 0;
+            }    
+
+        $pkp_setahun   = $penghasilan_setahun-$pajak_penghasilan;   
+        $tunjangan_pph = $cetak->pajak_penghasilan/12;
+        $tunjangan     = $cetak->total_tmakan + $cetak->total_ttransportasi + $cetak->upah_lembur;
+        $hasil_bruto   = $cetak->gaji + $tunjangan + $tunjangan_pph;
+        $potongan      = $cetak->jaminan_ht + $cetak->jaminan_p + $cetak->biaya_jabatan;
+        
+
+        // dibawah ini untuk cek view manual html
+        return view ('hrd.karyawan.printSpt', [
+            'cetak'                 => $cetak,
+            'potongan'              => $potongan,
+            'penghasilan_setahun'   => $penghasilan_setahun,
+            'tunjangan'             => $tunjangan,
+            'hasil_bruto'           => $hasil_bruto,
+            'tunjangan_pph'         => $tunjangan_pph,
+            'pajak_penghasilan'     => $pajak_penghasilan,
+            'pkp_setahun'           => $pkp_setahun
+        ]);
+    }
+
     function detailKaryawan($id, Request $request){
         $karyawan = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')->where('id_karyawan', $id)->get();
 
