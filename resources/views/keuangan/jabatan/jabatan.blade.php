@@ -19,72 +19,66 @@
             <div class="card-header">
                 <h4 class="card-title mb-0">Data Jabatan</h4>
             </div><!-- end card header -->
-            
+
             <div class="card-body">
                 <div id="customerList">
                     <div class="row g-4 mb-3">
                         {{-- <div class="col-sm-auto">
                             <div>
                                 <a href="{{ route("tambah_jabatan_keuangan") }}"><button type="button"
-                                        class="btn btn-primary add-btn"><i class="ri-add-line align-bottom me-1"></i>
-                                        Add</button></a>
+                            class="btn btn-primary add-btn"><i class="ri-add-line align-bottom me-1"></i>
+                            Add</button></a>
+                    </div>
+                </div> --}}
+            </div>
+            <table class="display" id="myTable">
+                <thead class="table-light">
+                    <tr>
+                        <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
+                        <th class="sort" data-sort="tunjanganmakan">Tunjangan Makan</th>
+                        <th class="sort" data-sort="tunjangantransport">Tunjangan Transportasi</th>
+                        <th class="sort" data-sort="action">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="list form-check-all">
+                    @foreach ($jabatan as $jabatan)
+                    <tr>
+                        <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
+                        <td class="tunjanganmakan">Rp {{ number_format($jabatan ['tunjangan_makan'],2,',','.') }}</td>
+                        <td class="tunjangantransport">Rp
+                            {{ number_format($jabatan ['tunjangan_transportasi'],2,',','.') }}</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <div class="edit">
+                                    <a href="{{ route('edit_jabatan_keuangan', $jabatan->id_jabatan) }}"
+                                        class="btn btn-sm btn-primary edit-item-btn">Edit</a>
+                                </div>
                             </div>
-                        </div> --}}
-                    </div>
-                    <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="customerTable">
-                            <thead class="table-light">
-                                <tr>
-                                    <th class="sort" data-sort="namajabatan">Nama Jabatan</th>
-                                    <th class="sort" data-sort="tunjanganmakan">Tunjangan Makan</th>
-                                    <th class="sort" data-sort="tunjangantransport">Tunjangan Transportasi</th>
-                                    <th class="sort" data-sort="action">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="list form-check-all">
-                                @foreach ($jabatan as $jabatan)
-                                <tr>
-                                    <td class="namajabatan">{{ $jabatan ['nama_jabatan'] }}</td>
-                                    <td class="tunjanganmakan">Rp {{ number_format($jabatan ['tunjangan_makan'],2,',','.') }}</td>
-                                    <td class="tunjangantransport">Rp {{ number_format($jabatan ['tunjangan_transportasi'],2,',','.') }}</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <div class="edit">
-                                                <a href="{{ route('edit_jabatan_keuangan', $jabatan->id_jabatan) }}"
-                                                    class="btn btn-sm btn-primary edit-item-btn">Edit</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <div class="noresult" style="display: none">
-                            <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#25a0e2,secondary:#00bd9d" style="width:75px;height:75px">
-                                </lord-icon>
-                                <h5 class="mt-2">Sorry! No Result Found</h5>
-                                <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
-                                    orders for you search.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-end">
-                        <div class="pagination-wrap hstack gap-2">
-                            <a class="page-item pagination-prev disabled" href="#">
-                                Previous
-                            </a>
-                            <ul class="pagination listjs-pagination mb-0"></ul>
-                            <a class="page-item pagination-next" href="#">
-                                Next
-                            </a>
-                        </div>
-                    </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="noresult" style="display: none">
+                <div class="text-center">
+                    <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
+                        colors="primary:#25a0e2,secondary:#00bd9d" style="width:75px;height:75px">
+                    </lord-icon>
+                    <h5 class="mt-2">Sorry! No Result Found</h5>
+                    <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
+                        orders for you search.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
 @endsection

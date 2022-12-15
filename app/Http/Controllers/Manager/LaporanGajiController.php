@@ -38,7 +38,7 @@ class LaporanGajiController extends Controller
         ->where('transaksi.status_slip', 2)
         ->get();
 
-        $total_gaji = Transaksi::sum('penghasilan_bersih');
+        $total_gaji = Transaksi::where('status_slip', 2)->sum('penghasilan_bersih');
         
         $pdf = PDF::loadview('manager.laporanGaji.printGaji',[
             'data'      => $data,
