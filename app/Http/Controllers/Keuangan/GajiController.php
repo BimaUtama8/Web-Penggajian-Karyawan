@@ -264,7 +264,7 @@ class GajiController extends Controller
         ->where('tahun', $request->tahun)
         ->update(['status_slip' => 1]);
 
-        return redirect()->route('s_validasi')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_req')->with('success', 'Request Validasi Berhasil');
     }
 
     // function sValidasi(){

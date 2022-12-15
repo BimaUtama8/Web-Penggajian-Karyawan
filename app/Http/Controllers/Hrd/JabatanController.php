@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Hrd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Jabatan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class JabatanController extends Controller
 {
@@ -35,7 +36,8 @@ class JabatanController extends Controller
         Jabatan::create([
             'nama_jabatan' => $request->namajabatan,
         ]);
-        return redirect()->route('show_jabatan')->with('success', 'Data Berhasil Ditambahkan');
+
+        return redirect()->route('show_jabatan')->with('toast_success', 'Data Berhasil Ditambahkan');
     }
 
     function tampilEditJabatan($id){
@@ -53,12 +55,12 @@ class JabatanController extends Controller
         $data_jabatan -> nama_jabatan = $request->namajabatan;
         $data_jabatan -> save();
 
-        return redirect()->route('show_jabatan')->with('success', 'Data Berhasil Diubah');
+        return redirect()->route('show_jabatan')->with('toast_success', 'Data Berhasil Diubah');
     }
 
     function hapusJabatan($id){
         $hapus_jabatan = Jabatan::find($id);
         $hapus_jabatan->delete();
-        return redirect()->route('show_jabatan')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('show_jabatan')->with('toast_success', 'Data Berhasil Dihapus');
     }
 }

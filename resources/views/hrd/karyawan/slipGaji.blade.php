@@ -23,8 +23,7 @@
                 <div id="customerList">
                     <div class="row g-4 mb-3">
                     </div>
-                    <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="customerTable">
+                        <table class="display" id="myTable">
                             <thead class="table-light">
                                 <tr>
                                     <th class="sort" data-sort="nama">Nama Karyawan</th>
@@ -105,20 +104,14 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        <div class="pagination-wrap hstack gap-2">
-                            <a class="page-item pagination-prev disabled" href="#">
-                                Previous
-                            </a>
-                            <ul class="pagination listjs-pagination mb-0"></ul>
-                            <a class="page-item pagination-next" href="#">
-                                Next
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
 @endsection

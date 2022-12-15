@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@if (session('success_message'))
+    <div class="alert alert-success">
+        {{ session('success_message') }}
+    </div>
+@endif
 <div class="row">
   <div class="col-12">
       <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -63,6 +68,7 @@
       </div>
   </div>
 </div>
+@include('sweetalert::alert')
 @push('script')
 <script type="text/javascript">
     $("#datepicker").datepicker({

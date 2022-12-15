@@ -185,7 +185,7 @@ class KaryawanController extends Controller
             'active'        =>1,
         ]);
         
-        return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('show_karyawan')->with('toast_success', 'Data Berhasil Ditambahkan');
     }
 
     function tampilEditKaryawan($id){
@@ -224,13 +224,13 @@ class KaryawanController extends Controller
         $data_karyawan -> status        = $request -> status;
         $data_karyawan -> save();
 
-        return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Diubah');
+        return redirect()->route('show_karyawan')->with('toast_success', 'Data Berhasil Diubah');
     }
 
     function hapusKaryawan($id){
         $hapus_karyawan = Karyawan::find($id);
         $hapus_karyawan->delete();
-        return redirect()->route('show_karyawan')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('show_karyawan')->with('toast_success', 'Data Berhasil Dihapus');
     }
 
 }
