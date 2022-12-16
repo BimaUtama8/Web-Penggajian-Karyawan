@@ -45,9 +45,9 @@ class ValidasiController extends Controller
 
         $gaji = Transaksi::where('id_gaji', $request->id_gaji)->first();
         
-        $gaji -> status_slip = 2;
-        $gaji -> save();
+        $gaji->status_slip = 2;
+        $gaji->save();
 
-        return redirect()->route('validasi_gaji')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('validasi_gaji')->with('toast_success', 'Data Berhasil Divalidasi');
     }
 }

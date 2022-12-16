@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="detail">
                                             <a href="{{ route('detail_karyawan', $karyawan->id_karyawan) }}"
-                                                class="btn btn-sm btn-success edit-item-btn">Detail</a>
+                                                class="btn btn-sm btn-info edit-item-btn">Detail</a>
                                         </div>
                                         <div class="remove">
                                             <a href="{{ route('hapus_karyawan', $karyawan->id_karyawan) }}"
