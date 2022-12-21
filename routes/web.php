@@ -49,7 +49,8 @@ Route::middleware('auth', 'validatelevels:hrd')->group(function () {
 
         //Data Presensi
         Route::get('hrd/tampilPresensi', [Hrd\PresensiController::class, 'tampilPresensi'])->name('show_presensi');
-        Route::get('hrd/detailPresensi/{id}', [Hrd\PresensiController::class, 'detailPresensi'])->name('show_detail_presensi');
+        Route::get('hrd/pilihDetail/{id}', [Hrd\PresensiController::class, 'pilihDetail'])->name('show_pilih_detail');
+        Route::post('hrd/detailPresensi', [Hrd\PresensiController::class, 'detailPresensi'])->name('show_detail_presensi');
 
     //Post Method
         //Data Karyawan

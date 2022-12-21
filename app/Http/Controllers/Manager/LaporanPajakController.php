@@ -41,10 +41,10 @@ class LaporanPajakController extends Controller
         $tahun = $request->tahun;
         $data = Karyawan::join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
         ->where('transaksi.tahun', $tahun)
-        ->where('transaksi.status_slip', 2)
+        ->where('transaksi.status_slip', 1)
         ->get();
 
-        $total_pajak = Transaksi::where('status_slip', 2)->sum('pajak_penghasilan');
+        $total_pajak = Transaksi::where('status_slip', 1)->sum('pajak_penghasilan');
 
         $pdf = PDF::loadview('manager.laporanPajak.printPajak',[
             'data'      => $data,
@@ -72,7 +72,7 @@ class LaporanPajakController extends Controller
         $data = Karyawan::join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
         ->where('transaksi.bulan', $bulan)
         ->where('transaksi.tahun', $tahun)
-        ->where('transaksi.status_slip', 2)
+        ->where('transaksi.status_slip', 1)
         ->get();
 
         // $pajak = $data[0]['pajak_pengasilan']/12;

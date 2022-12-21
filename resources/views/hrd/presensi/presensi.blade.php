@@ -39,7 +39,8 @@
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
-                                            <a href="{{ route('show_detail_presensi', $kar['id_karyawan'])}}"
+                                            {{-- {{ route('show_detail_presensi', $kar['id_karyawan'])}} --}}
+                                            <a href="{{ route('show_pilih_detail', $kar['id_karyawan']) }}"
                                                 class="btn btn-sm btn-success edit-item-btn">Detail</a>
                                         </div>
                                     </div>

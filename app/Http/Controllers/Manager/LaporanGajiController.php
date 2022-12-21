@@ -35,10 +35,10 @@ class LaporanGajiController extends Controller
         ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
         ->where('transaksi.tahun', $tahun)
         ->where('transaksi.bulan', $bulan)
-        ->where('transaksi.status_slip', 2)
+        ->where('transaksi.status_slip', 1)
         ->get();
 
-        $total_gaji = Transaksi::where('status_slip', 2)->sum('penghasilan_bersih');
+        $total_gaji = Transaksi::where('status_slip', 1)->sum('penghasilan_bersih');
         
         $pdf = PDF::loadview('manager.laporanGaji.printGaji',[
             'data'      => $data,

@@ -27,16 +27,16 @@
                             <th>&nbsp;:&nbsp;</th>
                             <th>{{$jhk}} Hari</th>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <th>Lembur</th>
                             <th>&nbsp;:&nbsp;</th>
                             <th>{{ $jum_lem }} Jam</th>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="display" id="myTable">
                     <thead>
                         <tr>
                             <th scope="col">Nama</th>
@@ -117,4 +117,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
 @endsection

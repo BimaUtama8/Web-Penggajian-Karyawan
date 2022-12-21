@@ -17,7 +17,7 @@ class ValidasiController extends Controller
         $data = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
         ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
         ->where(function($s) {
-            $s->where('status_slip', 1)->orWhere('status_slip', 2);
+            $s->where('status_slip', null)->orWhere('status_slip', 1);
         })
         ->where('total_tmakan', '>', 0)
         ->get();
@@ -45,7 +45,7 @@ class ValidasiController extends Controller
 
         $gaji = Transaksi::where('id_gaji', $request->id_gaji)->first();
         
-        $gaji->status_slip = 2;
+        $gaji->status_slip = 1;
         $gaji->save();
 
         return redirect()->route('validasi_gaji')->with('toast_success', 'Data Berhasil Divalidasi');

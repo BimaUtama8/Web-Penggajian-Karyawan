@@ -86,7 +86,7 @@
                                     ?>{{ $bulan_ini }}</td>
                                     <td class="tahun">{{ $data['tahun'] }}</td>
                                     <td class="status">
-                                        @if ($data['status_slip'] == 2)
+                                        @if ($data['status_slip'] == 1)
                                             <span class="badge badge-soft-success">Lunas</span>
                                         @else
                                             <span class="badge badge-soft-danger">Belum Lunas</span>

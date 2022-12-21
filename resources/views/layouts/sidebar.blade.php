@@ -72,11 +72,10 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarMultilevel">
+                    <a href="{{ route('show_gaji') }}" class="nav-link">
                         <i class="mdi mdi-account-cash"></i> <span>Data Gaji</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="sidebarMultilevel">
+                    {{-- <div class="collapse menu-dropdown" id="sidebarMultilevel">
                         <ul class="nav nav-sm flex-column">
                             <a href="{{ route('show_gaji') }}" class="nav-link">
                                 <span>Hitung Gaji</span>
@@ -87,7 +86,7 @@
                                 <span>Request Validasi Gaji</span>
                             </a>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 @elseif (Auth::user()->level == 'manager')
                 <li class="menu-title"><span>Manager</span></li>

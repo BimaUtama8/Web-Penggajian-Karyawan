@@ -24,7 +24,7 @@ class KaryawanController extends Controller
     function tampilSlip(){
         $gaji = Karyawan::join('jabatan', 'jabatan.id_jabatan', '=', 'karyawan.id_jabatan')
         ->join('transaksi', 'transaksi.id_karyawan', '=', 'karyawan.id_karyawan')
-        ->where('status_slip', 2)
+        ->where('status_slip', 1)
         ->where('total_tmakan', '>', 0)
         ->get();
         

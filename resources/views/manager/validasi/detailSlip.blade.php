@@ -192,7 +192,7 @@
                                 @endforeach
 
                                 </form> --}}
-                                @if ($slip->status_slip == 1)
+                                @if ($slip->status_slip == null)
                                 <button class="btn btn-primary" type="submit">Validasi Slip</button>
                                 @else
                                 <button class="btn btn-primary" type="submit" disabled>Telah Di Validasi</button>
