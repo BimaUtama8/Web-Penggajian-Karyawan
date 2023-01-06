@@ -132,7 +132,8 @@ class GajiController extends Controller
         //Pajak Penghasilan
             $orderdate      = explode('-', $data[0]['tanggal_masuk']);
             $year           = $orderdate[0];
-            $selisih_thn    = date('Y')-$year;
+            // $selisih_thn    = date('Y')-$year;
+            $selisih_thn    = 2022-$year;
             $month          = $orderdate[1];
             $selisih        = 12 - $month;
             $kali = 0 + $selisih;
