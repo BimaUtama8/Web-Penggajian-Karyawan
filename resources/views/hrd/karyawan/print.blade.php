@@ -20,7 +20,7 @@
       <th height="10" colspan="7">
         <h1 style="text-align: center">PT. Surya Globalindo Sejahtera</h1>
         <h3 style="text-align: center">Slip Gaji Karyawan</h3>
-        <p style="text-align: center">Periode Awal {{ $cetak->bulan }} - Akhir {{ $cetak->bulan }}</p>
+        <p style="text-align: center">Tanggal {{ date('d-m-Y'); }}</p>
       </th>
     </tr>
     
@@ -98,11 +98,11 @@
       <td style="text-align:center">:</td>
       <td style="text-align:right">Rp {{ number_format($cetak->pajak_penghasilan/12,0,',','.') }}</td>
     </tr>
-    <tr>
+    {{-- <tr>
       <td>Bonus/Insentif</td>
       <td style="text-align:center">:</td>
       <td style="text-align:right">Rp {{ number_format(0,0,',','.') }}</td>
-    </tr>
+    </tr> --}}
     <tr>
       <td height="20" colspan="7"></td>
     </tr>
